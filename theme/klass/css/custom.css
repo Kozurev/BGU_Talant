@@ -1,0 +1,377 @@
+.s-menu div.box {
+    display: inline-block;
+    position: relative;
+}
+
+.s-menu div.box a {
+    position: relative;
+    display: inline-block;
+    width: 266px;
+    height: 266px;
+    margin: 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #1f3342;
+    border: 1px solid #8999a3;
+    border-radius: 10px;
+    transition: .5s;
+}
+.s-menu div.box a img { margin: 2px; transition: .5s; border-radius: 10px; }
+.s-menu div.box a b {
+    display: block;
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    padding: 10px 0;
+    bottom: 0;
+    font-size: 18px;
+    transition: .5s;
+    color: #009dd7;
+    text-transform: uppercase;
+}
+.s-menu div.box a span {
+    display: block;
+    position: absolute;
+    z-index: 2;
+    bottom: -10px; /*bottom: 0; left: -20px;*/
+    opacity: 0;
+    transition: .5s;
+    height: 80px;
+    overflow: hidden;
+    text-align: center;
+    width: 100%;
+}
+
+.s-menu div.box div.control-panel {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    z-index: 2;
+    opacity: 0;
+    transition: .5s;
+}
+
+.s-menu div.box div.control-panel a {
+    color: #009ed7;
+    border: none;
+    margin: 0;
+    padding: 3px;
+    background: transparent;
+    transition: 0.2s;
+}
+
+.s-menu div.box div.control-panel a:hover {
+    color: white;
+    padding: 3px;
+    background: #009ed7;
+}
+
+.s-menu div.box:hover img {  opacity: .3; }
+.s-menu div.box:hover b { bottom: 90px; background: #009ed7; color: white; }/*#10c9e6 #c6d213*/
+.s-menu div.box:hover span { bottom: 0; opacity: 1; } /*left: 0;*/
+.s-menu div.box:hover div.control-panel { top: 35px; opacity: 1; } /*left: 0;*/
+
+
+
+.button:link, .button:visited, .button:active  {
+    width: auto;
+
+    -webkit-appearance: button;
+    cursor: pointer;
+
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    padding: 4px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    color: #333;
+    text-shadow: 0 1px 1px rgba(255,255,255,0.75);
+    background-color: #f5f5f5;
+    background-image: -moz-linear-gradient(top, #fff, #e6e6e6);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#e6e6e6));
+    background-image: -webkit-linear-gradient(top, #fff, #e6e6e6);
+    background-image: -o-linear-gradient(top, #fff, #e6e6e6);
+    background-image: linear-gradient(to bottom, #fff, #e6e6e6);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+    border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+    border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+    *background-color: #e6e6e6;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+    border: 1px solid #ccc;
+    *border: 0;
+    border-bottom-color: #b3b3b3;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    *margin-left: .3em;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+    -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+
+    height: 40px;
+    font-family: arvoregular,Arial,Helvetica,sans-serif;
+    color: #fff;
+    line-height: 40px;
+    background: #009fe5;
+    padding: 0 18px;
+    border: 0;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    text-transform: uppercase;
+    text-shadow: none;
+    text-decoration: none;
+}
+.button:hover {
+    color:#fff;
+    background: #0073a5;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    outline: 0;
+    text-decoration: none;
+}
+
+
+.loader {
+    background: black;
+    opacity: 0.8;
+    width: 100%;
+    position: fixed;
+    z-index: 10000;
+    background-image: url("/theme/klass/pix/loader.gif");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50px;
+}
+
+.header-main .header-main-content .navbar-brand .logo {
+    //height: 100px;
+    min-width: 100px;
+}
+
+.header-main .header-main-content .navbar-brand .logo img {
+    width: 100%;
+    height: 100%;
+}
+
+.center {
+    display: block;
+    text-align: center;
+}
+
+.left {
+    display: block;
+    text-align: left;
+}
+
+.right {
+    display: block;
+    text-align: right;
+}
+
+
+
+.action {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    margin-right: 10px;
+}
+
+.edit {
+    background: url("/theme/klass/pix/edit.png");
+    background-size: cover;
+}
+
+.delete {
+    background: url("/theme/klass/pix/delete.ico");
+    background-size: cover;
+}
+
+
+
+.program_edit .row {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+
+
+
+/**
+ * Правая колонка на главной
+ * Начало>>
+ */
+.right-column {
+    border: 1px solid #8999a3;
+    border-radius: 10px;
+    transition: .5s;
+    padding: 20px;
+    width: 100%;
+    margin: 20px;
+    background-color: white;
+}
+
+/**
+ * <<Конец
+ * Правая колонка на гланой
+ */
+
+
+/**
+ * Список разделов курсов и курсов
+ */
+.courses-list label {
+    color: #0073a5!important;
+    font-size: 18px!important;
+}
+
+.courses-list .checkbox {
+    height: 17px;
+    width: 17px;
+}
+
+
+/**
+ * Переопределение стилей ссылок / кнопок
+ */
+.btn {
+    height: 40px;
+    font-family: arvoregular,Arial,Helvetica,sans-serif;
+    color: #fff!important;
+    line-height: 40px;
+    padding: 0 18px;
+    border: 0;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    text-transform: uppercase;
+    text-shadow: none;
+    vertical-align: top;
+    margin-right: 10px;
+}
+
+.btn:hover {
+    box-shadow: none;
+    outline: 0;
+}
+
+.btn-blue {
+    background: #009fe5;
+}
+
+.btn-blue:hover {
+    background: #0073a5;
+}
+
+.btn-orange {
+    background: #FF9714;
+}
+
+.btn-orange:hover {
+    background: #DF7D01;
+}
+
+.btn-red {
+    background: #D44044;
+}
+
+.btn-red:hover {
+    background: #930B0F;
+}
+
+.btn-green {
+    background: #24C804;
+}
+
+.btn-green:hover {
+    background: #1C8806;
+}
+
+
+.course_record_form div {
+    margin-bottom: 30px;
+}
+
+.course_record_form input[type="checkbox"] {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+
+
+/**
+ * Страница программы
+ * Начало>>
+ */
+
+.program .description {
+    font-family: open-seans;
+    font-size: 20px;
+}
+
+.program .bottom {
+    vertical-align: middle;
+}
+
+.program_type, .program_form {
+    font-family: open-seans;
+    font-size: 16px;
+}
+
+.program .bottom .price {
+    font-size: 24px;
+    margin-right: 20px;
+}
+
+.program .bottom .price b {
+    color: #c02424;
+}
+
+/**
+ * <<Конец
+ * Страница программы
+ */
+
+
+/**
+ * Инструкция
+ * Начало>>
+ */
+
+
+
+.help .block .help-img {
+    text-align: center;
+    width: 60%;
+    margin-left: 20%;
+    margin-bottom: 30px;
+}
+
+.help h5 {
+    font-size: 24px;
+}
+
+.help .block p,
+.help .block table {
+    font-size: 18px;
+}
+
+.help .block .help-img p {
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+/**
+ * <<Конец
+ * Инструкция
+ */
