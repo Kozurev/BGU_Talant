@@ -1,2 +1,4 @@
 /.idea/
 /config.php
+blocks/programs/xml.xml
+*.xml
