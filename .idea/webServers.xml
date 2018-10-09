@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="e6145522-ca85-4841-88c9-b7b3df7ae4e9" name="dpo" url="http://g-workshop.ru">
-        <fileTransfer host="g-workshop.ru" port="22" privateKey="C:\OpenServer\domains\id_rsa" rootFolder="/var/www/html/dpo" accessType="SFTP" keyPair="true">
+        <fileTransfer host="g-workshop.ru" port="22" privateKey="C:\OpenServer\domains\id_rsa" rootFolder="/var/www/html/dpo/dpo" accessType="SFTP" keyPair="true">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>
