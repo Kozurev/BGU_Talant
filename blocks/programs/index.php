@@ -30,6 +30,7 @@ if( $programId === null )
 
     Core::factory( "Core_Entity" )
         ->addEntities( $Programs )
+        ->addSimpleEntity( "wwwroot", $CFG->wwwroot )
         ->xsl( "program_list.xsl" )
         ->show();
 }
@@ -70,6 +71,7 @@ else
         ->addEntity( $Program->getForm() )
         ->addEntities( $Periods )
         ->addSimpleEntity( "isset_agreement", $issetAgreement )
+        ->addSimpleEntity( "wwwroot", $CFG->wwwroot )
         ->xsl( "program.xsl" )
         ->show();
 }

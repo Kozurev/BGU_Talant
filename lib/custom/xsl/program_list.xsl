@@ -11,14 +11,14 @@
 
     <xsl:template match="program">
         <div class="box">
-            <a href="/blocks/programs?prid={id}">
+            <a href="{wwwroot}/blocks/programs?prid={id}">
                 <img width="260" height="260" >
                     <xsl:choose>
                         <xsl:when test="logo_id = 0">
-                            <xsl:attribute name="src">/theme/klass/pix/boxes/default.png</xsl:attribute>
+                            <xsl:attribute name="src"><xsl:value-of select="wwwroot" />/theme/klass/pix/boxes/default.png</xsl:attribute>
                         </xsl:when>
                         <xsl:otherwise>
-                            <xsl:attribute name="src">/blocks/docs/files.php?fileid=<xsl:value-of select="logo_id" /></xsl:attribute>
+                            <xsl:attribute name="src"><xsl:value-of select="wwwroot" />/blocks/docs/files.php?fileid=<xsl:value-of select="logo_id" /></xsl:attribute>
                         </xsl:otherwise>
                     </xsl:choose>
                 </img>
