@@ -8,10 +8,11 @@
 
 
 //require_once "C:\OpenServer/domains/moodle/config.php";
-require_once "W:/domains/moodle/config.php";
+//require_once "W:/domains/moodle/config.php";
 
 //require_once "C:\OpenServer/domains/moodle/blocks/moodleblock.class.php";
 global $CFG;
+require_once $CFG->dirroot . "/config.php";
 require_once $CFG->dirroot . "/blocks/moodleblock.class.php";
 require_once $CFG->libdir . "/custom/autoload.php";
 
