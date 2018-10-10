@@ -274,7 +274,7 @@ class Core_Entity extends Core_Entity_Model
 			$rootTag->appendChild($this->createEntity($obj, $xml));
 		}
 
-		$xml->save("xml.xml");
+		//$xml->save("xml.xml");
 
 		// Объект стиля
 		$xsl = new DOMDocument();
