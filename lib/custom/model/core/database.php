@@ -19,10 +19,11 @@ class Core_Database
 	{
 		if( self::$db === null )
         {
+            global $CFG;
             $pdoString = "mysql:";
-            $pdoString .= "host=localhost;";
-            $pdoString .= "dbname=moodle";
-            self::$db = new PDO( $pdoString, "root", "" );
+            $pdoString .= "host=$CFG->dbhost;";
+            $pdoString .= "dbname=" . $CFG->dbname;
+            self::$db = new PDO( $pdoString, $CFG->dbuser, $CFG->dbpass );
             self::$db->query( "SET CHARSET UTF8" );
         }
 
