@@ -1,7 +1,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
     <xsl:template match="root">
-        <form action="/blocks/docs/files.php" enctype="multipart/form-data" method="POST" >
+        <form action="{wwwroot}/blocks/docs/files.php" enctype="multipart/form-data" method="POST" >
             <input type="hidden" name="file_id" value="{file_id}" />
             <input type="hidden" name="action" value="upload" />
             <input type="hidden" name="file_type_id" value="1" />

@@ -30,6 +30,7 @@ class block_programs extends block_base
 
     public function get_content()
     {
+        global $CFG;
         $User = Core::factory( "User" )->getCurrent();
 
         $this->content = new stdClass;
@@ -43,6 +44,7 @@ class block_programs extends block_base
             $Forms = Core::factory( "Program_Form" )->findAll();
 
             $this->content->text = Core::factory( "Core_Entity" )
+                ->addSimpleEntity( "wwwroot", $CFG->wwwroot )
                 ->addEntities( $Programs )
                 ->addEntities( $Types )
                 ->addEntities( $Forms )
@@ -75,6 +77,7 @@ class block_programs extends block_base
             }
 
             $this->content->text = Core::factory( "Core_Entity" )
+                ->addSimpleEntity( "wwwroot", $CFG->wwwroot )
                 ->addEntities( $Applications, "app" )
                 ->xsl( "tables/applications.xsl" )
                 ->show( false );

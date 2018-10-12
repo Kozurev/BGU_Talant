@@ -14,7 +14,7 @@
         </style>
 
 
-        <form action="/blocks/programs/app_form.php" method="POST" id="app_form">
+        <form action="{wwwroot}/blocks/programs/app_form.php" method="POST" id="app_form">
             <div class="row center">
                 <h3>Данные потребителя</h3>
             </div>

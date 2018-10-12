@@ -8,10 +8,10 @@
                         <xsl:attribute name="src">
                             <xsl:choose>
                                 <xsl:when test="program/logo_id = 0">
-                                    /theme/klass/pix/boxes/default.png
+                                    <xsl:value-of select="wwwroot" />/theme/klass/pix/boxes/default.png
                                 </xsl:when>
                                 <xsl:otherwise>
-                                    /blocks/docs/files.php?fileid=<xsl:value-of select="program/logo_id" />
+                                    <xsl:value-of select="wwwroot" />/blocks/docs/files.php?fileid=<xsl:value-of select="program/logo_id" />
                                 </xsl:otherwise>
                             </xsl:choose>
                         </xsl:attribute>
@@ -36,7 +36,7 @@
                     <xsl:otherwise>
                         <xsl:choose>
                             <xsl:when test="isset_agreement = 1">
-                                <form method="GET" action="/blocks/programs/app_form.php">
+                                <form method="GET" action="{wwwroot}/blocks/programs/app_form.php">
                                     <select name="period_id">
                                         <xsl:for-each select="program_period">
                                             <option value="{id}">

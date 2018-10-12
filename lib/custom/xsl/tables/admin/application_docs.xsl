@@ -27,7 +27,7 @@
             </td>
 
             <td>
-                <a href="/blocks/programs?prid={item/program_id}"><xsl:value-of select="item/title" /></a>
+                <a href="{//wwwroot}/blocks/programs?prid={item/program_id}"><xsl:value-of select="item/title" /></a>
             </td>
 
             <td>
@@ -38,15 +38,15 @@
 
             <td>
                 <xsl:for-each select="file">
-                    <a href="/blocks/docs/files.php?fileid={id}"><xsl:value-of select="file_name" /> (<xsl:value-of select="title" />)</a><br/>
+                    <a href="{//wwwroot}/blocks/docs/files.php?fileid={id}"><xsl:value-of select="file_name" /> (<xsl:value-of select="title" />)</a><br/>
                 </xsl:for-each>
             </td>
 
             <xsl:variable name="href"><xsl:for-each select="file">&amp;fileid[]=<xsl:value-of select="id" /></xsl:for-each></xsl:variable>
 
             <td>
-                <a class="btn btn-green doc_confirm" href="/blocks/docs/files.php?action=confirm{$href}&amp;val=1&amp;subscribe=1">Подтвердить</a>
-                <a class="btn btn-red doc_confirm" href="/blocks/docs/files.php?action=confirm{$href}&amp;val=-1">Отклонить</a>
+                <a class="btn btn-green doc_confirm" href="{//wwwroot}/blocks/docs/files.php?action=confirm{$href}&amp;val=1&amp;subscribe=1">Подтвердить</a>
+                <a class="btn btn-red doc_confirm" href="{//wwwroot}/blocks/docs/files.php?action=confirm{$href}&amp;val=-1">Отклонить</a>
             </td>
 
         </tr>

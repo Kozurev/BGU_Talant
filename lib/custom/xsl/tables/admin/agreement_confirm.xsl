@@ -23,12 +23,12 @@
             </td>
 
             <td>
-                <a href="/blocks/docs/files.php?fileid={id}"><xsl:value-of select="file_name" /></a>
+                <a href="{//wwwroot}/blocks/docs/files.php?fileid={id}"><xsl:value-of select="file_name" /></a>
             </td>
 
             <td>
-                <a href="/blocks/docs/files.php?action=confirm&amp;fileid={id}&amp;val=1" class="btn btn-green doc_confirm">Подтвердить</a>
-                <a href="/blocks/docs/files.php?action=confirm&amp;fileid={id}&amp;val=-1" class="btn btn-red doc_confirm">Отклонить</a>
+                <a href="{//wwwroot}/blocks/docs/files.php?action=confirm&amp;fileid={id}&amp;val=1" class="btn btn-green doc_confirm">Подтвердить</a>
+                <a href="{//wwwroot}/blocks/docs/files.php?action=confirm&amp;fileid={id}&amp;val=-1" class="btn btn-red doc_confirm">Отклонить</a>
             </td>
         </tr>
     </xsl:template>

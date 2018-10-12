@@ -66,6 +66,7 @@ else
         ->getCount();
 
     Core::factory( "Core_Entity" )
+        ->addSimpleEntity( "wwwroot", $CFG->wwwroot )
         ->addEntity( $Program )
         ->addEntity( $Program->getType() )
         ->addEntity( $Program->getForm() )

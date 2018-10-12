@@ -33,6 +33,7 @@ class block_docs extends block_base
 
     public function get_content()
     {
+        global $CFG;
         $this->content = new stdClass;
         $User = Core::factory( "User" )->getCurrent();
 
@@ -48,6 +49,7 @@ class block_docs extends block_base
             {
                 $this->content->text = "<h5>Для возможности записи на программы необходимо загрузить скан-копию или фотографию согласия на обработку персональных данных</h5>";
                 $this->content->text .= Core::factory( "Core_Entity" )
+                    ->addSimpleEntity( "wwwroot", $CFG->wwwroot )
                     ->addSimpleEntity( "file_id", 0 )
                     ->xsl( "forms/upload_agreement.xsl" )
                     ->show( false );
@@ -57,6 +59,7 @@ class block_docs extends block_base
                 $this->content->text = "<h5 style='color: orange'>Ваше согласие на обработку персональных данных будет проверено модератором в течении одного рабочего дня.</h5>";
                 $this->content->text .= "<p>До проверки модератором можете заново загрузить скан-копию/фотографию согласия.</p>";
                 $this->content->text .= Core::factory( "Core_Entity" )
+                    ->addSimpleEntity( "wwwroot", $CFG->wwwroot )
                     ->addSimpleEntity( "file_id", $FileAgreement->getId() )
                     ->xsl( "forms/upload_agreement.xsl" )
                     ->show( false );
@@ -66,6 +69,7 @@ class block_docs extends block_base
                 $this->content->text = "<h5>Соглавие на обработку персональных данных было отклонено модератором.</h5>";
                 $this->content->text .= "<p>Проверьте поданое ранее Вами согласие на наличие ошибок и несовпадение оформления с шаблоном. После внесения исправлений загрузите согласие заново.</p>";
                 $this->content->text .= Core::factory( "Core_Entity" )
+                    ->addSimpleEntity( "wwwroot", $CFG->wwwroot )
                     ->addSimpleEntity( "file_id", $FileAgreement->getId() )
                     ->xsl( "forms/upload_agreement.xsl" )
                     ->show( false );
@@ -89,6 +93,7 @@ class block_docs extends block_base
                 ->findAll();
 
             $this->content->text .= Core::factory( "Core_Entity" )
+                ->addSimpleEntity( "wwwroot", $CFG->wwwroot )
                 ->addEntities( $Files )
                 ->xsl( "tables/admin/agreement_confirm.xsl" )
                 ->show( false );
@@ -132,6 +137,7 @@ class block_docs extends block_base
             }
 
             $this->content->footer = $output
+                ->addSimpleEntity( "wwwroot", $CFG->wwwroot )
                 ->xsl( "tables/admin/application_docs.xsl" )
                 ->show( false );
         }

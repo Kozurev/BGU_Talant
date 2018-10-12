@@ -36,6 +36,7 @@ if( $action === "upload_app_docs" )
         ->open()
             ->where( "file_type_id", "=", 3 )
             ->where( "file_type_id", "=", 4, "OR" )
+            ->where( "file_type_id", "=", 5, "OR" )
             ->where( "file_type_id", "=", 7, "OR" )
         ->close()
         ->orderBy( "id" )
@@ -80,7 +81,7 @@ if( $action === "upload_app_docs" )
     $FileTicket->upload( "ticket" );
     $FilePassport->upload( "passport" );
 
-    header( "Location: /my/" );
+    header( "Location: ". $CFG->wwwroot ."/my" );
 }
 
 
@@ -117,7 +118,7 @@ if( $action === "save_app_data" )
 
     $Application->save();
 
-    header( "Location: /my" );
+    header( "Location: ". $CFG->wwwroot ."/my" );
 }
 
 
@@ -154,6 +155,7 @@ $output = Core::factory( "Core_Entity" );
 if( $Application !== false )    $output->addEntity( $Application, "app" );
 
 $output
+    ->addSimpleEntity( "wwwroot", $CFG->wwwroot )
     ->addEntity( $User )
     ->addEntity( $Period )
     ->addSimpleEntity( "user_id", $User->getId() )

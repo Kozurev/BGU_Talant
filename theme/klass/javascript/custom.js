@@ -1,5 +1,6 @@
 $(function(){
 
+    var root = $("#wwwroot").val();
 
     $("#app_form").on("click", "#equal", function(){
         var fields = ["surname", "surname1", "name", "name1", "patronymic", "patronymic1", "birthday",
@@ -21,7 +22,7 @@ $(function(){
 
             $.ajax({
                 type: "GET",
-                url: "/blocks/programs/edit.php",
+                url: root + "/blocks/programs/edit.php",
                 data: {
                     action: "program_edit",
                     id: id
@@ -50,10 +51,11 @@ $(function(){
             e.preventDefault();
             var Form = $(".program_edit");
             var formData = new FormData(Form.get(0));
+            var root = $("#wwwroot").val();
 
             $.ajax({
                 type: "POST",
-                url: "/blocks/programs/edit.php",
+                url: root + "/blocks/programs/edit.php",
                 contentType: false, // важно - убираем форматирование данных по умолчанию
                 processData: false, // важно - убираем преобразование строк по умолчанию
                 data: formData,
@@ -132,9 +134,11 @@ $(function(){
  * @param blockName - название блока
  */
 function refreshBlock(blockName) {
+    var root = $("#wwwroot").val();
+
     $.ajax({
         type: "GET",
-        url: "/blocks/programs/edit.php",
+        url: root + "/blocks/programs/edit.php",
         data: {
             action: "refresh_block",
             block: blockName

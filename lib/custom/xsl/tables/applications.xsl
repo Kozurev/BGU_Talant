@@ -62,7 +62,7 @@
                         <p style="color: green">Документы на данную программу были одобрены модератором</p>
                     </xsl:when>
                     <xsl:otherwise>
-                        <form action="/blocks/programs/app_form.php" method="POST" enctype="multipart/form-data">
+                        <form action="{//wwwroot}/blocks/programs/app_form.php" method="POST" enctype="multipart/form-data">
                             <input type="hidden" name="action" value="upload_app_docs" />
                             <input type="hidden" name="program_id" value="{program_id}" />
                             <input type="hidden" name="period_id" value="{period_id}" />
@@ -70,19 +70,19 @@
                             <div class="row">
                                 <div class="col-md-4"><label for="application">Заявление на запись:</label></div>
                                 <div class="col-md-4"><input type="file" name="application" id="application" required="required" /></div>
-                                <div class="col-md-4"><a href="/blocks/docs/get_template.php?template_type=application&amp;appid={id}" class="btn btn-orange">Шаблон</a></div>
+                                <div class="col-md-4"><a href="{//wwwroot}/blocks/docs/get_template.php?template_type=application&amp;appid={id}" class="btn btn-orange">Шаблон</a></div>
                             </div>
 
                             <div class="row">
                                 <div class="col-md-4"><label for="contract">Договор:</label></div>
                                 <div class="col-md-4"><input type="file" name="contract" id="contract" required="required" /></div>
-                                <div class="col-md-4"><a href="/blocks/docs/get_template.php?template_type=contract&amp;appid={id}" class="btn btn-orange">Шаблон</a></div>
+                                <div class="col-md-4"><a href="{//wwwroot}/blocks/docs/get_template.php?template_type=contract&amp;appid={id}" class="btn btn-orange">Шаблон</a></div>
                             </div>
 
                             <div class="row">
                                 <div class="col-md-4"><label for="ticket">Квитанция об оплате:</label></div>
                                 <div class="col-md-4"><input type="file" name="ticket" id="ticket" required="required" /></div>
-                                <div class="col-md-4"><a href="/blocks/docs/get_template.php?template_type=ticket&amp;appid={id}" class="btn btn-orange">Шаблон</a></div>
+                                <div class="col-md-4"><a href="{//wwwroot}/blocks/docs/get_template.php?template_type=ticket&amp;appid={id}" class="btn btn-orange">Шаблон</a></div>
                             </div>
 
                             <div class="row">
@@ -101,7 +101,7 @@
 
             <td>
                 <xsl:if test="count(file) = 0 or (count(file) = 4 and file/confirmed = 0) or (count(file) = 4 and file/confirmed = -1)">
-                    <a href="/blocks/programs/app_form.php?period_id={period_id}" class="action edit" data-id="{id}"></a>
+                    <a href="{//wwwroot}/blocks/programs/app_form.php?period_id={period_id}" class="action edit" data-id="{id}"></a>
                     <a href="#" class="action delete" data-id="{id}" data-model_name="Program_Application"></a>
                 </xsl:if>
             </td>

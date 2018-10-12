@@ -63,7 +63,7 @@ if( $action === "upload" )
         ->setFileTypeId( $fileTypeId )
         ->upload( "file" );
 
-    header( "Location: /my/" );
+    header( "Location: ". $CFG->wwwroot ."/my" );
 }
 
 

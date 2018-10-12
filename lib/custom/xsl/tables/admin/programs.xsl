@@ -1,6 +1,20 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
     <xsl:template match="root">
+        <style>
+            .edit {
+            background: url('<xsl:value-of select="wwwroot" />/theme/klass/pix/edit.png');
+            background-size: cover !important;
+            }
+
+            .delete {
+            background: url('<xsl:value-of select="wwwroot" />/theme/klass/pix/delete.ico');
+            background-size: cover !important;
+            }
+        </style>
+
+        <input type="hidden" id="wwwroot" value="{wwwroot}" />
+
         <div class="programs">
             <xsl:choose>
                 <xsl:when test="count(program) = 0">
@@ -23,7 +37,7 @@
             </xsl:choose>
 
             <div class="right">
-                <a href="#" class="btn btn-blue edit edit_program" data-id="0">Создать</a>
+                <a href="#" class="btn btn-blue edit_program" data-id="0">Создать</a>
             </div>
         </div>
     </xsl:template>
