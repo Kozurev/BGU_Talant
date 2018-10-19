@@ -63,7 +63,7 @@ echo $OUTPUT->header();
                 <p>Курсы создаются администратором через админ. панель. Путь к разделу работы с курсами указан на рисунке 1.</p>
 
                 <div class="help-img">
-                    <img src="/theme/klass/pix/help/screen1.png" width="100%" />
+                    <img src="<?=$CFG->wwwroot;?>/theme/klass/pix/help/screen1.png" width="100%" />
                     <p>Рисунок №1</p>
                 </div>
 
@@ -71,7 +71,7 @@ echo $OUTPUT->header();
                 а дата начала курса должна быть меньше либо равной дате начала самого раннего из периодов программы, к которой будет привязан курс.</p>
 
                 <div class="help-img">
-                    <img src="/theme/klass/pix/help/screen2.png" width="100%" />
+                    <img src="<?=$CFG->wwwroot;?>/theme/klass/pix/help/screen2.png" width="100%" />
                     <p>Рисунок №2.</p>
                 </div>
             </div>
@@ -86,7 +86,7 @@ echo $OUTPUT->header();
                 <p>Курсы создаются администратором через админ. панель. Путь к разделу работы с курсами указан на рисунке 1.</p>
 
                 <div class="help-img">
-                    <img src="/theme/klass/pix/help/screen1.png" width="100%" />
+                    <img src="<?=$CFG->wwwroot;?>/theme/klass/pix/help/screen1.png" width="100%" />
                     <p>Рисунок №1</p>
                 </div>
 
