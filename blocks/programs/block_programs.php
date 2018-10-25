@@ -61,6 +61,11 @@ class block_programs extends block_base
                 ->join( "mdl_program AS pr", "pr.id = per.program_id" )
                 ->findAll();
 
+            if( count( $Applications ) === 0 )
+            {
+                return $this->content;
+            }
+
             foreach ( $Applications as $App )
             {
                 $App->date_start = date( "m.d.Y", strtotime( $App->date_start ) );
@@ -79,7 +84,7 @@ class block_programs extends block_base
             $this->content->text = Core::factory( "Core_Entity" )
                 ->addSimpleEntity( "wwwroot", $CFG->wwwroot )
                 ->addEntities( $Applications, "app" )
-                ->xsl( "tables/applications.xsl" )
+                ->xsl( "tables/program_applications.xsl" )
                 ->show( false );
         }
 

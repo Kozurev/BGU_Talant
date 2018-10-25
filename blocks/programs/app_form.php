@@ -160,7 +160,7 @@ $output
     ->addEntity( $Period )
     ->addSimpleEntity( "user_id", $User->getId() )
     ->addSimpleEntity( "fill_years", $fullYears )
-    ->xsl( "forms/application.xsl" )
+    ->xsl( "forms/program_application.xsl" )
     ->show();
 
 

@@ -4,9 +4,9 @@
     <xsl:template match="root">
 
         <style>
-            form .row {
+            /*form .row {
                 margin-bottom: 20px;
-            }
+            }*/
         </style>
 
         <div class="applications">

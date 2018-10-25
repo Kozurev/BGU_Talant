@@ -28,6 +28,7 @@ if( $action === "program_edit" )
         ->select( ["id", "fullname", "shortname"] )
         ->from( "mdl_course" )
         ->where( "visible", "=", 1 )
+        ->where( "category", "=", 2 )
         ->where( "id", "<>", 1 )
         ->orderBy( "sortorder" )
         ->findAll();

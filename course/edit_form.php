@@ -141,6 +141,17 @@ class course_edit_form extends moodleform {
         $mform->addElement('header', 'descriptionhdr', get_string('description'));
         $mform->setExpanded('descriptionhdr');
 
+
+        /**
+         * Добавлено новое поле типа "Файл" для логотипа категории
+         *
+         * @author Bad Wolf
+         * @date 22.08.2018
+         */
+        $mform->addElement( "filemanager", "logo", "Логотип" );
+        $mform->setType('MAX_FILE_SIZE', PARAM_INT, 5242880);
+
+
         $mform->addElement('editor','summary_editor', get_string('coursesummary'), null, $editoroptions);
         $mform->addHelpButton('summary_editor', 'coursesummary');
         $mform->setType('summary_editor', PARAM_RAW);

@@ -106,10 +106,10 @@ if ($mform->is_cancelled()) {
         if ((int)$data->parent !== (int)$coursecat->parent && !$coursecat->can_change_parent($data->parent)) {
             print_error('cannotmovecategory');
         }
-        $success = $mform->save_file( "logo", $CFG->courseCategoryLogo["filepath"], true );
+        $success = $mform->save_file( "logo", "/1/coursecategory/", true );
         $coursecat->update($data, $mform->get_description_editor_options());
     } else {
-        $success = $mform->save_file( "logo", $CFG->courseCategoryLogo["filepath"], true );
+        $success = $mform->save_file( "logo", "/1/coursecategory/", true );
         $category = coursecat::create($data, $mform->get_description_editor_options());
     }
     $manageurl->param('categoryid', $category->id);

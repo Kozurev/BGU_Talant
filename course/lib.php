@@ -2673,6 +2673,14 @@ function update_course($data, $editoroptions = NULL) {
         $DB->delete_records('course_format_options',
                 array('courseid' => $course->id, 'format' => $oldcourse->format));
     }
+
+    /**
+     * Привязка логотипа к курсу по полям course.logo -> files.itemid
+     *
+     * @date 23.10.2018
+     * @author Bad Wolf
+     */
+    $DB->set_field( "course", "logo", $data->logo, ["id" => $data->id] );
 }
 
 /**

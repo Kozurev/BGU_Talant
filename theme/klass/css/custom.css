@@ -348,8 +348,6 @@
  * Начало>>
  */
 
-
-
 .help .block .help-img {
     text-align: center;
     width: 60%;
@@ -374,4 +372,30 @@
 /**
  * <<Конец
  * Инструкция
+ */
+
+
+/**
+ * Формы
+ * Начало>>
+ */
+form input[type=checkbox] {
+    
+}
+
+form .required:after {
+    content: ' *';
+    color: red;
+}
+
+form hr {
+    margin-bottom: 30px;
+}
+
+form .row div {
+    margin-bottom: 20px;
+}
+/**
+ * <<Конец
+ * Формы
  */

@@ -198,7 +198,7 @@ $Block->img = $CFG->wwwroot . "/theme/klass/pix/boxes/courses.jpg";
 $Blocks[] = $Block;
 
 $Block = new stdClass();
-$Block->link = $CFG->wwwroot . "#";
+$Block->link = $CFG->wwwroot . "/blocks/olympiads/";
 $Block->label = "Олимпиады";
 $Block->img = $CFG->wwwroot . "/theme/klass/pix/boxes/olimpiadu.jpg";
 $Blocks[] = $Block;

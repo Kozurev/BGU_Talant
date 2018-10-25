@@ -73,11 +73,14 @@ function theme_klass_get_main_scss_content($theme) {
  * Load the our theme js file
  *
  * @param  moodle_page $page [description]
+ * @throws coding_exception
  */
 function theme_klass_page_init(moodle_page $page) {
     $page->requires->jquery();
-    $page->requires->js('/theme/klass/javascript/theme.js');
-    $page->requires->js('/theme/klass/javascript/custom.js');
+    //$page->requires->js( '/theme/klass/javascript/jquery.validate.min.js' );
+    //$page->requires->js( new moodle_url( 'https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js' ) );
+    $page->requires->js( '/theme/klass/javascript/theme.js' );
+    $page->requires->js( '/theme/klass/javascript/custom.js' );
     $page->requires->css( "/theme/klass/css/custom.css" );
 }
 
