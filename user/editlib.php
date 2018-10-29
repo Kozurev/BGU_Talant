@@ -334,21 +334,20 @@ function useredit_shared_definition(&$mform, $editoroptions, $filemanageroptions
      */
 
     //Отчество
-    $mform->addElement( "text", "patronimyc", "Отчество" );
-    $mform->setType( "patronimyc", PARAM_TEXT );
+    $mform->addElement( "text", "patronymic", "Отчество" );
+    $mform->setType( "patronymic", PARAM_TEXT );
 
     //Дата рождения
     $mform->addElement( "date_selector", "birthday", "День рождения (обязательно)" );
     $mform->setType( "birthday", PARAM_RAW );
     //$mform->addRule('birthday', "Это поле обязательно к заполнению", 'required', null, 'client');
 
-
     //Пол
     $radioarray = array();
-    if( !isset( $user->sex ) )  $user->sex = 0;
-    $radioarray[] = $mform->createElement('radio', '1', '', "Мужской", intval($user->sex != 1));
-    $radioarray[] = $mform->createElement('radio', '2', '', "Женский", intval($user->sex != 2));
-    $mform->addGroup($radioarray, 'sex', 'Пол', array(' '));
+    //if( !isset( $user->sex ) )  $user->sex = 0;
+    $radioarray[] = $mform->createElement('radio', 'sex', '', "Мужской", 1);
+    $radioarray[] = $mform->createElement('radio', 'sex', '', "Женский", 2);
+    $mform->addGroup($radioarray, 'sex', 'Пол', array(' '), false);
     $mform->addRule("sex", "Укажите свой пол", "required");
 
     //Телефон

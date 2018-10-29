@@ -13,7 +13,7 @@
             }
         </style>
 
-        <input type="hidden" id="wwwroot" value="{wwwroot}" />
+        <!--<input type="hidden" id="wwwroot" value="{wwwroot}" />-->
 
         <div class="programs">
             <xsl:choose>

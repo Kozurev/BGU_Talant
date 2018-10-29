@@ -124,6 +124,60 @@ $(function(){
         });
 
 
+        /**
+         * Подгрузка регионов и городов по клику
+         */
+        $("#olympiad_form")
+            //Подгрузка регионов для страны
+            .on("change", "#country_id", function(e){
+                var country_id = $(this).val();
+                if( country_id == "0" )
+                {
+                    $("#region_id").empty();
+                    $("#region_id").append('<option value="0">Выберите из списка</option>');
+
+                    $("#city_id").empty();
+                    $("#city_id").append('<option value="0">Выберите из списка</option>');
+
+                    return false;
+                }
+
+                getRegions(country_id, function(regions){
+                    $("#city_id").empty();
+                    $("#city_id").append('<option value="0">Выберите из списка</option>');
+
+                    var select = $("#region_id");
+                    select.empty();
+                    select.append('<option value="0">Выберите из списка</option>');
+
+                    $.each(regions, function(index, value){
+                        var option = "<option value='"+value.id+"'>"+value.name+"</option>";
+                        select.append( option );
+                    });
+                });
+            })
+            //Подгрузка городов для региона
+            .on("change", "#region_id", function(e){
+                var region_id = $(this).val();
+                if( region_id == "0" )
+                {
+                    $("#city_id").empty();
+                    $("#city_id").append('<option value="0">Выберите из списка</option>');
+                    return false;
+                }
+
+                getCities(region_id, function(cities){
+                    var select = $("#city_id");
+                    select.empty();
+                    select.append('<option value="0">Выберите из списка</option>');
+
+                    $.each(cities, function(index, value){
+                        var option = "<option value='"+value.id+"'>"+value.name+"</option>";
+                        select.append( option );
+                    });
+                });
+            });
+
 
 });
 
@@ -178,6 +232,73 @@ function deleteItem(model_id, name, func, params) {
         success: function(responce){
             if(responce != "")  alert("Ошибка: " + responce);
             if(func != undefined)   func(params);
+        }
+    });
+}
+
+
+
+
+/**
+ * Получение списка стран
+ *
+ * @param func - исполняемая функция после выполнения запроса, принимающая в качестве аргумента полученные данные
+ */
+function getCountries( func ) {
+    var root = $("#wwwroot").val();
+
+    $.ajax({
+        url: root + "/blocks/olympiads/app_form.php",
+        type: "GET",
+        data: { action: "get_countries_list" },
+        dataType: "json",
+        async: false,
+        success: function(response){
+            func(response);
+        }
+    });
+}
+
+
+/**
+ * Получение списка регионов
+ *
+ * @param country_id - id тсраны, для которой подгружаются регионы; при значении равным нулю подгружаются абсолютно все записи
+ * @param func - исполняемая функция после выполнения запроса, принимающая в качестве аргумента полученные данные
+ */
+function getRegions( country_id, func ) {
+    var root = $("#wwwroot").val();
+
+    $.ajax({
+        url: root + "/blocks/olympiads/app_form.php",
+        type: "GET",
+        data: { action: "get_regions_list", country_id: country_id },
+        dataType: "json",
+        async: false,
+        success: function(response){
+            func(response);
+        }
+    });
+}
+
+
+/**
+ * Получение списка городов
+ *
+ * @param region_id - id региона, для которого выбираются города; при значении 0 будут выбраны все 17 287 городов
+ * @param func - исполняемая функция после выполнения запроса, принимающая в качестве аргумента полученные данные
+ */
+function getCities( region_id, func ) {
+    var root = $("#wwwroot").val();
+
+    $.ajax({
+        url: root + "/blocks/olympiads/app_form.php",
+        type: "GET",
+        data: { action: "get_cities_list", region_id: region_id },
+        dataType: "json",
+        async: false,
+        success: function(response){
+            func(response);
         }
     });
 }

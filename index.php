@@ -193,7 +193,7 @@ $Blocks = [];   //Массив блоков, передаваемый в шаб�
 
 $Block = new stdClass();
 $Block->link = $CFG->wwwroot . "/blocks/programs/";
-$Block->label = "Курсы";
+$Block->label = "Программы";
 $Block->img = $CFG->wwwroot . "/theme/klass/pix/boxes/courses.jpg";
 $Blocks[] = $Block;
 

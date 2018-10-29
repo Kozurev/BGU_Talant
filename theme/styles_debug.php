@@ -29,7 +29,7 @@ define('NO_UPGRADE_CHECK', true);
 define('NO_MOODLE_COOKIES', true);
 
 require('../config.php');
-require_once($CFG->dirroot.'/lib/csslib.php');
+require_once($CFG->dirroot . '/lib/csslib.php');
 
 $themename = optional_param('theme', 'standard', PARAM_SAFEDIR);
 $type      = optional_param('type', '', PARAM_SAFEDIR);

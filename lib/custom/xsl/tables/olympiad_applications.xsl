@@ -25,7 +25,7 @@
             </td>
 
             <td>
-                <a class="action edit" href="{wwwroot}/blocks/olympiads/app_form.php?olid={olympiad_id}" title="Редактировать данные заявки"></a>
+                <a class="action edit" href="{//wwwroot}/blocks/olympiads/app_form.php?olid={olympiad_id}" title="Редактировать данные заявки"></a>
             </td>
         </tr>
     </xsl:template>

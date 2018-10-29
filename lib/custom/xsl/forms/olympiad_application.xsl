@@ -1,25 +1,9 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <xsl:template match="root">
 
-        <script>
-            /*$(function(){
+        <!--<script type="text/javascript" src="{wwwroot}/theme/klass/javascript/jquery.validate.min.js"></script>-->
 
-                var errorMessage = "Это поле обязательно к заполнению";
-
-                $("form[name=olympiad_form]").validate({
-                    rules: {
-                        surname:    { required: true },
-                        name:       { required: true },
-                    },
-                    messages: {
-                        surname:    { required: errorMessage },
-                        name:       { required: errorMessage }
-                    }
-                });
-            });*/
-        </script>
-
-        <form method="POST" action="app_form.php" name="olympiad_form">
+        <form method="POST" action="app_form.php" name="olympiad_form" id="olympiad_form">
             <div class="row center">
                 <div class="col-lg-12">
                     <h3>Карточка участника</h3>
@@ -31,35 +15,21 @@
                     <label for="surname" class="required">Фамилия</label>
                 </div>
                 <div class="col-md-2 col-sm-6 col-xs-6 left">
-                    <input type="text" class="form-control" name="surname" id="surname" value="{app/surname}" />
+                    <input type="text" class="form-control" name="surname" id="surname" required="required" value="{app/surname}" />
                 </div>
 
                 <div class="col-md-2 col-sm-6 col-xs-6 right">
                     <label for="name" class="required">Имя</label>
                 </div>
                 <div class="col-md-2 col-sm-6 col-xs-6 left">
-                    <input type="text" class="form-control" name="name" id="name" value="{app/name}" />
+                    <input type="text" class="form-control" name="name" id="name" required="required" value="{app/name}" />
                 </div>
 
                 <div class="col-md-2 col-sm-6 col-xs-6 right">
                     <label for="patronymic">Отчество</label>
                 </div>
                 <div class="col-md-2 col-sm-6 col-xs-6 left">
-                    <input type="text" class="form-control" name="patronymic" id="patronymic" value="{app/patronymic}" />
-                </div>
-
-                <div class="col-md-2 col-sm-6 col-xs-6 right">
-                    <label for="country">Страна</label>
-                </div>
-                <div class="col-md-2 col-sm-6 col-xs-6 left">
-                    <input type="text" class="form-control" name="country" id="country" value="{app/country}" />
-                </div>
-
-                <div class="col-md-2 col-sm-6 col-xs-6 right">
-                    <label for="city">Город</label>
-                </div>
-                <div class="col-md-2 col-sm-6 col-xs-6 left">
-                    <input type="text" class="form-control" name="city" id="city" value="{app/city}" />
+                    <input type="text" class="form-control" name="patronymic" id="patronymic" required="required" value="{app/patronymic}" />
                 </div>
 
                 <div class="col-md-2 col-sm-6 col-xs-6 right">
@@ -83,17 +53,28 @@
                 </div>
 
                 <div class="col-md-2 col-sm-6 col-xs-6 right">
-                    <label for="nationality" class="required">Гражданство</label>
+                    <label for="nationality_id" class="required">Гражданство</label>
                 </div>
                 <div class="col-md-2 col-sm-6 col-xs-6 left">
-                    <input type="text" class="form-control" name="nationality" id="nationality" value="{app/nationality}" />
+                    <!--<input type="text" class="form-control" name="nationality_id" id="nationality_id" value="{app/nationality_id}" />-->
+                    <select class="form-control" name="nationality_id" id="nationality_id" required="required">
+                        <xsl:for-each select="country">
+                            <option value="{id}">
+                                <xsl:variable name="id" select="id" />
+                                <xsl:if test="//app/nationality_id = $id">
+                                    <xsl:attribute name="selected">selected</xsl:attribute>
+                                </xsl:if>
+                                <xsl:value-of select="name" />
+                            </option>
+                        </xsl:for-each>
+                    </select>
                 </div>
 
                 <div class="col-md-2 col-sm-6 col-xs-6 right">
                     <label for="educational_institution" class="required">Название образовательного учреждения</label>
                 </div>
                 <div class="col-md-2 col-sm-6 col-xs-6 left">
-                    <input type="text" class="form-control" name="educational_institution" id="educational_institution" value="{app/educational_institution}" />
+                    <input type="text" class="form-control" name="educational_institution" id="educational_institution" required="required" value="{app/educational_institution}" />
                 </div>
 
                 <div class="col-md-2 col-sm-6 col-xs-6 right">
@@ -121,17 +102,50 @@
                 </div>
 
                 <div class="col-md-2 col-sm-6 col-xs-6 right">
-                    <label for="address" class="required">Адрес проживания (с индексом)</label>
+                    <label for="country_id">Страна</label>
                 </div>
                 <div class="col-md-2 col-sm-6 col-xs-6 left">
-                    <input type="text" class="form-control" name="address" id="address" value="{app/address}" />
+                    <select class="form-control" name="country_id" id="country_id">
+                        <option value="0">Выберите из списка</option>
+                        <xsl:apply-templates select="country" />
+                    </select>
+                    <!--<input type="text" class="form-control" name="country" id="country" required="required" value="{app/country}" />-->
+                </div>
+
+                <div class="col-md-2 col-sm-6 col-xs-6 right">
+                    <label for="region_id">Регион</label>
+                </div>
+                <div class="col-md-2 col-sm-6 col-xs-6 left">
+                    <select class="form-control" name="region_id" id="region_id">
+                        <option value="0">Выберите из списка</option>
+                        <xsl:apply-templates select="region" />
+                    </select>
+                    <!--<input type="text" class="form-control" name="country" id="country" required="required" value="{app/country}" />-->
+                </div>
+
+                <div class="col-md-2 col-sm-6 col-xs-6 right">
+                    <label for="city_id">Город</label>
+                </div>
+                <div class="col-md-2 col-sm-6 col-xs-6 left">
+                    <select class="form-control" name="city_id" id="city_id">
+                        <option value="0">Выберите из списка</option>
+                        <xsl:apply-templates select="city" />
+                    </select>
+                    <!--<input type="text" class="form-control" name="country" id="country" required="required" value="{app/country}" />-->
+                </div>
+
+                <div class="col-md-2 col-sm-6 col-xs-6 right">
+                    <label for="address" class="required">Адрес проживания (улица, дом)</label>
+                </div>
+                <div class="col-md-2 col-sm-6 col-xs-6 left">
+                    <input type="text" class="form-control" name="address" id="address" required="required" value="{app/address}" />
                 </div>
 
                 <div class="col-md-2 col-sm-6 col-xs-6 right">
                     <label for="phone" class="required">Номер телефона (с кодом города)</label>
                 </div>
                 <div class="col-md-2 col-sm-6 col-xs-6 left">
-                    <input type="text" class="form-control" name="phone" id="phone" value="{app/phone}" />
+                    <input type="text" class="form-control" name="phone" id="phone" required="required" value="{app/phone}" />
                 </div>
 
                 <div class="col-md-2 col-sm-6 col-xs-6 right">
@@ -145,15 +159,15 @@
                     <label for="email" class="required">Email</label>
                 </div>
                 <div class="col-md-2 col-sm-6 col-xs-6 left">
-                    <input type="email" class="form-control" name="email" id="email" value="{app/email}" />
+                    <input type="email" class="form-control" name="email" id="email" required="required" value="{app/email}" />
                 </div>
 
                 <div class="col-md-4 col-sm-6 col-xs-6 left">
-                    <input type="checkbox" name="agreement" id="agreement" />
+                    <input type="checkbox" name="agreement" id="agreement" required="required" />
                     <label for="agreement" class="required">Даю свое согласие на обработку данных</label>
                 </div>
                 <div class="col-md-4 col-sm-6 col-xs-6 left">
-                    <input type="checkbox" name="correct" id="correct" />
+                    <input type="checkbox" name="correct" id="correct" required="required"/>
                     <label for="correct" class="required">Подтверждаю достоверность предоставленных данных</label>
                 </div>
 
@@ -171,4 +185,37 @@
         </form>
 
     </xsl:template>
+
+
+    <xsl:template match="country">
+        <option value="{id}">
+            <xsl:if test="id = //app/country_id">
+                <xsl:attribute name="selected">selected</xsl:attribute>
+            </xsl:if>
+            <xsl:value-of select="name" />
+        </option>
+    </xsl:template>
+
+
+    <xsl:template match="region">
+        <option value="{id}">
+            <xsl:if test="id = //app/region_id">
+                <xsl:attribute name="selected">selected</xsl:attribute>
+            </xsl:if>
+            <xsl:value-of select="name" />
+        </option>
+    </xsl:template>
+
+
+    <xsl:template match="city">
+        <option value="{id}">
+            <xsl:if test="id = //app/city_id">
+                <xsl:attribute name="selected">selected</xsl:attribute>
+            </xsl:if>
+            <xsl:value-of select="name" />
+        </option>
+    </xsl:template>
+
+
+
 </xsl:stylesheet>

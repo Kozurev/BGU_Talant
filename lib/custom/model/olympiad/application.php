@@ -14,7 +14,7 @@ class Olympiad_Application extends Core_Entity
      *
      * @var array
      */
-    protected $tableRows = ["id", "surname", "name", "patronymic", "country", "city", "sex", "nationality", "educational_institution",
+    protected $tableRows = ["id", "surname", "name", "patronymic", "country_id", "region_id", "city_id", "sex", "nationality_id", "educational_institution",
                             "class", "address", "phone", "additional_phone", "email", "user_id", "olympiad_id"];
 
 
@@ -58,19 +58,27 @@ class Olympiad_Application extends Core_Entity
 
 
     /**
-     * Страна
+     * id страны
      *
      * @var string
      */
-    protected $country = "";
+    protected $country_id = 0;
 
 
     /**
-     * Город
+     * id региона
+     *
+     * @var int
+     */
+    protected $region_id = 0;
+
+
+    /**
+     * id города
      *
      * @var string
      */
-    protected $city = "";
+    protected $city_id = 0;
 
 
     /**
@@ -88,7 +96,7 @@ class Olympiad_Application extends Core_Entity
      *
      * @var string
      */
-    protected $nationality = "";
+    protected $nationality_id = "";
 
 
     /**
@@ -191,24 +199,35 @@ class Olympiad_Application extends Core_Entity
 
 
     /**
-     * Геттер для свойства country (страна)
+     * Геттер для свойства country_id (id страны)
      *
-     * @return string
+     * @return int
      */
-    public function getCountry()
+    public function getCountryId()
     {
-        return $this->country;
+        return intval( $this->country_id );
     }
 
 
     /**
-     * Геттер для свойства city (город)
+     * Геттер для свойства region_id (id региона)
+     *
+     * @return int
+     */
+    public function getRegionId()
+    {
+        return intval( $this->region_id );
+    }
+
+
+    /**
+     * Геттер для свойства city_id (id города)
      *
      * @return string
      */
-    public function getCity()
+    public function getCityId()
     {
-        return $this->city;
+        return intval( $this->city_id );
     }
 
 
@@ -224,13 +243,13 @@ class Olympiad_Application extends Core_Entity
 
 
     /**
-     * Геттер для свойства nationality (национальность)
+     * Геттер для свойства nationality_id (национальность)
      *
      * @return string
      */
-    public function getNationality()
+    public function getNationalityId()
     {
-        return $this->nationality;
+        return $this->nationality_id;
     }
 
 
@@ -362,27 +381,40 @@ class Olympiad_Application extends Core_Entity
 
 
     /**
-     * Сеттер для свойства country
+     * Сеттер для свойства country_id
      *
-     * @param $country - страна
+     * @param $country_id - id страны
      * @return $this
      */
-    public function setCountry( $country )
+    public function setCountryId( $country_id )
     {
-        $this->country = strval( $country );
+        $this->country_id = intval( $country_id );
         return $this;
     }
 
 
     /**
-     * Сеттер для свойства city
+     * Сеттер для свойства region_id
      *
-     * @param $city - город
+     * @param $region_id - id региона
      * @return $this
      */
-    public function setCity( $city )
+    public function setRegionId( $region_id )
     {
-        $this->city = strval( $city );
+        $this->region_id = intval( $region_id );
+        return $this;
+    }
+
+
+    /**
+     * Сеттер для свойства city_id
+     *
+     * @param $city_id - id города
+     * @return $this
+     */
+    public function setCityId( $city_id )
+    {
+        $this->city_id = intval( $city_id );
         return $this;
     }
 
@@ -401,14 +433,14 @@ class Olympiad_Application extends Core_Entity
 
 
     /**
-     * Сеттер для свйоства nationality
+     * Сеттер для свйоства nationality_id
      *
-     * @param $nationality - национальность
+     * @param $nationality_id - национальность
      * @return $this
      */
-    public function setNationality( $nationality )
+    public function setNationalityId( $nationality_id )
     {
-        $this->nationality = strval( $nationality );
+        $this->nationality_id = strval( $nationality_id );
         return $this;
     }
 

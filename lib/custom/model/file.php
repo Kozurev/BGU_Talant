@@ -460,7 +460,12 @@ class File extends Core_Entity
     }
 
 
-
+    /**
+     * Загрузка файла-шаблона
+     *
+     * @param $templateType
+     * @param array $params
+     */
     public static function downloadTemplate( $templateType, $params = [] )
     {
         global $CFG;
@@ -483,56 +488,6 @@ class File extends Core_Entity
         header("Content-Type: application/msword; charset=cp-1251" );
         header("Content-Disposition: attachment; filename='". $filename ."';" );
         require_once $CFG->dirroot . "/blocks/docs/templates/" . $templateType;
-
-
-//        switch ( $templateType )
-//        {
-//
-//            //Квитанция об оплате
-//            case self::TEMPLATE_TICKET:
-//                {
-//                    header( "Location: /blocks/docs/files.php?fileid=" . self::TEMPLATE_TICKET );
-//                    break;
-//                }
-//
-//            //Заявление для записи на программу при совпадении данных заказчика и потребителя
-//            case self::TEMPLATE_APPLICATION_EQUAL:
-//                {
-//                    header("Content-Type: application/msword; charset=cp-1251" );
-//                    header("Content-Disposition: attachment; filename='заявление.doc';" );
-//                    require_once $CFG->dirroot . "/blocks/docs/templates/" . self::TEMPLATE_APPLICATION_EQUAL;
-//                    break;
-//                }
-//
-//            //Заявление для записи на программу при не совпадении данных заказчика и потребителя
-//            case self::TEMPLATE_APPLICATION_NOT_EQUAL:
-//                {
-//                    header("Content-Type: application/msword" );
-//                    header("Content-Disposition: attachment; filename='заявление.doc';" );
-//                    require_once $CFG->dirroot . "/blocks/docs/templates/" . self::TEMPLATE_APPLICATION_NOT_EQUAL;
-//                    break;
-//                }
-//
-//            //Договор
-//            case self::TEMPLATE_CONTRACT:
-//                {
-//                    header("Content-Type: application/msword" );
-//                    header("Content-Disposition: attachment; filename='договор.doc';" );
-//                    require_once $CFG->dirroot . "/blocks/docs/templates/" . self::TEMPLATE_CONTRACT;
-//                    break;
-//                }
-//
-//            //Соглашение на обработку персональных данных
-//            case self::TEMPLATE_AGREEMENT:
-//                {
-//                    header("Content-Type: application/msword" );
-//                    header("Content-Disposition: attachment; filename='согласие.doc';" );
-//                    require_once $CFG->dirroot . "/blocks/docs/templates/" . self::TEMPLATE_AGREEMENT;
-//                    break;
-//                }
-//
-//        }
-
     }
 
 

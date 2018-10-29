@@ -10,7 +10,7 @@
             <input type="file" name="file" id="file" required="required" />
 
             <input type="submit" class="btn btn-blue" value="Загрузить" />
-            <a href="/blocks/docs/get_template.php?template_type=agreement" class="btn btn-orange">Скачать шаблон</a>
+            <a href="{wwwroot}/blocks/docs/get_template.php?template_type=agreement" class="btn btn-orange">Скачать шаблон</a>
         </form>
     </xsl:template>
 

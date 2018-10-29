@@ -21,10 +21,10 @@ class Core_Entity extends Core_Entity_Model
      */
     public function getTableName()
     {
-        if(method_exists($this, "databaseTableName"))
+        if( method_exists( $this, "databaseTableName" ) )
             return $this->databaseTableName();
         else
-            return "mdl_" . mb_strtolower( get_class($this) );
+            return "mdl_" . mb_strtolower( get_class( $this ) );
     }
 
 
@@ -36,7 +36,7 @@ class Core_Entity extends Core_Entity_Model
     public function getObjectProperties()
     {
         $result = array();
-        if( !isset($this->tableRows) || !is_array($this->tableRows) )  return $result;
+        if( !isset( $this->tableRows ) || !is_array( $this->tableRows ) )  return $result;
 
         foreach ( $this->tableRows as $row )
         {
@@ -60,7 +60,12 @@ class Core_Entity extends Core_Entity_Model
     }
 
 
-    public function setId($val)
+    public function unsetId()
+    {
+        $this->id = null;
+    }
+
+    public function setId( $val )
     {
         $this->id = intval( $val );
     }
@@ -126,17 +131,17 @@ class Core_Entity extends Core_Entity_Model
      * @param null $tag - название XML-тэга добавляемого объекта
      * @return $this
      */
-	public function addEntity($obj, $tag = null)
+	public function addEntity( $obj, $tag = null )
 	{
-		if(!is_null($tag)) 	
+		if( !is_null( $tag ) )
 		{
-		    if(method_exists($obj, "custom_tag"))
-			    $obj->custom_tag($tag);
-            elseif(get_class($obj) == "stdClass")
+		    if( method_exists( $obj, "custom_tag" ) )
+			    $obj->custom_tag( $tag );
+            elseif( get_class( $obj ) == "stdClass" )
                 $obj->custom_tag = $tag;
 		}
 
-		if($this->aEntityVars["value"] == "")	 
+		if( $this->aEntityVars["value"] == "" )
 			$this->childrenObjects[] = $obj;
 		else
 			echo "Невозможно добавыить элемент к простой XML-сущьности";
@@ -152,12 +157,12 @@ class Core_Entity extends Core_Entity_Model
      * @param null $tags - кастомное название тэгов данных объектов
      * @return $this
      */
-	public function addEntities($aoChilren, $tags = null)
+	public function addEntities( $aoChilren, $tags = null )
 	{
-		if(is_array($aoChilren) && count($aoChilren) > 0)
-		foreach ($aoChilren as $oChild) 
+		if( is_array( $aoChilren ) && count( $aoChilren ) > 0 )
+		foreach ( $aoChilren as $oChild )
 		{
-			if(is_object($oChild)) 	$this->addEntity($oChild, $tags);
+			if( is_object( $oChild ) ) 	$this->addEntity( $oChild, $tags );
 		}
 
 		return $this;
@@ -171,12 +176,12 @@ class Core_Entity extends Core_Entity_Model
      * @param $value
      * @return $this
      */
-	public function addSimpleEntity($name, $value)
+	public function addSimpleEntity( $name, $value )
     {
         $NewEntity = Core::factory( "Core_Entity" );
         $NewEntity->entityName( $name );
         $NewEntity->entityValue( $value );
-        $this->addEntity($NewEntity);
+        $this->addEntity( $NewEntity );
         return $this;
     }
 
@@ -189,58 +194,61 @@ class Core_Entity extends Core_Entity_Model
      * @param $xmlObj - объект конечной XML-сущьности
      * @return mixed
      */
-	public function createEntity($obj, $xmlObj)
+	public function createEntity( $obj, $xmlObj )
 	{
 		$xml = $xmlObj;
 
 		//Формирование названия тэга
 		$tagName = "";
-		$objClass = explode("_", get_class($obj));
+		$objClass = explode( "_", get_class( $obj ) );
 
-		if(get_class($obj) == "Core_Entity")
+		if( get_class( $obj ) == "Core_Entity" )
 		{
-			if($obj->aEntityVars["value"] != "") 
+			if( $obj->aEntityVars["value"] != "" )
 				//Формирование простого тэга
-				return $xml->createElement($obj->aEntityVars["name"], $obj->aEntityVars["value"]);
+				return $xml->createElement( $obj->aEntityVars["name"], $obj->aEntityVars["value"] );
 			else 
 				$tagName = $obj->aEntityVars["name"];
 		}
 		else
 		{
-			if(isset($obj->aEntityVars["custom_tag"]) && $obj->aEntityVars["custom_tag"] != "")
+			if( isset($obj->aEntityVars["custom_tag"] ) && $obj->aEntityVars["custom_tag"] != "" )
 			{
 				$tagName = $obj->aEntityVars["custom_tag"];
 			}
-			elseif(isset($obj->custom_tag) && $obj->custom_tag != "")
+			elseif( isset( $obj->custom_tag ) && $obj->custom_tag != "" )
             {
                 $tagName = $obj->custom_tag;
             }
-			else 	$tagName = $this->renameModelName(get_class($obj));
+			else
+            {
+                $tagName = $this->renameModelName(get_class($obj));
+            }
 		}
 
 
 		//Создание тэга
-		$objTag = $xml->createElement($tagName);
+		$objTag = $xml->createElement( $tagName );
 		//Получение значений свойств от объекта
-		$objData = get_object_vars($obj);
+		$objData = get_object_vars( $obj );
 
 		//Преобразование объекта в XML сущьность
-		foreach ($objData as $key => $val) 
+		foreach ( $objData as $key => $val )
 		{
-			if(is_array($val) && $key != "childrenObjects") continue;
+			if( is_array( $val ) && $key != "childrenObjects" ) continue;
 
 			//Если переменная представляет из себя массив дочерних сущьностей
-			if($key == "childrenObjects")
+			if( $key == "childrenObjects" )
 			{
-				foreach($val as $childObject)
+				foreach( $val as $childObject )
 				{
-					$objChildTag = $this->createEntity($childObject, $xml);
-					$objTag->appendChild($objChildTag);
+					$objChildTag = $this->createEntity( $childObject, $xml );
+					$objTag->appendChild( $objChildTag );
 				}
 			}
-			elseif($val !== "" && !is_null($val))
+			elseif( $val !== "" && !is_null( $val ) )
 			{
-				$objTag->appendChild($xml->createElement($key, strval($val)));
+				$objTag->appendChild( $xml->createElement( $key, strval( $val ) ) );
 			}
 		}
 		
@@ -257,7 +265,7 @@ class Core_Entity extends Core_Entity_Model
      */
 	public function show( $showing = true )
 	{
-		if($this->aEntityVars["xslPath"] == "") die("Не указан путь к XSL шаблону");
+		if( $this->aEntityVars["xslPath"] == "" ) die( "Не указан путь к XSL шаблону" );
 
 		$xmlText = '<?xml version="1.0" encoding="utf-8"?>
 		<?xml-stylesheet type="text/xsl" href="'.$this->aEntityVars["xslPath"].'"?>';
@@ -267,27 +275,27 @@ class Core_Entity extends Core_Entity_Model
 		$xml = new DOMDocument();
 		$xml->loadXML($xmlText);
 
-		$rootTag = $xml->getElementsByTagName($this->aEntityVars["name"])->item(0);
+		$rootTag = $xml->getElementsByTagName( $this->aEntityVars["name"] )->item( 0 );
 
-		foreach ($this->childrenObjects as $obj) 
+		foreach ( $this->childrenObjects as $obj )
 		{
-			$rootTag->appendChild($this->createEntity($obj, $xml));
+			$rootTag->appendChild( $this->createEntity( $obj, $xml ) );
 		}
 
 		//$xml->save("xml.xml");
 
 		// Объект стиля
 		$xsl = new DOMDocument();
-		$xsl->load($this->aEntityVars["xslPath"]);  
+		$xsl->load( $this->aEntityVars["xslPath"] );
 
 		// Создание парсера
 		$proc = new XSLTProcessor();
 
 		// Подключение стиля к парсеру
-		$proc->importStylesheet($xsl);
+		$proc->importStylesheet( $xsl );
 
 		// Обработка парсером исходного XML-документа
-		$parsed = $proc->transformToXml($xml);
+		$parsed = $proc->transformToXml( $xml );
 
 		if( $showing === true ) echo $parsed;
 

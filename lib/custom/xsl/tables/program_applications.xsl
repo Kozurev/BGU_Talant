@@ -33,7 +33,7 @@
     <xsl:template match="app">
         <tr>
             <td>
-                <a href="/blocks/programs?prid={program_id}"><xsl:value-of select="title" /></a>
+                <a href="{wwwroot}/blocks/programs?prid={program_id}"><xsl:value-of select="title" /></a>
             </td>
 
             <td>

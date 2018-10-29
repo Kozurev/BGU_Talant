@@ -127,5 +127,4 @@ if ($olympiadId === null) {
     <?php
 }
 
-
 echo $OUTPUT->footer();
