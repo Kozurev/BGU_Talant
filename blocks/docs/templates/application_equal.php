@@ -44,6 +44,8 @@ $today = new DateTime();
 $fullYears = $birth->diff( $today );
 $fullYears = $fullYears->format( '%y' );
 
+$birthday = date( "d.m.Y", $User->birthday );
+
 /**
  * Сроки проведения программы
  */
@@ -145,7 +147,7 @@ font-family:"Times New Roman",serif'>&nbsp;</span></p>
             style='font-size:12.0pt;font-family:"Times New Roman",serif'>Полухину О.Н.</span></p>
 
     <p class=MsoPlainText align=center style='margin-left:9.0cm;text-align:center'><span
-            style='font-size:12.0pt;font-family:"Times New Roman",serif'>От <?=$fullname2?></span></p>
+            style='font-size:12.0pt;font-family:"Times New Roman",serif'>От <?=$fullname1?></span></p>
 
     <p class=MsoPlainText align=center style='margin-left:304.8pt;text-align:center'><span
             style='font-size:12.0pt;font-family:"Times New Roman",serif'>&nbsp;</span></p>
@@ -161,7 +163,7 @@ font-family:"Times New Roman",serif'>&nbsp;</span></p>
 
     <p class=MsoPlainText style='margin-right:-5.95pt;text-align:justify;
 text-indent:35.4pt;line-height:115%'><span style='font-size:12.0pt;line-height:
-115%;font-family:"Times New Roman",serif'>Прошу зачислить меня, <?=$fullname2?> на обучение по дополнительной общеобразовательной программе «<?=$Program->getTitle()?>»
+115%;font-family:"Times New Roman",serif'>Прошу зачислить меня, <?=$fullname1?> на обучение по дополнительной общеобразовательной программе «<?=$Program->getTitle()?>»
             в ФГАОУ ВПО «Белгородский государственный национальный
 исследовательский университет» в срок с «<?=$periodStart["day"]?>» <?=$periodStart["month"]?> <?=$periodStart["year"]?> г.
             по «<?=$periodEnd["day"]?>» <?=$periodEnd["month"]?> <?=$periodEnd["year"]?> г.</span></p>

@@ -472,7 +472,7 @@ class File extends Core_Entity
 
         if( $templateType === self::TEMPLATE_TICKET )
         {
-            header( "Location: /blocks/docs/files.php?fileid=" . self::TEMPLATE_TICKET );
+            header( "Location: $CFG->wwwroot/blocks/docs/files.php?fileid=" . self::TEMPLATE_TICKET );
             return;
         }
 

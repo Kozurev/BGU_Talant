@@ -61,6 +61,7 @@ if( $action === "upload" )
         ->setProgramId( $programId )
         ->setPeriodId( $periodId )
         ->setFileTypeId( $fileTypeId )
+        ->setConfirmed( 0 )
         ->upload( "file" );
 
     header( "Location: ". $CFG->wwwroot ."/my" );
