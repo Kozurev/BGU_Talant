@@ -7,3 +7,9 @@
  */
 
 $string['courses'] = 'Курсы';
+$string['contact_us'] = "Контакты";
+$string['info'] = "Информация";
+$string['phone'] = "Телефон";
+$string['email'] = "E-mail";
+$string['get_social'] = "Социальные сети";
+$string['home'] = "Домашняя страница";
