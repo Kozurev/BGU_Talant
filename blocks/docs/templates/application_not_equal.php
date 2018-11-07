@@ -43,6 +43,8 @@ $fullYears[1] = $birth[1]->diff( $today );
 $fullYears[0] = $fullYears[0]->format( '%y' );
 $fullYears[1] = $fullYears[1]->format( '%y' );
 
+$addressFormat = "{country}, {region}, {city}, {address}";
+
 //$user[0]["year"] = intval( date( "Y", strtotime($birthday[0]) ) );
 //$user[0]["month"] = intval( date( "m", strtotime($birthday[0]) ) );
 //$user[0]["day"] = intval( date( "d", strtotime($birthday[0]) ) );
@@ -148,10 +150,10 @@ $periodEnd["month"] = $mounthes[ intval( $periodEnd[1] ) - 1 ];
 
 <div class=WordSection1>
 
-    <p class=MsoPlainText style='margin-left:304.8pt;text-align:justify'><span
-            style='font-size:11.0pt;font-family:"Times New Roman",serif'>К Положению о
-предоставлении образовательных услуг в сфере дополнительного образования
-(реализации дополнительных общеобразовательных программ)</span></p>
+<!--    <p class=MsoPlainText style='margin-left:304.8pt;text-align:justify'><span-->
+<!--            style='font-size:11.0pt;font-family:"Times New Roman",serif'>К Положению о-->
+<!--предоставлении образовательных услуг в сфере дополнительного образования-->
+<!--(реализации дополнительных общеобразовательных программ)</span></p>-->
 
     <p class=MsoPlainText style='margin-left:304.8pt'><span style='font-size:11.0pt;
 font-family:"Times New Roman",serif'>&nbsp;</span></p>
@@ -164,7 +166,7 @@ font-family:"Times New Roman",serif'>&nbsp;</span></p>
             style='font-size:11.0pt;font-family:"Times New Roman",serif'>Полухину О.Н.</span></p>
 
     <p class=MsoPlainText align=center style='margin-left:304.8pt;text-align:center'><span
-            style='font-size:11.0pt;font-family:"Times New Roman",serif'>От <?=$fullname[0][1]?></span></p>
+            style='font-size:11.0pt;font-family:"Times New Roman",serif'>от <?=$fullname[0][1]?></span></p>
 
     <p class=MsoPlainText align=center style='margin-left:304.8pt;text-align:center'><span
             style='font-size:11.0pt;font-family:"Times New Roman",serif'>&nbsp;</span></p>
@@ -197,14 +199,14 @@ font-family:"Times New Roman",serif'>&nbsp;</span></p>
             style='font-size:11.0pt;font-family:"Times New Roman",serif'>1.</span><span
             style='font-size:7.0pt;font-family:"Times New Roman",serif'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </span><span style='font-size:11.0pt;font-family:"Times New Roman",serif'>Дата
-рождения:<b> </b><?=$birthday[0]?>, полных лет <?=$fullYears[0]?></span></p>
+рождения:<b> </b><?=$birthday[0]?> г., полных лет <?=$fullYears[0]?></span></p>
 
     <p class=MsoPlainText style='margin-top:0cm;margin-right:-5.95pt;margin-bottom:
 0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:-18.0pt'><span
             style='font-size:11.0pt;font-family:"Times New Roman",serif'>2.</span><span
             style='font-size:7.0pt;font-family:"Times New Roman",serif'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </span><span style='font-size:11.0pt;font-family:"Times New Roman",serif'>Адрес
-проживания: <?=$Application->getAddress(1)?></span></p>
+проживания: <?=$Application->getFullAddress($addressFormat, 1)?></span></p>
 
     <p class=MsoPlainText style='margin-top:0cm;margin-right:-5.95pt;margin-bottom:
 0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:-18.0pt'><span
@@ -222,7 +224,7 @@ font-family:"Times New Roman",serif'>&nbsp;</span></p>
             style='font-size:11.0pt;font-family:"Times New Roman",serif'>-</span><span
             lang=EN-US style='font-size:11.0pt;font-family:"Times New Roman",serif'>mail</span><span
             style='font-size:11.0pt;font-family:"Times New Roman",serif'>): </span><span
-            lang=EN-US style='font-size:11.0pt;font-family:"Times New Roman",serif'>________________________________________________________</span></p>
+            lang=EN-US style='font-size:11.0pt;font-family:"Times New Roman",serif'><?=$User->email?></span></p>
 
     <p class=MsoPlainText style='margin-right:-5.95pt'><span style='font-size:11.0pt;
 font-family:"Times New Roman",serif'>&nbsp;</span></p>
@@ -264,7 +266,7 @@ font-family:"Times New Roman",serif'>&nbsp;</span></p>
             style='font-size:11.0pt;font-family:"Times New Roman",serif'>4.</span><span
             style='font-size:7.0pt;font-family:"Times New Roman",serif'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </span><span style='font-size:11.0pt;font-family:"Times New Roman",serif'>Адрес
-проживания: <?=$Application->getAddress(2)?></span></p>
+проживания: <?=$Application->getFullAddress($addressFormat, 2)?></span></p>
 
     <p class=MsoPlainText style='margin-top:0cm;margin-right:-5.95pt;margin-bottom:
 0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:-18.0pt'><span

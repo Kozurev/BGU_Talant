@@ -14,9 +14,6 @@ $User =         Core_Array::getValue( $params, "user", null );
 /**
  * ФИО пользователя в именительном и родительном падеже
  */
-//$fullname1 = $User->lastname . " " . $User->firstname;
-//if( $User->partonymic )    $fullname1 .= " " . $User->patronymic;
-
 $fullname1 = $Application->getSurname1( 1 ) . " " . $Application->getName1( 1 ) . " " . $Application->getPatronymic1( 1 );
 $fullname2 = $Application->getSurname( 1 ) . " " . $Application->getName( 1 ) . " " . $Application->getPatronymic( 1 );
 
@@ -28,16 +25,8 @@ $fullname2 = $Application->getSurname( 1 ) . " " . $Application->getName( 1 ) . 
 $current["year"] = intval( date( "Y" ) );
 $current["month"] = intval( date( "m" ) );
 $current["day"] = intval( date( "d" ) );
-//$user["year"] = intval( date( "Y", $User->birthday ) );
-//$user["month"] = intval( date( "m", $User->birthday ) );
-//$user["day"] = intval( date( "d", $User->birthday ) );
 
-//$fullYears = $current["year"] - $user["year"];
-
-//if( $current["month"] < $user["month"] )    $fullYears--;
-//elseif( $current["month"] == $user["month"] && $current["day"] < $user["day"] ) $fullYears--;
-
-//$fullYears = date( "Y", ($currentDate - $User->birthday) );
+$addressFormat = "{country}, {region}, {city}, {address}";
 
 $birth = new DateTime( date( "Y-m-d", $User->birthday ) );
 $today = new DateTime();
@@ -131,10 +120,10 @@ $periodEnd["month"] = $mounthes[ intval( $periodEnd[1] ) - 1 ];
 
 <div class=WordSection1>
 
-    <p class=MsoPlainText style='margin-left:262.25pt;text-align:justify'><span
-            style='font-size:12.0pt;font-family:"Times New Roman",serif'>К Положению о
-предоставлении образовательных услуг в сфере дополнительного образования
-(реализации дополнительных общеобразовательных программ)</span></p>
+<!--    <p class=MsoPlainText style='margin-left:262.25pt;text-align:justify'><span-->
+<!--            style='font-size:12.0pt;font-family:"Times New Roman",serif'>К Положению о-->
+<!--предоставлении образовательных услуг в сфере дополнительного образования-->
+<!--(реализации дополнительных общеобразовательных программ)</span></p>-->
 
     <p class=MsoPlainText style='margin-left:304.8pt'><span style='font-size:12.0pt;
 font-family:"Times New Roman",serif'>&nbsp;</span></p>
@@ -147,7 +136,7 @@ font-family:"Times New Roman",serif'>&nbsp;</span></p>
             style='font-size:12.0pt;font-family:"Times New Roman",serif'>Полухину О.Н.</span></p>
 
     <p class=MsoPlainText align=center style='margin-left:9.0cm;text-align:center'><span
-            style='font-size:12.0pt;font-family:"Times New Roman",serif'>От <?=$fullname1?></span></p>
+            style='font-size:12.0pt;font-family:"Times New Roman",serif'>от <?=$fullname1?></span></p>
 
     <p class=MsoPlainText align=center style='margin-left:304.8pt;text-align:center'><span
             style='font-size:12.0pt;font-family:"Times New Roman",serif'>&nbsp;</span></p>
@@ -183,7 +172,7 @@ line-height:115%'><b><span style='font-size:12.0pt;line-height:115%;font-family:
 -18.0pt;line-height:115%'><span lang=EN-US style='font-size:12.0pt;line-height:
 115%;font-family:"Times New Roman",serif'>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </span></span><span style='font-size:12.0pt;line-height:115%;font-family:"Times New Roman",serif'>Дата
-рождения <?=$birthday?>, <?=$fullYears?> полных лет.</span></p>
+рождения <?=$birthday?> г., полных лет <?=$fullYears?></span></p>
 
     <p class=MsoPlainText style='margin-top:0cm;margin-right:-5.95pt;margin-bottom:
 0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-align:justify;text-indent:
@@ -209,7 +198,7 @@ ________________________________________________________________</span></p>
 -18.0pt;line-height:115%'><span style='font-size:12.0pt;line-height:115%;
 font-family:"Times New Roman",serif'>4.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </span></span><span style='font-size:12.0pt;line-height:115%;font-family:"Times New Roman",serif'>Адрес проживания</span><span lang=EN-US style='font-size:12.0pt;line-height:115%;
-font-family:"Times New Roman",serif'>: <?=$Application->getAddress(1)?>.</span></p>
+font-family:"Times New Roman",serif'>: <?=$Application->getFullAddress($addressFormat, 1)?>.</span></p>
 
     <p class=MsoPlainText style='margin-top:0cm;margin-right:-5.95pt;margin-bottom:
 0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-align:justify;text-indent:
@@ -228,7 +217,7 @@ font-family:"Times New Roman",serif'>: <?=$Application->getPhone(1)?></span></p>
                 style='font-size:11.0pt;font-family:"Times New Roman",serif'>-</span><span
                 lang=EN-US style='font-size:11.0pt;font-family:"Times New Roman",serif'>mail</span><span
                 style='font-size:11.0pt;font-family:"Times New Roman",serif'>): </span><span
-                lang=EN-US style='font-size:11.0pt;font-family:"Times New Roman",serif'>________________________________________________________</span></p>
+                lang=EN-US style='font-size:11.0pt;font-family:"Times New Roman",serif'><?=$User->email?></span></p>
 
     <p class=MsoPlainText style='margin-top:0cm;margin-right:-5.95pt;margin-bottom:
 0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-align:justify;text-indent:
@@ -236,7 +225,7 @@ font-family:"Times New Roman",serif'>: <?=$Application->getPhone(1)?></span></p>
 
     <p class=MsoPlainText style='margin-right:-5.95pt;text-align:justify;
 line-height:115%'><span style='font-size:12.0pt;line-height:115%;font-family:
-"Times New Roman",serif'>Я, <?=$fullname1?>, в соответствии с требованиями
+"Times New Roman",serif'>Я, <?=$fullname2?>, в соответствии с требованиями
 статьи 9 ФЗ от 27.07.2006 №152-ФЗ «О персональных данных» даю согласие НИУ «<span
                     class=SpellE>БелГУ</span>» на обработку, в том числе автоматизированную, с
 целью учета договоров на оказание платных образовательных услуг и учета

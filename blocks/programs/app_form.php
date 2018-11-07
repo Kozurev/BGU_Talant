@@ -91,7 +91,8 @@ if( $action === "upload_app_docs" )
 if( $action === "save_app_data" )
 {
     $fields = ["surname" => "Surname", "surname1" => "Surname1", "name" => "Name", "name1" => "Name1", "patronymic" => "Patronymic", "patronymic1" => "Patronymic1", "birthday" => "Birthday",
-        "address" => "Address", "passport_number" => "PassportNumber", "passport_author" => "PassportAuthor", "passport_date" => "PassportDate", "phone" => "Phone"];
+        "address" => "Address", "passport_number" => "PassportNumber", "passport_author" => "PassportAuthor", "passport_date" => "PassportDate", "phone" => "Phone",
+        "country_id" => "CountryId", "region_id" => "RegionId", "city_id" => "CityId"];
 
     $appId = Core_Array::Post( "id", 0 );
     $Application = Core::factory( "Program_Application", $appId );
@@ -154,10 +155,58 @@ $output = Core::factory( "Core_Entity" );
 
 if( $Application !== false )    $output->addEntity( $Application, "app" );
 
+
+try
+{
+    //Список стран
+    $Countries = $DB->get_records( "address_country" );
+
+    //Список регионов для страны по умолчанию (Россия)
+    $Regions1 = [];
+    $Regions2 = [];
+
+    //Список городов для региона
+    $Cities1 = [];
+    $Cities2 = [];
+
+    if( $Application !== false && $Application->getId() != 0 )
+    {
+        $Regions1 = $DB->get_records( "address_region", ["country_id" => $Application->getCountryId( Program_Application::TYPE_CONSUMER )] );
+        $Cities1  = $DB->get_records( "address_city", ["region_id" => $Application->getRegionId( Program_Application::TYPE_CONSUMER )] );
+
+
+        if( $Application->getCountryId( Program_Application::TYPE_CONSUMER ) === $Application->getCountryId( Program_Application::TYPE_CLIENT ) )
+        {
+            $Regions2 = $Regions1;
+        }
+        else
+        {
+            $Regions2 = $DB->get_records( "address_region", ["country_id" => $Application->getCountryId( Program_Application::TYPE_CLIENT )] );
+        }
+
+        if( $Application->getRegionId( Program_Application::TYPE_CONSUMER ) === $Application->getRegionId( Program_Application::TYPE_CLIENT ) )
+        {
+            $Cities2 = $Cities1;
+        }
+        else
+        {
+            $Cities2 = $DB->get_records( "address_city", ["region_id" => $Application->getRegionId( Program_Application::TYPE_CLIENT )] );
+        }
+    }
+}
+catch ( dml_exception $e )
+{
+    die( $e->getMessage() );
+}
+
+
 $output
     ->addSimpleEntity( "wwwroot", $CFG->wwwroot )
     ->addEntity( $User )
     ->addEntity( $Period )
+    ->addEntities( $Countries, "country" )
+    ->addEntities( array_merge( $Regions1, $Regions2 ), "region" )
+    ->addEntities( array_merge( $Cities1, $Cities2 ), "city" )
     ->addSimpleEntity( "user_id", $User->getId() )
     ->addSimpleEntity( "fill_years", $fullYears )
     ->xsl( "forms/program_application.xsl" )

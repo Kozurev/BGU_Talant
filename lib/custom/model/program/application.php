@@ -35,7 +35,8 @@ class Program_Application extends Core_Entity
      * @var array
      */
     protected $tableRows = ["id", "user_id", "period_id", "surname1", "surname2", "surname11", "surname12", "name1", "name2", "name11", "name12",
-        "patronymic1", "patronymic2", "patronymic11", "patronymic12", "birthday1", "birthday2", "address1", "address2", "passport_number1", "passport_number2",
+        "patronymic1", "patronymic2", "patronymic11", "patronymic12", "birthday1", "birthday2", "country_id1", "country_id2", "region_id1", "region_id2",
+        "city_id1", "city_id2", "address1", "address2", "passport_number1", "passport_number2", "timestamp",
         "passport_author1", "passport_author2", "passport_date1", "passport_date2", "phone1", "phone2"];
 
 
@@ -176,6 +177,54 @@ class Program_Application extends Core_Entity
 
 
     /**
+     * id страны потребителя
+     *
+     * @var int
+     */
+    protected $country_id1 = 0;
+
+
+    /**
+     * id страны заказчика
+     *
+     * @var int
+     */
+    protected $country_id2 = 0;
+
+
+    /**
+     * id региона потребителя
+     *
+     * @var int
+     */
+    protected $region_id1 = 0;
+
+
+    /**
+     * id региона заказчика
+     *
+     * @var int
+     */
+    protected $region_id2 = 0;
+
+
+    /**
+     * id города потребителя
+     *
+     * @var int
+     */
+    protected $city_id1 = 0;
+
+
+    /**
+     * id города заказчика
+     *
+     * @var int
+     */
+    protected $city_id2 = 0;
+
+
+    /**
      * Адрес по прописке потребителя
      *
      * @var string
@@ -256,6 +305,14 @@ class Program_Application extends Core_Entity
 
 
     /**
+     * Время создания заявки
+     *
+     * @var int
+     */
+    protected $timestamp = 0;
+
+
+    /**
      * Объект периода программы
      *
      * @var null|Program_Period
@@ -287,6 +344,19 @@ class Program_Application extends Core_Entity
     public function getId()
     {
         return intval( $this->id );
+    }
+
+
+    /**
+     * Геттер для свойства timestamp - время создания договора
+     *
+     * @param $format - формат получаемой даты
+     * @return int
+     */
+    public function getTimestamp( $format = null )
+    {
+        if( $format === null )  return intval( $this->timestamp );
+        else return date( $format, $this->timestamp );
     }
 
 
@@ -407,6 +477,48 @@ class Program_Application extends Core_Entity
         if( !in_array( $type, $this->types ) )  die("Свойства такого типа не существует");
         $propertyName = "birthday" . $type;
         return strval( $this->$propertyName );
+    }
+
+
+    /**
+     * Геттер для id страны заказчика/потребителя
+     *
+     * @param $type - тип получаемого свойства заказчик/потребитель
+     * @return int
+     */
+    public function getCountryId( $type )
+    {
+        if( !in_array( $type, $this->types ) )  die("Свойства такого типа не существует");
+        $propertyName = "country_id" . $type;
+        return intval( $this->$propertyName );
+    }
+
+
+    /**
+     * Геттер для id региона заказчика/потребителя
+     *
+     * @param $type - тип получаемого свойства заказчик/потребитель
+     * @return int
+     */
+    public function getRegionId( $type )
+    {
+        if( !in_array( $type, $this->types ) )  die("Свойства такого типа не существует");
+        $propertyName = "region_id" . $type;
+        return intval( $this->$propertyName );
+    }
+
+
+    /**
+     * Геттер для id города заказчика/потребителя
+     *
+     * @param $type - тип получаемого свойства заказчик/потребитель
+     * @return int
+     */
+    public function getCityId( $type )
+    {
+        if( !in_array( $type, $this->types ) )  die("Свойства такого типа не существует");
+        $propertyName = "city_id" . $type;
+        return intval( $this->$propertyName );
     }
 
 
@@ -619,6 +731,54 @@ class Program_Application extends Core_Entity
 
 
     /**
+     * Сеттер для id страны заказчика/потребителя
+     *
+     * @param $country_id
+     * @param $type - тип устанавливаемого значения заказчик/потребитель
+     * @return $this
+     */
+    public function setCountryId( $country_id, $type )
+    {
+        if( !in_array( $type, $this->types ) )  die("Свойства такого типа не существует");
+        $propertyName = "country_id" . $type;
+        $this->$propertyName = intval( $country_id );
+        return $this;
+    }
+
+
+    /**
+     * Сеттер для id региона заказчика/потребителя
+     *
+     * @param $region_id
+     * @param $type - тип устанавливаемого значения заказчик/потребитель
+     * @return $this
+     */
+    public function setRegionId( $region_id, $type )
+    {
+        if( !in_array( $type, $this->types ) )  die("Свойства такого типа не существует");
+        $propertyName = "region_id" . $type;
+        $this->$propertyName = intval( $region_id );
+        return $this;
+    }
+
+
+    /**
+     * Сеттер для id города заказчика/потребителя
+     *
+     * @param $city_id
+     * @param $type - тип устанавливаемого значения заказчик/потребитель
+     * @return $this
+     */
+    public function setCityId( $city_id, $type )
+    {
+        if( !in_array( $type, $this->types ) )  die("Свойства такого типа не существует");
+        $propertyName = "city_id" . $type;
+        $this->$propertyName = intval( $city_id );
+        return $this;
+    }
+
+
+    /**
      * Сеттер для свойства address
      *
      * @param $address
@@ -748,10 +908,91 @@ class Program_Application extends Core_Entity
     }
 
 
+    /**
+     * Проверка на совпадение данных заказчика и потребителя
+     *
+     * @date: 06.11.2018
+     * @return bool
+     */
+    public function isEqual()
+    {
+        foreach ( $this->tableRows as $field )
+        {
+            if( in_array( $field, ["id", "user_id", "program_id", "period_id", "timestamp"] ) )   continue;
+
+            $getterName = "get";
+            $words = explode( "_", substr( $field, 0, -1 ) );
+            foreach ( $words as $word )
+            {
+                $getterName .= lcfirst( $word );
+            }
+
+            if( $this->$getterName( 1 ) !== $this->$getterName( 2 ) )
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+
+    /**
+     *
+     *
+     * @param $format
+     * @param $type
+     * @return mixed
+     * @throws dml_exception
+     */
+    public function getFullAddress( $format, $type )
+    {
+        global $DB;
+
+        $Country    = $DB->get_record( "address_country", ["id" => $this->getCountryId( $type )] );
+        $Region     = $DB->get_record( "address_region",  ["id" => $this->getRegionId( $type ) ] );
+        $City       = $DB->get_record( "address_city",    ["id" => $this->getCityId( $type )   ] );
+
+        $return = str_replace( "{country}", $Country->name, $format );
+        $return = str_replace( "{region}",  $Region->name,  $return );
+        $return = str_replace( "{city}",    $City->name,    $return );
+        $return = str_replace( "{address}", $this->getAddress( $type ),    $return );
+
+        return $return;
+    }
+
+
+    /**
+     * Получение номера договора для шаблона
+     *
+     * @return string
+     */
+    public function getContractNumber()
+    {
+        $id = $this->id;
+
+        if( $id < 10 )
+        {
+            $id = "00" . $id;
+        }
+        elseif( $id < 100 )
+        {
+            $id = "0" . $id;
+        }
+
+        $year = $this->getTimestamp( "y" );
+
+        return implode( "-", [$id, $year, "ПКШ"] );
+    }
 
 
     public function save()
     {
+        if( $this->getTimestamp() === 0 )
+        {
+            $this->timestamp = time();
+        }
+
         Core::notify( array(&$this), "beforeProgramApplicationSave" );
         parent::save();
         Core::notify( array(&$this), "afterProgramApplicationSave" );

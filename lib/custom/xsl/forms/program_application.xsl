@@ -77,10 +77,15 @@
                 </div>
 
                 <div class="col-md-3 col-sm-6 col-xs-12 right">
-                    <label for="address1">Адрес по прописке в формате: страна, регион, район, населенный пункт, улица, корпус, дом, квартира</label>
+                    <label for="country_id1">Страна</label>
                 </div>
                 <div class="col-md-3 col-sm-6 col-xs-12 left">
-                    <input type="text" name="address1" id="address1" class="form-control" required="required" value="{app/address1}" />
+                    <select class="form-control" name="country_id1" id="country_id" data-selector="1">
+                        <option value="0">Выберите из списка</option>
+                        <xsl:call-template name="country">
+                            <xsl:with-param name="type">1</xsl:with-param>
+                        </xsl:call-template>
+                    </select>
                 </div>
 
                 <div class="col-md-3 col-sm-6 col-xs-12 right">
@@ -91,10 +96,34 @@
                 </div>
 
                 <div class="col-md-3 col-sm-6 col-xs-12 right">
+                    <label for="region_id1">Регион</label>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12 left">
+                    <select class="form-control" name="region_id1" id="region_id" data-selector="1">
+                        <option value="0">Выберите из списка</option>
+                        <xsl:call-template name="region">
+                            <xsl:with-param name="type">1</xsl:with-param>
+                        </xsl:call-template>
+                    </select>
+                </div>
+
+                <div class="col-md-3 col-sm-6 col-xs-12 right">
                     <label for="passport_author1">Кем выдан</label>
                 </div>
                 <div class="col-md-3 col-sm-6 col-xs-12 left">
                     <input type="text" name="passport_author1" id="passport_author1" class="form-control" required="required" value="{app/passport_author1}" />
+                </div>
+
+                <div class="col-md-3 col-sm-6 col-xs-12 right">
+                    <label for="city_id1">Город</label>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12 left">
+                    <select class="form-control" name="city_id1" id="city_id" data-selector="1">
+                        <option value="0">Выберите из списка</option>
+                        <xsl:call-template name="city">
+                            <xsl:with-param name="type">1</xsl:with-param>
+                        </xsl:call-template>
+                    </select>
                 </div>
 
                 <div class="col-md-3 col-sm-6 col-xs-12 right">
@@ -103,6 +132,14 @@
                 <div class="col-md-3 col-sm-6 col-xs-12 left">
                     <input type="text" name="passport_date1" id="passport_date1" class="form-control" required="required" value="{app/passport_date1}" />
                 </div>
+
+                <div class="col-md-3 col-sm-6 col-xs-12 right">
+                    <label for="address1">Адрес:</label>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12 left">
+                    <input type="text" name="address1" id="address1" class="form-control" required="required" value="{app/address1}" placeholder="ул. Ленина д. 47 кв. 94" />
+                </div>
+
             </div>
 
             <!--<xsl:if test="full_years &gt; 18">-->
@@ -179,10 +216,15 @@
                 </div>
 
                 <div class="col-md-3 col-sm-6 col-xs-12 right">
-                    <label for="address2">Адрес по прописке в формате: страна, регион, район, населенный пункт, улица, корпус, дом, квартира</label>
+                    <label for="country_id2">Страна</label>
                 </div>
                 <div class="col-md-3 col-sm-6 col-xs-12 left">
-                    <input type="text" name="address2" id="address2" class="form-control" required="required" value="{app/address2}" />
+                    <select class="form-control" name="country_id2" id="country_id" data-selector="2">
+                        <option value="0">Выберите из списка</option>
+                        <xsl:call-template name="country">
+                            <xsl:with-param name="type">2</xsl:with-param>
+                        </xsl:call-template>
+                    </select>
                 </div>
 
                 <div class="col-md-3 col-sm-6 col-xs-12 right">
@@ -193,10 +235,34 @@
                 </div>
 
                 <div class="col-md-3 col-sm-6 col-xs-12 right">
+                    <label for="region_id2">Регион</label>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12 left">
+                    <select class="form-control" name="region_id2" id="region_id" data-selector="2">
+                        <option value="0">Выберите из списка</option>
+                        <xsl:call-template name="region">
+                            <xsl:with-param name="type">2</xsl:with-param>
+                        </xsl:call-template>
+                    </select>
+                </div>
+
+                <div class="col-md-3 col-sm-6 col-xs-12 right">
                     <label for="passport_author2">Кем выдан</label>
                 </div>
                 <div class="col-md-3 col-sm-6 col-xs-12 left">
                     <input type="text" name="passport_author2" id="passport_author2" class="form-control" required="required" value="{app/passport_author2}" />
+                </div>
+
+                <div class="col-md-3 col-sm-6 col-xs-12 right">
+                    <label for="city_id2">Город</label>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12 left">
+                    <select class="form-control" name="city_id2" id="city_id" data-selector="2">
+                        <option value="0">Выберите из списка</option>
+                        <xsl:call-template name="city">
+                            <xsl:with-param name="type">2</xsl:with-param>
+                        </xsl:call-template>
+                    </select>
                 </div>
 
                 <div class="col-md-3 col-sm-6 col-xs-12 right">
@@ -205,13 +271,16 @@
                 <div class="col-md-3 col-sm-6 col-xs-12 left">
                     <input type="text" name="passport_date2" id="passport_date2" class="form-control" required="required" value="{app/passport_date2}" />
                 </div>
+
+                <div class="col-md-3 col-sm-6 col-xs-12 right">
+                    <label for="address2">Адрес: </label>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12 left">
+                    <input type="text" name="address2" id="address2" class="form-control" required="required" value="{app/address2}" placeholder="ул. Ленина д. 47 кв. 94" />
+                </div>
+
             </div>
 
-            <!--<hr/>-->
-
-            <!--<div class="row">-->
-                <!--<p>При отсутствии информации в заблокированных полях необходимо указать аналогичные данные в <a href="/user/edit.php?id={user/id}&amp;course=1">настройках</a> учетной записи.</p>-->
-            <!--</div>-->
 
             <input type="hidden" name="user_id" value="{user/id}" />
             <input type="hidden" name="period_id" value="{program_period/id}" />
@@ -225,6 +294,92 @@
             </div>
 
         </form>
+    </xsl:template>
+
+
+    <xsl:template name="country">
+        <xsl:param name="type" />
+
+        <xsl:for-each select="country">
+            <xsl:variable name="id" select="id" />
+            <option value="{id}">
+                <xsl:choose>
+                    <xsl:when test="$type = 1">
+                        <xsl:if test="//app/country_id1 = $id">
+                            <xsl:attribute name="selected">selected</xsl:attribute>
+                        </xsl:if>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:if test="//app/country_id2 = $id">
+                            <xsl:attribute name="selected">selected</xsl:attribute>
+                        </xsl:if>
+                    </xsl:otherwise>
+                </xsl:choose>
+                <xsl:value-of select="name" />
+            </option>
+        </xsl:for-each>
+    </xsl:template>
+
+
+    <xsl:template name="region">
+        <xsl:param name="type" />
+
+        <xsl:variable name="country_id">
+            <xsl:choose>
+                <xsl:when test="$type=1"><xsl:value-of select="//app/country_id1" /></xsl:when>
+                <xsl:otherwise><xsl:value-of select="//app/country_id2" /></xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+
+        <xsl:for-each select="region[country_id=$country_id]">
+            <xsl:variable name="id" select="id" />
+            <option value="{id}">
+                <xsl:choose>
+                    <xsl:when test="$type = 1">
+                        <xsl:if test="//app/region_id1 = $id">
+                            <xsl:attribute name="selected">selected</xsl:attribute>
+                        </xsl:if>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:if test="//app/region_id2 = $id">
+                            <xsl:attribute name="selected">selected</xsl:attribute>
+                        </xsl:if>
+                    </xsl:otherwise>
+                </xsl:choose>
+                <xsl:value-of select="name" />
+            </option>
+        </xsl:for-each>
+    </xsl:template>
+
+
+    <xsl:template name="city">
+        <xsl:param name="type" />
+
+        <xsl:variable name="region_id">
+            <xsl:choose>
+                <xsl:when test="$type=1"><xsl:value-of select="//app/region_id1" /></xsl:when>
+                <xsl:otherwise><xsl:value-of select="//app/region_id2" /></xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+
+        <xsl:for-each select="city[region_id=$region_id]">
+            <xsl:variable name="id" select="id" />
+            <option value="{id}">
+                <xsl:choose>
+                    <xsl:when test="$type = 1">
+                        <xsl:if test="//app/city_id1 = $id">
+                            <xsl:attribute name="selected">selected</xsl:attribute>
+                        </xsl:if>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:if test="//app/city_id2 = $id">
+                            <xsl:attribute name="selected">selected</xsl:attribute>
+                        </xsl:if>
+                    </xsl:otherwise>
+                </xsl:choose>
+                <xsl:value-of select="name" />
+            </option>
+        </xsl:for-each>
     </xsl:template>
 
 

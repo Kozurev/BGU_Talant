@@ -16,10 +16,6 @@ $action = Core_Array::Get( "template_type", "" );   //Тип запрашива�
 $File = Core::factory( "File" );
 
 $applicationId = Core_Array::Get( "appid", 0 );
-//if( $applicationId === 0 )  die( "Отсутствует обзятельный GET-параметр" );
-
-//$Application = Core::factory( "Program_Application", $applicationId );
-//if( $Application === false )    die( "Программы с id $applicationId не существует" );
 
 if( $applicationId !== 0 )
 {
@@ -44,7 +40,7 @@ switch( $action )
     //Получение шаблона квитанции об оплате (QR-код)
     case "ticket":
         {
-            File::downloadTemplate( File::TEMPLATE_TICKET );
+            File::downloadTemplate( File::TEMPLATE_TICKET, $templateParams );
             break;
         }
 
@@ -58,24 +54,10 @@ switch( $action )
     //Формирование и загрузка заявления
     case "application":
         {
-            $fields = ["surname" => "Surname", "name" => "Name", "patronymic" => "Patronymic", "birthday" => "Birthday", "address" => "Address",
-                "passport_number" => "PassportNumber", "passport_author" => "PassportAuthor", "passport_date" => "PassportDate", "phone" => "Phone"];
-
-            $equal = true;  //Указатель на совпадение данных заказчика и потребителя
-
-            foreach ( $fields as $field )
-            {
-                $getterName = "get" . $field;
-
-                if( $Application->$getterName( 1 ) !== $Application->$getterName( 2 ) )
-                {
-                    $equal = false;
-                    break;
-                }
-            }
-
-            if( $equal )    File::downloadTemplate( File::TEMPLATE_APPLICATION_EQUAL, $templateParams );
-            else            File::downloadTemplate( File::TEMPLATE_APPLICATION_NOT_EQUAL, $templateParams );
+            if( $Application->isEqual() )
+                File::downloadTemplate( File::TEMPLATE_APPLICATION_EQUAL, $templateParams );
+            else
+                File::downloadTemplate( File::TEMPLATE_APPLICATION_NOT_EQUAL, $templateParams );
 
             break;
         }

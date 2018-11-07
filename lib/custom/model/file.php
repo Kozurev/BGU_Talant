@@ -11,7 +11,9 @@ class File extends Core_Entity
     /**
      * id изображения QR-кода квитанции
      */
-    const TEMPLATE_TICKET = 23;
+    const TEMPLATE_TICKET = "ticket.php";
+    //const TEMPLATE_TICKET = 23;
+
 
     /**
      * Название файла-шаблона для формирования заявления при совпадающих данных заказчика и потребителя
@@ -470,14 +472,9 @@ class File extends Core_Entity
     {
         global $CFG;
 
-        if( $templateType === self::TEMPLATE_TICKET )
-        {
-            header( "Location: $CFG->wwwroot/blocks/docs/files.php?fileid=" . self::TEMPLATE_TICKET );
-            return;
-        }
-
         switch( $templateType )
         {
+            case self::TEMPLATE_TICKET:                 $filename = "квитанция.doc";    break;
             case self::TEMPLATE_APPLICATION_EQUAL:      $filename = "заявление.doc";    break;
             case self::TEMPLATE_APPLICATION_NOT_EQUAL:  $filename = "заявление.doc";    break;
             case self::TEMPLATE_CONTRACT:               $filename = "договор.doc";      break;

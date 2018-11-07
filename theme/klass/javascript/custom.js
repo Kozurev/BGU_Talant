@@ -11,6 +11,30 @@ $(function(){
         $.each(fields, function(i, field){
             $("#"+field+"2").val($("#"+field+"1").val());
         });
+
+        var country1 = $("select[name=country_id1]");
+        var country2 = $("select[name=country_id2]");
+        var region1 = $("select[name=region_id1]");
+        var region2 = $("select[name=region_id2]");
+        var city1 = $("select[name=city_id1]");
+        var city2 = $("select[name=city_id2]");
+
+        region2.empty();
+        var regions = region1.find("option");
+        $.each(regions, function(index, option){
+            region2.append($(option).clone());
+        });
+
+        city2.empty();
+        var cities = city1.find("option");
+        $.each(cities, function(index, option){
+            city2.append($(option).clone());
+        });
+
+        country2.val( country1.val() );
+        region2.val( region1.val() );
+        city2.val( city1.val() );
+
     });
 
 
@@ -125,59 +149,147 @@ $(function(){
 
 
         /**
-         * Подгрузка регионов и городов по клику
+         * Подгрузка регионов и городов по клику для формы заявки на олимпиаду
          */
         $("#olympiad_form")
             //Подгрузка регионов для страны
             .on("change", "#country_id", function(e){
                 var country_id = $(this).val();
+                var region = $("#region_id");
+                var city = $("#city_id");
+
                 if( country_id == "0" )
                 {
-                    $("#region_id").empty();
-                    $("#region_id").append('<option value="0">Выберите из списка</option>');
+                    region.empty();
+                    region.append('<option value="0">Выберите из списка</option>');
 
-                    $("#city_id").empty();
-                    $("#city_id").append('<option value="0">Выберите из списка</option>');
+                    city.empty();
+                    city.append('<option value="0">Выберите из списка</option>');
 
                     return false;
                 }
 
-                getRegions(country_id, function(regions){
-                    $("#city_id").empty();
-                    $("#city_id").append('<option value="0">Выберите из списка</option>');
 
-                    var select = $("#region_id");
-                    select.empty();
-                    select.append('<option value="0">Выберите из списка</option>');
+                var otherparams = {
+                    region: region,
+                    city: city
+                };
+
+                getRegions(country_id, function(regions, params){
+                    params.region.empty();
+                    params.region.append('<option value="0">Выберите из списка</option>');
+
+                    params.city.empty();
+                    params.city.append('<option value="0">Выберите из списка</option>');
 
                     $.each(regions, function(index, value){
                         var option = "<option value='"+value.id+"'>"+value.name+"</option>";
-                        select.append( option );
+                        params.region.append( option );
                     });
-                });
+                }, otherparams);
             })
             //Подгрузка городов для региона
             .on("change", "#region_id", function(e){
                 var region_id = $(this).val();
+                var city = $("#city_id");
+
                 if( region_id == "0" )
                 {
-                    $("#city_id").empty();
-                    $("#city_id").append('<option value="0">Выберите из списка</option>');
+                    city.empty();
+                    city.append('<option value="0">Выберите из списка</option>');
                     return false;
                 }
 
-                getCities(region_id, function(cities){
-                    var select = $("#city_id");
-                    select.empty();
-                    select.append('<option value="0">Выберите из списка</option>');
+
+                var otherparams = {
+                    city: city
+                };
+
+                getCities(region_id, function(cities, params){
+                    params.city.empty();
+                    params.city.append('<option value="0">Выберите из списка</option>');
 
                     $.each(cities, function(index, value){
                         var option = "<option value='"+value.id+"'>"+value.name+"</option>";
-                        select.append( option );
+                        params.city.append( option );
                     });
-                });
+                }, otherparams);
             });
 
+
+        /**
+         * Подгрузка регионов и городов по клику для формы заявки на программу
+         */
+        $("#app_form")
+            //Подгрузка регионов для страны
+            .on("change", "#country_id", function(e){
+                var country_id = $(this).val();
+                var selector = $(this).data("selector");
+
+                var region = $("select[name=region_id" + selector + "]");
+                var city = $("select[name=city_id" + selector + "]");
+
+                if( country_id == "0" )
+                {
+                    region.empty();
+                    region.append('<option value="0">Выберите из списка</option>');
+
+                    city.empty();
+                    city.append('<option value="0">Выберите из списка</option>');
+
+                    return false;
+                }
+
+
+                var otherparams = {
+                    region: region,
+                    city: city
+                };
+
+                getRegions(country_id, function(regions, params){
+                    params.city.empty();
+                    params.city.append('<option value="0">Выберите из списка</option>');
+
+                    params.region.empty();
+                    params.region.append('<option value="0">Выберите из списка</option>');
+
+                    $.each(regions, function(index, value){
+                        var option = "<option value='"+value.id+"'>"+value.name+"</option>";
+                        params.region.append( option );
+                    });
+                }, otherparams);
+            })
+            //Подгрузка городов для региона
+            .on("change", "#region_id", function(e){
+                var region_id = $(this).val();
+                var selector = $(this).data("selector");
+
+                var city = $("input[name=city_id" + selector + "]");
+
+                if( region_id == "0" )
+                {
+                    city.empty();
+                    city.append('<option value="0">Выберите из списка</option>');
+                    return false;
+                }
+
+                var otherparams = {
+                    selector: selector
+                };
+
+                getCities(region_id, function(cities, params){
+                    var citySelector = "select[name=city_id" + params.selector + "]";
+                    var city = $(citySelector);
+
+                    city.empty();
+                    city.append('<option value="0">Выберите из списка</option>');
+
+                    $.each(cities, function(index, value){
+                        var option = "<option value='"+value.id+"'>"+value.name+"</option>";
+                        city.append( option );
+                    });
+                }, otherparams);
+            });
 
 });
 
@@ -265,8 +377,9 @@ function getCountries( func ) {
  *
  * @param country_id - id тсраны, для которой подгружаются регионы; при значении равным нулю подгружаются абсолютно все записи
  * @param func - исполняемая функция после выполнения запроса, принимающая в качестве аргумента полученные данные
+ * @param otherparams - дополнительные параметры, передаваемые в анонимную функцию
  */
-function getRegions( country_id, func ) {
+function getRegions( country_id, func, otherparams ) {
     var root = $("#wwwroot").val();
 
     $.ajax({
@@ -276,7 +389,7 @@ function getRegions( country_id, func ) {
         dataType: "json",
         async: false,
         success: function(response){
-            func(response);
+            func(response, otherparams);
         }
     });
 }
@@ -287,8 +400,9 @@ function getRegions( country_id, func ) {
  *
  * @param region_id - id региона, для которого выбираются города; при значении 0 будут выбраны все 17 287 городов
  * @param func - исполняемая функция после выполнения запроса, принимающая в качестве аргумента полученные данные
+ * @param otherparams - дополнительные параметры, передаваемые в анонимную функцию
  */
-function getCities( region_id, func ) {
+function getCities( region_id, func, otherparams ) {
     var root = $("#wwwroot").val();
 
     $.ajax({
@@ -298,7 +412,7 @@ function getCities( region_id, func ) {
         dataType: "json",
         async: false,
         success: function(response){
-            func(response);
+            func(response, otherparams);
         }
     });
 }

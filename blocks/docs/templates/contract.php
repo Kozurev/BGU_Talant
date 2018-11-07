@@ -16,13 +16,13 @@ $current["year"] = intval( date( "Y" ) );
 $current["month"] = intval( date( "m" ) );
 $current["day"] = intval( date( "d" ) );
 
-$current["fullMonth"] = $current["month"];
-if( $current["month"] < 10 )    $current["fullMonth"] = "0" . $current["month"];
-
+$current["fullMonth"] = getMonthName( intval( date( "m" ) ), 1 );
 
 $periodStart = date( "d.m.Y", strtotime($Period->getDateStart()) );
 $periodEnd = date( "d.m.Y", strtotime($Period->getDateEnd()) );
 
+
+$addressFormat = "{country}, {region}, {city}, {address}";
 
 /**
  * ФИО пользователя в именительном и родительном падеже
@@ -335,7 +335,7 @@ $fullname[1][1] = $Application->getSurname( 1 ) . " " . $Application->getName( 1
     <h6 style='page-break-after:auto'><span style='font-size:10.0pt;font-family:
 "Times New Roman",serif'>ДОГОВОР ОБ ОКАЗАНИИ ПЛАТНЫХ ОБРАЗОВАТЕЛЬНЫХ УСЛУГ </span><span
                 style='font-size:11.0pt;font-family:"Times New Roman",serif'>№</span><span
-                style='font-size:9.5pt;font-family:"Times New Roman",serif'><?=$Application->getId()?></span></h6>
+                style='font-size:9.5pt;font-family:"Times New Roman",serif'><?=$Application->getContractNumber()?></span></h6>
 
     <p class=MsoNormal align=center style='text-align:center;line-height:9.0pt'><b><span
                     style='font-size:9.0pt;layout-grid-mode:line'>г. Белгород
@@ -353,15 +353,15 @@ $fullname[1][1] = $Application->getSurname( 1 ) . " " . $Application->getName( 1
                     style='color:black'>проректора по качеству и дополнительному образованию
 Шаповалова В.А</span>., действующего на основании доверенности&nbsp; № ДОВ-143
 от&nbsp; 20.06.2018 ,<span style='color:black'> </span>с одной стороны, и <?=$fullname[0][1]?>,</span> <span style='font-size:9.0pt;letter-spacing:-.1pt'>имеющего
-реквизиты </span><b>(почт. адрес; паспорт [серия, номер, кем и когда выдан];
-            ИНН; уровень образования, № телефона)</b> <span style='font-size:9.0pt;
-letter-spacing:-.1pt'>&nbsp;<?=$Application->getAddress(2)?>, <?=$Application->getPassportNumber(2)?>, выдан <?=$Application->getPassportAuthor(2)?> <?=$Application->getPassportDate(2)?>,
-            <?=$Application->getPhone(2)?>, уровень образования: <u>________________________________________________</u>, ИНН: <u>______________________________</u>,
+реквизиты: </span><!--b>(почт. адрес; паспорт [серия, номер, кем и когда выдан];
+            ИНН; уровень образования, № телефона)</b--> <span style='font-size:9.0pt;
+letter-spacing:-.1pt'>&nbsp;<?=$Application->getFullAddress( $addressFormat, 2 )?>, №<?=$Application->getPassportNumber(2)?>, выдан <?=$Application->getPassportAuthor(2)?> <?=$Application->getPassportDate(2)?>,
+            телефон <?=$Application->getPhone(2)?>,
 именуемого (-ой) в дальнейшем Заказчик, с другой стороны, и <?=$fullname[1][1]?>, имеющего
-реквизиты </span><b>(место жительства; паспорт [серия, номер, кем и когда
-            выдан]; ИНН; уровень образования; № телефона)</b><span style='font-size:9.0pt;
-letter-spacing:0pt'> <?=$Application->getAddress(1)?>, &nbsp;<?=$Application->getPassportNumber(1)?>, выдан <?=$Application->getPassportAuthor(1)?>
-            <?=$Application->getPassportDate(1)?>, <?=$Application->getPhone(1)?>, уровень образования: <u>________________________________________________</u>, ИНН: <u>______________________________</u>,</span><span
+реквизиты: </span><!--b>(место жительства; паспорт [серия, номер, кем и когда
+            выдан]; ИНН; уровень образования; № телефона)</b--><span style='font-size:9.0pt;
+letter-spacing:0pt'> <?=$Application->getFullAddress( $addressFormat, 1 )?>, №<?=$Application->getPassportNumber(1)?>, выдан <?=$Application->getPassportAuthor(1)?>
+            <?=$Application->getPassportDate(1)?>, телефон <?=$Application->getPhone(1)?>,</span><span
                 style='font-size:9.0pt;letter-spacing:-.1pt'> именуемого (-ой) в дальнейшем
 Потребитель, с третьей стороны, <span style='color:black'>в совместном
 упоминании именуемые в дальнейшем Стороны, заключили настоящий Договор о
@@ -543,7 +543,7 @@ color:black;layout-grid-mode:line'>1.1. По настоящему договор
     <p class=MsoNormal style='text-align:justify;text-indent:14.2pt;line-height:
 9.0pt'><span style='font-size:9.0pt;color:black;layout-grid-mode:line'>1.3.
 Стоимость образовательной услуги по Договору устанавливается приказом ректора
-НИУ «БелГУ». Установленная в <b>2017-2018</b> учебном году стоимость
+НИУ «БелГУ». Установленная в <b><?=getCurrentAcademicalYear()?></b> учебном году стоимость
 образовательной услуги по Договору за один курс обучения по образовательной
 программе, указанной в п.1.1. Договора, составляет <?=$Program->getPrice()?> руб. Полная стоимость
 образовательной услуги по Договору определяется как сумма оплат за каждый курс
