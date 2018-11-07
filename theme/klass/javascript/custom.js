@@ -6,7 +6,7 @@ $(function(){
         var fields = ["surname", "surname1", "name", "name1", "patronymic", "patronymic1", "birthday",
                         "phone", "passport_number", "passport_author", "passport_date", "address"];
 
-        if(!$(this).is(":checked"))  return false;
+        if(!$(this).is(":checked"))  return;
 
         $.each(fields, function(i, field){
             $("#"+field+"2").val($("#"+field+"1").val());
