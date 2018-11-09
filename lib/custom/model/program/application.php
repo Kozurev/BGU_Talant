@@ -938,11 +938,12 @@ class Program_Application extends Core_Entity
 
 
     /**
+     * Формирование строки полного адреса заказчика или поьребителя
      *
-     *
-     * @param $format
-     * @param $type
-     * @return mixed
+     * @param $format - формат аозвращаемого адреса
+     * @param $type - заказчик / клиент
+     *          пример значения аргумента $type - "{country}, {region}, г. {city}, {address}"
+     * @return string
      * @throws dml_exception
      */
     public function getFullAddress( $format, $type )
@@ -963,7 +964,7 @@ class Program_Application extends Core_Entity
 
 
     /**
-     * Получение номера договора для шаблона
+     * Получение номера договора для шаблонов
      *
      * @return string
      */

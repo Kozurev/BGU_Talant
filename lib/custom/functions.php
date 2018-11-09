@@ -50,18 +50,23 @@ function getMonthName( $month, $type = 0 )
 }
 
 
-
-function getCurrentAcademicalYear()
+/**
+ * Получение значения начала и конец текущего обучающегося года, к примеру: 2018-2019
+ *
+ * @param string $delimiter
+ * @return string
+ */
+function getCurrentAcademicalYear( $delimiter = "-" )
 {
     $year = date( "Y" );
     $month = date( "m" );
 
     if( $month < 9 )
     {
-        return strval( $year - 1 ) . "-" . strval( $year );
+        return strval( $year - 1 ) . $delimiter . strval( $year );
     }
     else
     {
-        return strval( $year ) . "-" . strval( $year + 1 );
+        return strval( $year ) . $delimiter . strval( $year + 1 );
     }
 }

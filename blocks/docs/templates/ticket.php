@@ -15,6 +15,20 @@ $Program =      Core_Array::getValue( $params, "program", null );
 $Period =       Core_Array::getValue( $params, "period", null );
 $User =         Core_Array::getValue( $params, "user", null );
 
+//ФИО потребителя
+$fullnameStudent  = $Application->getSurname( Program_Application::TYPE_CONSUMER ) . " " .
+                    $Application->getName( Program_Application::TYPE_CONSUMER ) . " " .
+                    $Application->getPatronymic( Program_Application::TYPE_CONSUMER );
+
+//ФИО заказчика
+$fullnameClient   = $Application->getSurname( Program_Application::TYPE_CLIENT ) . " " .
+                    $Application->getName( Program_Application::TYPE_CLIENT ) . " " .
+                    $Application->getPatronymic( Program_Application::TYPE_CLIENT );
+
+
+$addressFormat = "{country}, {region}, г. {city}, {address}";
+
+
 ?>
 
 
@@ -100,11 +114,11 @@ $User =         Core_Array::getValue( $params, "user", null );
   07430201010010000130 за обучение</span></p>
                 <p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:.85pt;
   margin-left:7.1pt;line-height:normal'><b><span style='font-size:10.0pt;
-  font-family:"Times New Roman",serif'>ФИО обучающегося (-ейся)</span></b></p>
+  font-family:"Times New Roman",serif'>ФИО обучающегося (-ейся): <?=$fullnameStudent?></span></b></p>
                 <p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
   margin-left:7.1pt;margin-bottom:.0001pt;line-height:normal'><b><span
                                 style='font-size:10.0pt;font-family:"Times New Roman",serif'>по договору 
-  №    </span></b></p>
+  №<?=$Application->getContractNumber()?>    </span></b></p>
             </td>
         </tr>
         <tr style='height:11.05pt'>
@@ -134,13 +148,13 @@ $User =         Core_Array::getValue( $params, "user", null );
                 <p class=MsoNormal align=center style='margin-top:0cm;margin-right:0cm;
   margin-bottom:0cm;margin-left:1.9pt;margin-bottom:.0001pt;text-align:center;
   line-height:normal'><b><span style='font-size:10.0pt;font-family:"Times New Roman",serif'>за
-  обучение на под.курсах 2018/2019 уч. год</span></b></p>
+  обучение на под.курсах <?=getCurrentAcademicalYear("/")?> уч. год</span></b></p>
             </td>
             <td width=207 valign=top style='width:155.55pt;border-top:none;border-left:
   none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   padding:.8pt 5.75pt 0cm 1.75pt;height:11.05pt'>
                 <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
-  text-align:center;line-height:normal'><span lang=EN-US>10000</span></p>
+  text-align:center;line-height:normal'><span lang=EN-US><?=$Program->getPrice()?></span></p>
             </td>
         </tr>
         <tr style='height:11.05pt'>
@@ -149,8 +163,7 @@ $User =         Core_Array::getValue( $params, "user", null );
                 <p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
   margin-left:.1pt;margin-bottom:.0001pt;line-height:normal'><b><span
                                 style='font-size:10.0pt;font-family:"Times New Roman",serif'>ФИО плательщика:
-  </span></b><span style='font-size:10.0pt;font-family:"Times New Roman",serif'>Козырев
-  Егор Алексеевич</span></p>
+  </span></b><span style='font-size:10.0pt;font-family:"Times New Roman",serif'><?=$fullnameClient?></span></p>
             </td>
         </tr>
         <tr style='height:11.05pt'>
@@ -159,8 +172,7 @@ $User =         Core_Array::getValue( $params, "user", null );
                 <p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
   margin-left:.1pt;margin-bottom:.0001pt;line-height:normal'><b><span
                                 style='font-size:10.0pt;font-family:"Times New Roman",serif'>Адрес
-  плательщика: </span></b><span style='font-size:10.0pt;font-family:"Times New Roman",serif'>Украина,
-  луганская обл., г. Северодонецк ул. Ломоносова д. 15 кв. 45</span></p>
+  плательщика: </span></b><span style='font-size:10.0pt;font-family:"Times New Roman",serif'><?=$Application->getFullAddress( $addressFormat, Program_Application::TYPE_CLIENT )?></span></p>
             </td>
         </tr>
         <tr style='height:11.05pt'>
@@ -213,11 +225,11 @@ $User =         Core_Array::getValue( $params, "user", null );
   07430201010010000130 за обучение</span></p>
                 <p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:.85pt;
   margin-left:7.1pt;line-height:normal'><b><span style='font-size:10.0pt;
-  font-family:"Times New Roman",serif'>ФИО обучающегося (-ейся)</span></b></p>
+  font-family:"Times New Roman",serif'>ФИО обучающегося (-ейся): <?=$fullnameClient?></span></b></p>
                 <p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
   margin-left:7.1pt;margin-bottom:.0001pt;line-height:normal'><b><span
                                 style='font-size:10.0pt;font-family:"Times New Roman",serif'>по договору 
-  №    </span></b></p>
+  №<?=$Application->getContractNumber()?>    </span></b></p>
             </td>
         </tr>
         <tr style='height:11.05pt'>
@@ -247,13 +259,13 @@ $User =         Core_Array::getValue( $params, "user", null );
                 <p class=MsoNormal align=center style='margin-top:0cm;margin-right:0cm;
   margin-bottom:0cm;margin-left:1.9pt;margin-bottom:.0001pt;text-align:center;
   line-height:normal'><b><span style='font-size:10.0pt;font-family:"Times New Roman",serif'>за
-  обучение на под.курсах 2018/2019 уч. год</span></b></p>
+  обучение на под.курсах <?=getCurrentAcademicalYear("/")?> уч. год</span></b></p>
             </td>
             <td width=207 valign=top style='width:155.55pt;border-top:none;border-left:
   none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   padding:.8pt 5.75pt 0cm 1.75pt;height:11.05pt'>
                 <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
-  text-align:center;line-height:normal'><span lang=EN-US>10000</span></p>
+  text-align:center;line-height:normal'><span lang=EN-US><?=$Program->getPrice()?></span></p>
             </td>
         </tr>
         <tr style='height:11.05pt'>
@@ -262,8 +274,7 @@ $User =         Core_Array::getValue( $params, "user", null );
                 <p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
   margin-left:.1pt;margin-bottom:.0001pt;line-height:normal'><b><span
                                 style='font-size:10.0pt;font-family:"Times New Roman",serif'>ФИО плательщика:
-  </span></b><span style='font-size:10.0pt;font-family:"Times New Roman",serif'>Козырев
-  Егор Алексеевич</span></p>
+  </span></b><span style='font-size:10.0pt;font-family:"Times New Roman",serif'><?=$fullnameClient?></span></p>
             </td>
         </tr>
         <tr style='height:11.05pt'>
@@ -272,8 +283,7 @@ $User =         Core_Array::getValue( $params, "user", null );
                 <p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
   margin-left:.1pt;margin-bottom:.0001pt;line-height:normal'><b><span
                                 style='font-size:10.0pt;font-family:"Times New Roman",serif'>Адрес
-  плательщика: </span></b><span style='font-size:10.0pt;font-family:"Times New Roman",serif'>Украина,
-  луганская обл., г. Северодонецк ул. Ломоносова д. 15 кв. 45</span></p>
+  плательщика: </span></b><span style='font-size:10.0pt;font-family:"Times New Roman",serif'><?=$Application->getFullAddress( $addressFormat, Program_Application::TYPE_CLIENT )?></span></p>
             </td>
         </tr>
         <tr style='height:11.05pt'>
