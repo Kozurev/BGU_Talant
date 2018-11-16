@@ -570,11 +570,15 @@ class Program_Application extends Core_Entity
      * @param $type - тип получаемого свойства заказчик/потребитель
      * @return string
      */
-    public function getPassportDate( $type )
+    public function getPassportDate( $type, $format = null )
     {
         if( !in_array( $type, $this->types ) )  die("Свойства такого типа не существует");
         $propertyName = "passport_date" . $type;
-        return strval( $this->$propertyName );
+
+        if( $format === null )
+            return strval( $this->$propertyName );
+        else
+            return date( $format, strtotime( $this->$propertyName ) );
     }
 
 
@@ -943,21 +947,43 @@ class Program_Application extends Core_Entity
      * @param $format - формат аозвращаемого адреса
      * @param $type - заказчик / клиент
      *          пример значения аргумента $type - "{country}, {region}, г. {city}, {address}"
+     * @param $empty - ассоциативный массив значений по умолчанию для страны, региона и города
      * @return string
      * @throws dml_exception
      */
-    public function getFullAddress( $format, $type )
+    public function getFullAddress( $format, $type, $empty = null )
     {
         global $DB;
+
+        $return = $format;
 
         $Country    = $DB->get_record( "address_country", ["id" => $this->getCountryId( $type )] );
         $Region     = $DB->get_record( "address_region",  ["id" => $this->getRegionId( $type ) ] );
         $City       = $DB->get_record( "address_city",    ["id" => $this->getCityId( $type )   ] );
 
-        $return = str_replace( "{country}", $Country->name, $format );
+        if( $Country === false )
+        {
+            $Country = new stdClass();
+            $Country->name = Core_Array::getValue( $empty, "country", "" );
+        }
+
+        if( $Region === false )
+        {
+            $Region = new stdClass();
+            $Region->name = Core_Array::getValue( $empty, "region", "" );
+        }
+
+        if( $City === false )
+        {
+            $City = new stdClass();
+            $City->name = Core_Array::getValue( $empty, "city", "" );
+        }
+
+
+        $return = str_replace( "{country}", $Country->name, $return );
         $return = str_replace( "{region}",  $Region->name,  $return );
         $return = str_replace( "{city}",    $City->name,    $return );
-        $return = str_replace( "{address}", $this->getAddress( $type ),    $return );
+        $return = str_replace( "{address}", $this->getAddress( $type ), $return );
 
         return $return;
     }

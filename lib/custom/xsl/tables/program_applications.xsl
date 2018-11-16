@@ -47,18 +47,18 @@
                     <p>Для записи на программу необходимо загрузить заявление, договор и квитанцию об оплате.</p>
                 </xsl:if>
 
-                <xsl:if test="count(file) = 4 and file/confirmed = 0">
+                <xsl:if test="count(file) &gt; 0 and file/confirmed = 0">
                     <p style="color: orange">Ваши документы будут проверены модератором в течении одного рабочего дня.</p>
                     <p style="color: orange">До тех пор Вы можете загрузить их заново.</p>
                 </xsl:if>
 
-                <xsl:if test="count(file) = 4 and file/confirmed = -1">
+                <xsl:if test="count(file) &gt; 0 and file/confirmed = -1">
                     <p style="color: red">Загруженные ранее Вами документы для записи на программу были отклонены модератором.</p>
                     <p style="color: red">Необходимо проверить загружаемые документы на наличие </p>
                 </xsl:if>
 
                 <xsl:choose>
-                    <xsl:when test="count(file) = 4 and file/confirmed = 1">
+                    <xsl:when test="count(file) &gt; 0 and file/confirmed = 1">
                         <p style="color: green">Документы на данную программу были одобрены модератором</p>
                     </xsl:when>
                     <xsl:otherwise>
@@ -69,27 +69,32 @@
 
                             <div class="row">
                                 <div class="col-md-4"><label for="application">Заявление на запись:</label></div>
-                                <div class="col-md-4"><input type="file" name="application" id="application" required="required" /></div>
+                                <div class="col-md-4"><input type="file" name="application" id="application" /></div>
                                 <div class="col-md-4"><a href="{//wwwroot}/blocks/docs/get_template.php?template_type=application&amp;appid={id}" class="btn btn-orange">Шаблон</a></div>
                             </div>
 
                             <div class="row">
+                                <div class="col-md-4"><label for="passport1">Копия паспорта потребителя:</label></div>
+                                <div class="col-md-4"><input type="file" name="passport1" id="passport1" /></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4"><label for="passport2">Копия паспорта заказчика:</label></div>
+                                <div class="col-md-4"><input type="file" name="passport2" id="passport2" /></div>
+                            </div>
+
+                            <div class="row">
                                 <div class="col-md-4"><label for="contract">Договор:</label></div>
-                                <div class="col-md-4"><input type="file" name="contract" id="contract" required="required" /></div>
+                                <div class="col-md-4"><input type="file" name="contract" id="contract" /></div>
                                 <div class="col-md-4"><a href="{//wwwroot}/blocks/docs/get_template.php?template_type=contract&amp;appid={id}" class="btn btn-orange">Шаблон</a></div>
                             </div>
 
                             <div class="row">
                                 <div class="col-md-4"><label for="ticket">Квитанция об оплате:</label></div>
-                                <div class="col-md-4"><input type="file" name="ticket" id="ticket" required="required" /></div>
+                                <div class="col-md-4"><input type="file" name="ticket" id="ticket" /></div>
                                 <div class="col-md-4"><a href="{//wwwroot}/blocks/docs/get_template.php?template_type=ticket&amp;appid={id}" class="btn btn-orange">Шаблон</a></div>
                             </div>
 
-                            <div class="row">
-                                <div class="col-md-4"><label for="passport">Копия пасспорта:</label></div>
-                                <div class="col-md-4"><input type="file" name="passport" id="passport" required="required" /></div>
-                                <!--<div class="col-md-4"><a href="/blocks/docs/templates/get_template.php?template_type=passport&amp;appid={id}" class="btn btn-orange">Шаблон</a></div>-->
-                            </div>
 
                             <div class="row">
                                 <div class="offset-md-8 col-md-4"><input type="submit" class="btn btn-blue" value="Загрузить" /></div>

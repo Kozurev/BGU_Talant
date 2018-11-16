@@ -115,7 +115,7 @@
                 </div>
 
                 <div class="col-md-3 col-sm-6 col-xs-12 right">
-                    <label for="city_id1">Город</label>
+                    <label for="city_id1">Населенный пункт</label>
                 </div>
                 <div class="col-md-3 col-sm-6 col-xs-12 left">
                     <select class="form-control" name="city_id1" id="city_id" data-selector="1">
@@ -130,7 +130,7 @@
                     <label for="passport_date1">Когда выдан</label>
                 </div>
                 <div class="col-md-3 col-sm-6 col-xs-12 left">
-                    <input type="text" name="passport_date1" id="passport_date1" class="form-control" required="required" value="{app/passport_date1}" />
+                    <input type="date" name="passport_date1" id="passport_date1" class="form-control" required="required" value="{app/passport_date1}" />
                 </div>
 
                 <div class="col-md-3 col-sm-6 col-xs-12 right">
@@ -254,7 +254,7 @@
                 </div>
 
                 <div class="col-md-3 col-sm-6 col-xs-12 right">
-                    <label for="city_id2">Город</label>
+                    <label for="city_id2">Населенный пункт</label>
                 </div>
                 <div class="col-md-3 col-sm-6 col-xs-12 left">
                     <select class="form-control" name="city_id2" id="city_id" data-selector="2">
@@ -269,7 +269,7 @@
                     <label for="passport_date2">Когда выдан</label>
                 </div>
                 <div class="col-md-3 col-sm-6 col-xs-12 left">
-                    <input type="text" name="passport_date2" id="passport_date2" class="form-control" required="required" value="{app/passport_date2}" />
+                    <input type="date" name="passport_date2" id="passport_date2" class="form-control" required="required" value="{app/passport_date2}" />
                 </div>
 
                 <div class="col-md-3 col-sm-6 col-xs-12 right">

@@ -23,6 +23,15 @@ $periodEnd = date( "d.m.Y", strtotime($Period->getDateEnd()) );
 
 
 $addressFormat = "{country}, {region}, {city}, {address}";
+$addressEmptyValues = [
+    "country" => "____________",
+    "region" => "____________",
+    "city" => "____________"
+];
+
+
+$passportDate1 = $Application->getPassportDate(1, "d") . " " . getMonthName( $Application->getPassportDate(1, "m"), 1 ) . " " . $Application->getPassportDate(1, "Y") . " г.";
+$passportDate2 = $Application->getPassportDate(2, "d") . " " . getMonthName( $Application->getPassportDate(2, "m"), 1 ) . " " . $Application->getPassportDate(2, "Y") . " г.";
 
 /**
  * ФИО пользователя в именительном и родительном падеже
@@ -355,13 +364,13 @@ $fullname[1][1] = $Application->getSurname( 1 ) . " " . $Application->getName( 1
 от&nbsp; 20.06.2018 ,<span style='color:black'> </span>с одной стороны, и <?=$fullname[0][1]?>,</span> <span style='font-size:9.0pt;letter-spacing:-.1pt'>имеющего
 реквизиты: </span><!--b>(почт. адрес; паспорт [серия, номер, кем и когда выдан];
             ИНН; уровень образования, № телефона)</b--> <span style='font-size:9.0pt;
-letter-spacing:-.1pt'>&nbsp;<?=$Application->getFullAddress( $addressFormat, 2 )?>, №<?=$Application->getPassportNumber(2)?>, выдан <?=$Application->getPassportAuthor(2)?> <?=$Application->getPassportDate(2)?>,
+letter-spacing:-.1pt'>&nbsp;<?=$Application->getFullAddress( $addressFormat, 2, $addressEmptyValues )?>, паспорт №<?=$Application->getPassportNumber(2)?>, выдан <?=$Application->getPassportAuthor(2)?> <?=$passportDate2?>,
             телефон <?=$Application->getPhone(2)?>,
 именуемого (-ой) в дальнейшем Заказчик, с другой стороны, и <?=$fullname[1][1]?>, имеющего
 реквизиты: </span><!--b>(место жительства; паспорт [серия, номер, кем и когда
             выдан]; ИНН; уровень образования; № телефона)</b--><span style='font-size:9.0pt;
-letter-spacing:0pt'> <?=$Application->getFullAddress( $addressFormat, 1 )?>, №<?=$Application->getPassportNumber(1)?>, выдан <?=$Application->getPassportAuthor(1)?>
-            <?=$Application->getPassportDate(1)?>, телефон <?=$Application->getPhone(1)?>,</span><span
+letter-spacing:0pt'> <?=$Application->getFullAddress( $addressFormat, 1, $addressEmptyValues )?>, паспорт №<?=$Application->getPassportNumber(1)?>, выдан <?=$Application->getPassportAuthor(1)?>
+            <?=$passportDate1?>, телефон <?=$Application->getPhone(1)?>,</span><span
                 style='font-size:9.0pt;letter-spacing:-.1pt'> именуемого (-ой) в дальнейшем
 Потребитель, с третьей стороны, <span style='color:black'>в совместном
 упоминании именуемые в дальнейшем Стороны, заключили настоящий Договор о

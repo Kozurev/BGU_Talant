@@ -10,62 +10,74 @@ require_once "../../config.php";
 global $CFG, $PAGE, $OUTPUT, $USER, $DB;
 require_once $CFG->libdir . "/custom/autoload.php";
 
-$olympiadId = Core_Array::Get("olid", null);
+$olympiadId = Core_Array::Get( "olid", null );
 
-$User = Core::factory("User")->getCurrent();
+$User = Core::factory( "User" )->getCurrent();
 $roleId = $User->getRoleId();
 
-$PAGE->set_url('/blocks/programs/');
-$PAGE->set_pagelayout('standard');
-$PAGE->set_cacheable(false);
+$PAGE->set_url( '/blocks/programs/' );
+$PAGE->set_pagelayout( 'standard' );
+$PAGE->set_cacheable( false );
 //$context = context_user::instance($USER->id);
-$PAGE->set_context(context_system::instance());
+$PAGE->set_context( context_system::instance() );
 
 
-if ($olympiadId === null) {
-    $PAGE->set_title("Олимпиады");
+if ( $olympiadId === null )
+{
+    $PAGE->set_title( "Олимпиады" );
     echo $OUTPUT->header();
 
     $sql = "SELECT cour.id, shortname, startdate, enddate, fl.filename AS logo, fl.itemid
             FROM mdl_course as cour
             JOIN mdl_files AS fl ON fl.itemid = cour.logo
-            WHERE cour.category = $CFG->olympiadsCategoryId AND fl.filesize <> 0";
+            WHERE cour.category = $CFG->olympiadsCategoryId 
+              AND fl.filesize <> 0
+              AND enddate > ". time() ." 
+            ORDER BY startdate";
 
     //$Olympiads = $DB->get_records( "course", ["category" => "3"] );
-    $Olympiads = $DB->get_records_sql($sql);
+    $Olympiads = $DB->get_records_sql( $sql );
 
-    foreach ($Olympiads as $Olympiad) {
+    foreach ( $Olympiads as $Olympiad )
+    {
         //Формат дат начала и конца проведения курса в формате d.m.Y H:i:s
         $Olympiad->startdate_string = "";
         $Olympiad->enddate_string = "";
 
-        if ($Olympiad->startdate != 0) {
-            $Olympiad->startdate_string = date("d.m.Y", $Olympiad->startdate);
+        if ( $Olympiad->startdate != 0 )
+        {
+            $Olympiad->startdate_string = date( "d.m.Y", $Olympiad->startdate );
 
-            if (date("H:i:s", $Olympiad->startdate) !== "00:00:00") {
-                $Olympiad->startdate_string .= " " . date("H:i:s", $Olympiad->startdate);
+            if ( date( "H:i", $Olympiad->startdate ) !== "00:00:00" )
+            {
+                $Olympiad->startdate_string .= " " . date( "H:i", $Olympiad->startdate );
             }
         }
 
-        if ($Olympiad->enddate != 0) {
-            $Olympiad->enddate_string = date("d.m.Y", $Olympiad->enddate);
+        if ( $Olympiad->enddate != 0 )
+        {
+            $Olympiad->enddate_string = date( "d.m.Y", $Olympiad->enddate );
 
-            if (date("H:i:s", $Olympiad->enddate) !== "00:00:00") {
-                $Olympiad->enddate_string .= " " . date("H:i:s", $Olympiad->enddate);
+            if ( date( "H:i:s", $Olympiad->enddate ) !== "00:00:00" )
+            {
+                $Olympiad->enddate_string .= " " . date( "H:i", $Olympiad->enddate );
             }
         }
     }
 
-    Core::factory("Core_Entity")
-        ->addEntities($Olympiads, "olympiad")
-        ->addSimpleEntity("wwwroot", $CFG->wwwroot)
-        ->xsl("olympiad_list.xsl")
+    Core::factory( "Core_Entity" )
+        ->addEntities( $Olympiads, "olympiad" )
+        ->addSimpleEntity( "wwwroot", $CFG->wwwroot )
+        ->xsl( "olympiad_list.xsl" )
         ->show();
-} else {
-    $Olympiad = $DB->get_record("course", ["id" => $olympiadId]);
+}
+else
+{
+    $Olympiad = $DB->get_record( "course", ["id" => $olympiadId] );
 
-    if ($Olympiad === false) {
-        $PAGE->set_title("Ошибка");
+    if ( $Olympiad === false )
+    {
+        $PAGE->set_title( "Ошибка" );
         echo $OUTPUT->header();
         echo "<h3>Олимпиады (курса) с идентификаторо <b>$olympiadId</b> не существует</h3>";
         echo $OUTPUT->footer();
@@ -73,21 +85,33 @@ if ($olympiadId === null) {
     }
 
 
-    if ($Olympiad->logo != "0") {
+    if( $Olympiad->enddate < time() )
+    {
+        $PAGE->set_title( "Ошибка" );
+        echo $OUTPUT->header();
+        echo "<h3>Срок проведения данной олимпиады уже прошел.</h3>";
+        echo "<p><a href='". $CFG->wwwroot ."/blocks/olympiads'>Вернуться назад</a></p>";
+        echo $OUTPUT->footer();
+    }
+
+    if ( $Olympiad->logo != "0" )
+    {
         $sql = "SELECT * FROM mdl_files WHERE filesize <> 0 and itemid = " . $Olympiad->logo;
         $LogoFile = $DB->get_record_sql($sql);
         $src = $CFG->wwwroot . "/draftfile.php/5/user/draft/$Olympiad->logo/$LogoFile->filename";
-    } else {
+    }
+    else
+    {
         $LogoFile = new stdClass();
         $src = $CFG->wwwroot . "/theme/klass/pix/boxes/default.png";
     }
 
-    $Olympiad->startdate_string = date("d.m.Y", $Olympiad->startdate);
-    $Olympiad->enddate_string = date("d.m.Y", $Olympiad->enddate);
-    if (date("H:i:s", $Olympiad->startdate) !== "00:00:00") $Olympiad->startdate_string .= " " . date("H:i", $Olympiad->startdate);
-    if (date("H:i:s", $Olympiad->enddate) !== "00:00:00") $Olympiad->enddate_string .= " " . date("H:i", $Olympiad->enddate);
+    $Olympiad->startdate_string = date( "d.m.Y", $Olympiad->startdate );
+    $Olympiad->enddate_string   = date( "d.m.Y", $Olympiad->enddate );
+    if ( date( "H:i:s", $Olympiad->startdate ) !== "00:00:00" )  $Olympiad->startdate_string .= " " . date( "H:i", $Olympiad->startdate );
+    if ( date( "H:i:s", $Olympiad->enddate ) !== "00:00:00" )    $Olympiad->enddate_string .= " " . date( "H:i", $Olympiad->enddate );
 
-    $PAGE->set_title($Olympiad->shortname);
+    $PAGE->set_title( $Olympiad->shortname );
     echo $OUTPUT->header();
 
 //    Core::factory( "Core_Entity" )

@@ -439,7 +439,7 @@ class File extends Core_Entity
     public function upload( $fileName )
     {
         $file = Core_Array::File( $fileName, null );
-        if( is_null( $file ) )  die( "Файла с ключем '" . $fileName . "' не существует." );
+        if( is_null( $file ) || Core_Array::getValue( $file, "error", 0 ) > 0 )  return $this;
 
         //Удаление предыдущего файла
         if( $this->id && file_exists( $this->dir . $this->file_path ) )

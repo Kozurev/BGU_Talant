@@ -136,7 +136,7 @@ font-family:"Times New Roman",serif'>&nbsp;</span></p>
             style='font-size:12.0pt;font-family:"Times New Roman",serif'>Полухину О.Н.</span></p>
 
     <p class=MsoPlainText align=center style='margin-left:9.0cm;text-align:center'><span
-            style='font-size:12.0pt;font-family:"Times New Roman",serif'>от <?=$fullname1?></span></p>
+            style='font-size:12.0pt;font-family:"Times New Roman",serif'>от <?=$Application->getSurname1( 1 ) . "<br/>" . $Application->getName1( 1 ) . " " . $Application->getPatronymic1( 1 );?></span></p>
 
     <p class=MsoPlainText align=center style='margin-left:304.8pt;text-align:center'><span
             style='font-size:12.0pt;font-family:"Times New Roman",serif'>&nbsp;</span></p>
@@ -152,8 +152,8 @@ font-family:"Times New Roman",serif'>&nbsp;</span></p>
 
     <p class=MsoPlainText style='margin-right:-5.95pt;text-align:justify;
 text-indent:35.4pt;line-height:115%'><span style='font-size:12.0pt;line-height:
-115%;font-family:"Times New Roman",serif'>Прошу зачислить меня, <?=$fullname1?> на обучение по дополнительной общеобразовательной программе «<?=$Program->getTitle()?>»
-            в ФГАОУ ВПО «Белгородский государственный национальный
+115%;font-family:"Times New Roman",serif'>Прошу зачислить меня, <?=$fullname1?> на обучение по дополнительной общеобразовательной (общеразвивающей) программе «<?=$Program->getTitle()?>»
+            в ФГАОУ ВО «Белгородский государственный национальный
 исследовательский университет» в срок с «<?=$periodStart["day"]?>» <?=$periodStart["month"]?> <?=$periodStart["year"]?> г.
             по «<?=$periodEnd["day"]?>» <?=$periodEnd["month"]?> <?=$periodEnd["year"]?> г.</span></p>
 
@@ -274,15 +274,15 @@ line-height:115%'><span style='font-size:12.0pt;line-height:115%;font-family:
     <p class=MsoPlainText style='margin-top:0cm;margin-right:-5.95pt;margin-bottom:
 0cm;margin-left:24.0pt;margin-bottom:.0001pt;text-align:justify'><span
             style='font-size:12.0pt;font-family:"Times New Roman",serif'>&nbsp;</span></p>
-
+<br/>
     <p class=MsoPlainText style='margin-right:-5.95pt;text-align:justify'><span
-            style='font-size:12.0pt;font-family:"Times New Roman",serif'>_____________________    
+            style='font-size:12.0pt;font-family:"Times New Roman",serif'><?=date("d.m.Y")?>    
                                                            ______________________</span></p>
 
     <p class=MsoPlainText style='margin-top:0cm;margin-right:-5.95pt;margin-bottom:
 0cm;margin-left:35.4pt;margin-bottom:.0001pt;text-align:justify;line-height:
 115%'><span style='font-size:12.0pt;line-height:115%;font-family:"Times New Roman",serif'>     
-<sup>(дата)                                                                                                                                             (подпись)</sup></span></p>
+<!--sup>(дата)                                                                                                                                             (подпись)</sup--></span></p>
 
 </div>
 

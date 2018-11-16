@@ -163,10 +163,10 @@ font-family:"Times New Roman",serif'>&nbsp;</span></p>
 «БелГУ»</span></p>
 
     <p class=MsoPlainText align=center style='margin-left:304.8pt;text-align:center'><span
-            style='font-size:11.0pt;font-family:"Times New Roman",serif'>Полухину О.Н.</span></p>
+            style='font-size:11.0pt;font-family:"Times New Roman",serif'>проф. О.Н. Полухину</span></p>
 
     <p class=MsoPlainText align=center style='margin-left:304.8pt;text-align:center'><span
-            style='font-size:11.0pt;font-family:"Times New Roman",serif'>от <?=$fullname[0][1]?></span></p>
+            style='font-size:11.0pt;font-family:"Times New Roman",serif'>от <?=$Application->getSurname1( 2 ) . "<br/>" . $Application->getName1( 2 ) . " " . $Application->getPatronymic1( 2 );?></span></p>
 
     <p class=MsoPlainText align=center style='margin-left:304.8pt;text-align:center'><span
             style='font-size:11.0pt;font-family:"Times New Roman",serif'>&nbsp;</span></p>
@@ -183,7 +183,7 @@ font-family:"Times New Roman",serif'>&nbsp;</span></p>
     <p class=MsoPlainText style='margin-right:-5.95pt;text-align:justify;
 text-indent:35.4pt'><span style='font-size:11.0pt;font-family:"Times New Roman",serif'>Прошу
 зачислить мою (моего) дочь (сына), <?=$fullname[1][1]?> на обучение по
-дополнительной общеобразовательной программе «<?=$Program->getTitle()?>» в ФГАО ВПО
+дополнительной общеобразовательной (общеразвивающей) программе «<?=$Program->getTitle()?>» в ФГАО ВПО
 «Белгородский государственный национальный исследовательский университет» в
 срок с «<?=$periodStart["day"]?>» <?=$periodStart["month"]?> <?=$periodStart["year"]?> г. по «<?=$periodEnd["day"]?>» <?=$periodEnd["month"]?> <?=$periodEnd["year"]?> г. </span></p>
 
@@ -229,7 +229,7 @@ font-family:"Times New Roman",serif'>&nbsp;</span></p>
     <p class=MsoPlainText style='margin-right:-5.95pt'><span style='font-size:11.0pt;
 font-family:"Times New Roman",serif'>&nbsp;</span></p>
 
-    <p class=MsoPlainText style='margin-right:-5.95pt'><b><span style='font-size:
+    <!--p class=MsoPlainText style='margin-right:-5.95pt'><b><span style='font-size:
 11.0pt;font-family:"Times New Roman",serif'>О себе сообщаю: </span></b></p>
 
     <p class=MsoPlainText style='margin-top:0cm;margin-right:-5.95pt;margin-bottom:
@@ -287,7 +287,7 @@ font-family:"Times New Roman",serif'>&nbsp;</span></p>
             lang=EN-US style='font-size:11.0pt;font-family:"Times New Roman",serif'>________________________________________________________</span></p>
 
     <p class=MsoPlainText style='margin-right:-5.95pt;text-align:justify'><span
-            style='font-size:12.0pt;font-family:"Times New Roman",serif'>&nbsp;</span></p>
+            style='font-size:12.0pt;font-family:"Times New Roman",serif'>&nbsp;</span></p-->
 
     <p class=MsoPlainText style='margin-right:-5.95pt;text-align:justify'><span
             style='font-size:12.0pt;font-family:"Times New Roman",serif'>Я, <?=$fullname[0][0]?>, в соответствии с требованиями статьи 9 ФЗ от 27.07.2006 №152-ФЗ «О
@@ -326,24 +326,25 @@ font-family:"Times New Roman",serif'>&nbsp;</span></p>
 0cm;margin-left:24.0pt;margin-bottom:.0001pt;text-align:justify;text-indent:
 -18.0pt'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>-</span><span
             style='font-size:7.0pt;font-family:"Times New Roman",serif'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</span><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>копия
-паспорта гражданина или иного документа, удовлетворяющего личность;</span></p>
+</span><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>копия паспорта обучающегося или иного документа, удостоверяющего лич-ность,</span></p>
+
+    <p class=MsoPlainText style='margin-top:0cm;margin-right:-5.95pt;margin-bottom:
+0cm;margin-left:24.0pt;margin-bottom:.0001pt;text-align:justify;text-indent:
+-18.0pt'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>-</span><span
+                style='font-size:7.0pt;font-family:"Times New Roman",serif'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>копия паспорта гражданина или иного документа, удостоверяющего личность.</span></p>
 
     <p class=MsoPlainText style='margin-top:0cm;margin-right:-5.95pt;margin-bottom:
 0cm;margin-left:24.0pt;margin-bottom:.0001pt;text-align:justify'><span
             style='font-size:12.0pt;font-family:"Times New Roman",serif'>&nbsp;</span></p>
-
+<br/>
+<!--    <p class=MsoPlainText style='margin-right:-5.95pt;text-align:justify'><span-->
+<!--            style='font-size:12.0pt;font-family:"Times New Roman",serif'>--><?//=date("d.m.Y")?><!--</span></p>-->
     <p class=MsoPlainText style='margin-right:-5.95pt;text-align:justify'><span
-            style='font-size:12.0pt;font-family:"Times New Roman",serif'>_____________________&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-______________________</span></p>
+                style='font-size:12.0pt;font-family:"Times New Roman",serif'><?=date("d.m.Y")?>    
+                                                                     ______________________</span></p>
 
-    <p class=MsoPlainText style='margin-top:0cm;margin-right:-5.95pt;margin-bottom:
-0cm;margin-left:35.4pt;margin-bottom:.0001pt;text-align:justify'><span
-            style='font-size:12.0pt;font-family:"Times New Roman",serif'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<sup>(дата)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-(подпись)</sup></span></p>
+
 
 </div>
 

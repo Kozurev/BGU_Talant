@@ -38,48 +38,64 @@ if( $action === "upload_app_docs" )
             ->where( "file_type_id", "=", 4, "OR" )
             ->where( "file_type_id", "=", 5, "OR" )
             ->where( "file_type_id", "=", 7, "OR" )
+            ->where( "file_type_id", "=", 8, "OR" )
         ->close()
         ->orderBy( "id" )
         ->findAll();
 
-    if( count( $ApplicationFiles ) == 4 )
+
+    $FileApplication = Core::factory( "File" )
+        ->setFileTypeId( 7 )
+        ->setUserId( $User->getId() )
+        ->setProgramId( $programId )
+        ->setPeriodId( $periodId );
+
+    $FileContract = Core::factory( "File" )
+        ->setFileTypeId( 3 )
+        ->setUserId( $User->getId() )
+        ->setProgramId( $programId )
+        ->setPeriodId( $periodId );
+
+    $FileTicket = Core::factory( "File" )
+        ->setFileTypeId( 4 )
+        ->setUserId( $User->getId() )
+        ->setProgramId( $programId )
+        ->setPeriodId( $periodId );
+
+    $FilePassport1 = Core::factory( "File" )
+        ->setFileTypeId( 5 )
+        ->setUserId( $User->getId() )
+        ->setProgramId( $programId )
+        ->setPeriodId( $periodId );
+
+    $FilePassport2 = Core::factory( "File" )
+        ->setFileTypeId( 8 )
+        ->setUserId( $User->getId() )
+        ->setProgramId( $programId )
+        ->setPeriodId( $periodId );
+
+
+    if( count( $ApplicationFiles ) > 0 )
     {
-        $FileApplication = $ApplicationFiles[0];
-        $FileContract = $ApplicationFiles[1];
-        $FileTicket = $ApplicationFiles[2];
-        $FilePassport = $ApplicationFiles[3];
+        foreach ( $ApplicationFiles as $File )
+        {
+            switch ( $File->getFileTypeId() )
+            {
+                case 3: $FileContract    = clone $File;    break;
+                case 4: $FileTicket      = clone $File;    break;
+                case 5: $FilePassport1   = clone $File;    break;
+                case 7: $FileApplication = clone $File;    break;
+                case 8: $FilePassport2   = clone $File;    break;
+            }
+        }
     }
-    else
-    {
-        $FileApplication = Core::factory( "File" )
-            ->setFileTypeId( 7 )
-            ->setUserId( $User->getId() )
-            ->setProgramId( $programId )
-            ->setPeriodId( $periodId );
 
-        $FileContract = Core::factory( "File" )
-            ->setFileTypeId( 3 )
-            ->setUserId( $User->getId() )
-            ->setProgramId( $programId )
-            ->setPeriodId( $periodId );
-
-        $FileTicket = Core::factory( "File" )
-            ->setFileTypeId( 4 )
-            ->setUserId( $User->getId() )
-            ->setProgramId( $programId )
-            ->setPeriodId( $periodId );
-
-        $FilePassport = Core::factory( "File" )
-            ->setFileTypeId( 5 )
-            ->setUserId( $User->getId() )
-            ->setProgramId( $programId )
-            ->setPeriodId( $periodId );
-    }
 
     $FileApplication->upload( "application" );
     $FileContract->upload( "contract" );
     $FileTicket->upload( "ticket" );
-    $FilePassport->upload( "passport" );
+    $FilePassport1->upload( "passport1" );
+    $FilePassport2->upload( "passport2" );
 
     header( "Location: ". $CFG->wwwroot ."/my" );
 }
