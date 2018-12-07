@@ -23,6 +23,17 @@ if( $action === "program_edit" )
     $Types = Core::factory( "Program_Type" )->findAll();
     $Forms = Core::factory( "Program_Form" )->findAll();
 
+    //Уровни программ
+    $Levels = array();
+    $levels = Core::factory( "Level" )->getLevelsList( Level::LVL_PROGRAM );
+    foreach ( $levels as $id => $title )
+    {
+        $Level = new stdClass();
+        $Level->id = $id;
+        $Level->title = $title;
+        $Levels[] = $Level;
+    }
+
     //Курсы
     $Courses = Core::factory( "Orm" )
         ->select( ["id", "fullname", "shortname"] )
@@ -51,6 +62,7 @@ if( $action === "program_edit" )
         ->addEntities( $Types )
         ->addEntities( $Forms )
         ->addEntities( $Periods )
+        ->addEntities( $Levels, "level" )
         ->addEntities( $CourseAssignments )
         ->xsl( "forms/admin/program_edit.xsl" )
         ->show();
@@ -91,6 +103,9 @@ if( $action === "program_save" )
         )
         ->setFormId(
             Core_Array::Post( "form_id", 0 )
+        )
+        ->setLevelId(
+            Core_Array::Post( "level_id", 0 )
         );
 
     $Program->save();

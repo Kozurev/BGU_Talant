@@ -113,6 +113,29 @@
 
             <div class="row">
                 <div class="col-md-3 col-sm-12 right">
+                    <label for="level_id">Уровень</label>
+                </div>
+                <div class="col-md-4 col-md-offset-1 col-sm-offset-0 col-sm-12 left">
+                    <select class="form-control" name="level_id" id="level_id">
+                        <xsl:variable name="levelid" select="program/level_id" />
+
+                        <option value="0"> ... </option>
+
+                        <xsl:for-each select="//level">
+                            <xsl:variable name="id" select="id" />
+                            <option value="{id}">
+                                <xsl:if test="id = $levelid">
+                                    <xsl:attribute name="selected">selected</xsl:attribute>
+                                </xsl:if>
+                                <xsl:value-of select="title" />
+                            </option>
+                        </xsl:for-each>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3 col-sm-12 right">
                     <label for="price">Цена</label>
                 </div>
                 <div class="col-md-4 col-md-offset-1 col-sm-offset-0 col-sm-12 left">

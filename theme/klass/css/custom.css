@@ -350,8 +350,10 @@
 
 .help .block .help-img {
     text-align: center;
-    width: 60%;
-    margin-left: 20%;
+    /*min-width: 40%;*/
+    /*max-width: 70%;*/
+    width: 50%;
+    margin-left: 25%;
     margin-bottom: 30px;
 }
 

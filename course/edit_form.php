@@ -143,7 +143,18 @@ class course_edit_form extends moodleform {
 
 
         /**
-         * Добавлено новое поле типа "Файл" для логотипа категории
+         * Кастомное поле типа "список" для указания уровня курса (олимпиады)
+         */
+        require_once "../lib/custom/model/core/array.php";
+        require_once "../lib/custom/model/level.php";
+        $Level = new Level();
+        $options[0] = " ... ";
+        $options = array_merge( $options, $Level->getLevelsList( Level::LVL_OLYMPIAD ) );
+        $select = $mform->addElement( 'select', 'level_id', "Уровень", $options );
+        $select->setSelected( $course->level_id );
+
+        /**
+         * Кастомное поле типа "Файл" для логотипа категории
          *
          * @author Bad Wolf
          * @date 22.08.2018

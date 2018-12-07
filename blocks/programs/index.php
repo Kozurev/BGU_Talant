@@ -1,6 +1,6 @@
 <?php
 /**
- * Список программ
+ * Раздел с программами
  *
  * @author Bad Wolf
  * @date 14.09.2018 11:03
@@ -10,23 +10,26 @@ require_once "../../config.php";
 global $CFG, $PAGE, $OUTPUT, $USER;
 require_once $CFG->libdir . "/custom/autoload.php";
 
-$programId = Core_Array::Get( "prid", null );
-
+$programId = Core_Array::Get( "prid", null );   //id программы
+$levelId = Core_Array::Get( "lvlid", null );    //id уровня искомой программы
 
 $PAGE->set_url('/blocks/programs/' );
-$PAGE->set_pagelayout('standard');
-$PAGE->set_cacheable(false);
-//$context = context_user::instance($USER->id);
+$PAGE->set_pagelayout( 'standard' );
+$PAGE->set_cacheable( false );
 $PAGE->set_context( context_system::instance() );
 
 
-if( $programId === null )
+/**
+ * Страница со списком программ
+ */
+if( $programId === null && $levelId !== null )
 {
     $PAGE->set_title( "Программы" );
     echo $OUTPUT->header();
 
-    $Programs = Core::factory( "Program" )
-        ->findAll();
+    $Programs = Core::factory( "Program" )->queryBuilder();
+    if( $levelId != 0 ) $Programs->where( "level_id", "=", $levelId );
+    $Programs = $Programs->findAll();
 
     Core::factory( "Core_Entity" )
         ->addEntities( $Programs )
@@ -34,7 +37,12 @@ if( $programId === null )
         ->xsl( "program_list.xsl" )
         ->show();
 }
-else
+
+
+/**
+ * Страница с детальной информацией о программе
+ */
+elseif( $programId !== null )
 {
     $Program = Core::factory( "Program", $programId );
     if( $Program === false )    die( "Программы с таким идентификатором не существует" );
@@ -48,6 +56,10 @@ else
         ->where( "visible_end", ">=", $date )
         ->findAll();
 
+
+    /**
+     * Преобразование формата дат проведения проведения программы
+     */
     foreach ( $Periods as $Period )
     {
         $Period->setDateStart( date( "d.m.Y", strtotime( $Period->getDateStart() ) ) );
@@ -77,6 +89,35 @@ else
         ->show();
 }
 
+
+/**
+ * Страница со списком уровней олимпиады
+ */
+elseif( $levelId === null )
+{
+    $PAGE->set_title( "Программы: уровни" );
+    echo $OUTPUT->header();
+
+    $programsLevels = Core::factory( "Level" )->getLevelsList( Level::LVL_PROGRAM );
+    $Result = Core::factory( "Core_Entity" )
+        ->addSimpleEntity( "href", $CFG->wwwroot . "/blocks/programs" )
+        ->xsl( "levels.xsl" );
+
+    foreach ( $programsLevels as $id => $level )
+    {
+        $Level = new stdClass();
+        $Level->id = $id;
+        $Level->title = $level;
+        $Result->addEntity( $Level, "level" );
+    }
+
+    $ZeroLevel = new stdClass();
+    $ZeroLevel->id = 0;
+    $ZeroLevel->title = "Все";
+    $Result->addEntity( $ZeroLevel, "level" );
+
+    $Result->show();
+}
 
 
 

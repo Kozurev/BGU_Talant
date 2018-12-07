@@ -9,7 +9,7 @@
 class Program extends Core_Entity
 {
 
-    protected $tableRows = ["id", "title", "description", "price", "hours", "document_type", "code", "logo_id", "type_id", "form_id"];
+    protected $tableRows = ["id", "title", "description", "price", "hours", "document_type", "code", "logo_id", "type_id", "form_id", "level_id"];
 
 
     /**
@@ -106,6 +106,14 @@ class Program extends Core_Entity
      * @var int
      */
     protected $form_id = 0;
+
+
+    /**
+     * id уровня программы
+     *
+     * @var int
+     */
+    protected $level_id = 0;
 
 
     /**
@@ -235,6 +243,17 @@ class Program extends Core_Entity
 
 
     /**
+     * Геттер идентификатора уровня программы
+     *
+     * @return int
+     */
+    public function getLevelId()
+    {
+        return intval( $this->level_id );
+    }
+
+
+    /**
      * Сеттер названия программы
      *
      * @param $title
@@ -334,6 +353,19 @@ class Program extends Core_Entity
     public function setTypeId( $type_id )
     {
         $this->type_id = intval( $type_id );
+        return $this;
+    }
+
+
+    /**
+     * Сеттер для идентификатора уровня программы
+     *
+     * @param $level_id
+     * @return $this
+     */
+    public function setLevelId( $level_id )
+    {
+        $this->level_id = intval( $level_id );
         return $this;
     }
 

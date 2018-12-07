@@ -11,17 +11,9 @@
 
     <xsl:template match="olympiad">
         <div class="box">
+            <xsl:value-of select="src" />
             <a href="{//wwwroot}/blocks/olympiads?olid={id}">
-                <img width="260" height="260" >
-                    <xsl:choose>
-                        <xsl:when test="itemid = 0">
-                            <xsl:attribute name="src"><xsl:value-of select="//wwwroot" />/theme/klass/pix/boxes/default.png</xsl:attribute>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <xsl:attribute name="src"><xsl:value-of select="//wwwroot" />/draftfile.php/5/user/draft/<xsl:value-of select="itemid" />/<xsl:value-of select="logo" /></xsl:attribute>
-                        </xsl:otherwise>
-                    </xsl:choose>
-                </img>
+                <img width="260" height="260" src="{src}" />
                 <b><xsl:value-of select="shortname" /></b>
             </a>
         </div>

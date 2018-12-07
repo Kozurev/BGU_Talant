@@ -209,10 +209,10 @@ $Block->img = $CFG->wwwroot . "/theme/klass/pix/boxes/library.jpg";
 $Block->label = "Инструкция";
 $Blocks[] = $Block;
 
-$Block = new stdClass();
-$Block->link = $CFG->wwwroot . "/blocks/programs/help.php";
-$Block->label = "Что-то";
-$Blocks[] = $Block;
+//$Block = new stdClass();
+//$Block->link = $CFG->wwwroot . "/blocks/programs/help.php";
+//$Block->label = "Что-то";
+//$Blocks[] = $Block;
 
 $Renderer = $PAGE->get_renderer( "core" );
 echo $Renderer->renderBlocks( $Blocks );
@@ -224,14 +224,14 @@ echo $Renderer->renderBlocks( $Blocks );
 
 // Include course AJAX.
 //include_course_ajax($SITE, $modnamesused);
-
+//
 //if (isloggedin() and !isguestuser() and isset($CFG->frontpageloggedin)) {
 //    $frontpagelayout = $CFG->frontpageloggedin;
 //} else {
 //    $frontpagelayout = $CFG->frontpage;
 //}
-
-
+//
+//
 //foreach (explode(',', $frontpagelayout) as $v) {
 //    switch ($v) {
 //        // Display the main part of the front page.
