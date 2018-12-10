@@ -115,3 +115,19 @@ Core::attachObserver("beforeProgramApplicationDelete", function( $args ) {
 
     foreach ( $Files as $File ) $File->delete();
 });
+
+
+/**
+ * Удаление логотипа уровня программы/олимпиады
+ *
+ * @date 10.12.18 14:12
+ */
+Core::attachObserver( "beforeLevelDelete", function( $args ){
+    $Level = $args[0];
+
+    if( $Level->getLogoId() !== 0 )
+    {
+        $Logo = Core::factory( "File", $Level->getLogoId() );
+        $Logo->delete();
+    }
+});

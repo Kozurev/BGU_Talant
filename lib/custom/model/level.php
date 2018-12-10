@@ -5,7 +5,7 @@
  * @author Bad Wolf
  * @date 07.12.2018 11:28
  */
-class Level
+class Level extends Core_Entity
 {
 
     /**
@@ -13,7 +13,7 @@ class Level
      *
      * @const string
      */
-    CONST LVL_PROGRAM = "program";
+    CONST LVL_PROGRAM = 1;
 
 
     /**
@@ -21,64 +21,178 @@ class Level
      *
      * @const string
      */
-    CONST LVL_OLYMPIAD = "olympiad";
+    CONST LVL_OLYMPIAD = 2;
 
 
     /**
-     * Массив названий уровней олимпиад и программ
+     * Список названий свойств, принадлежащих таблице в БД
      *
      * @var array
      */
-    private $levels = [
+    protected $tableRows = ["id", "title", "entity_id", "logo_id"];
 
-        self::LVL_PROGRAM => [
-            1 => "Подготовка к ЕГЭ",
-            2 => "Подготовка к внутренним испытаниям вуза",
-            3 => "Летние экспрес-курсы"
-        ],
 
-        self::LVL_OLYMPIAD => [
-            1 => "МПОШ НИУ «БелГУ»",
-            2 => "«Высшая проба»",
-            3 => "Инженерная олимпиада по физике"
-        ]
-
+    /**
+     * Список сущьностей, id которой указывается в свойстве entity_id
+     *
+     * @var array
+     */
+    private static $entities = [
+        1 => "Программы",
+        2 => "Олимпиады"
     ];
 
 
     /**
-     * Метод получения названия уровня программы или олимпиады из статического списка
+     * Уникальный идентификатор
      *
-     * @param $id - id уровня (значение свойства level_id у объекта олимпиады или программы)
-     * @param $type - тип объекта для которого получается значение - одна из констант с префиксом LVL_
-     * @return string
+     * @var int
      */
-    public function getLevelName( $id, $type )
+    protected $id;
+
+
+    /**
+     * Название уровня
+     *
+     * @var string
+     */
+    protected $title = "";
+
+
+    /**
+     * Номер сущьности.
+     *  1 - уровень относиться к программе
+     *  2 - уровень относиться к олимпиаде
+     *
+     * @var int
+     */
+    protected $entity_id = 0;
+
+
+    /**
+     * Логотип
+     *
+     * @var int
+     */
+    protected $logo_id = 0;
+
+
+    public function getId()
     {
-        if( !in_array( $type, [self::LVL_PROGRAM, self::LVL_OLYMPIAD] ) )
+        return intval( $this->id );
+    }
+
+
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+
+    public function getEntityId()
+    {
+        return intval( $this->entity_id );
+    }
+
+
+    public function getLogoId()
+    {
+        return intval( $this->logo_id );
+    }
+
+
+    public function setTitle( $title )
+    {
+        $this->title = strval( $title );
+        return $this;
+    }
+
+
+    public function setEntityId( $entity_id )
+    {
+        if( !in_array( $entity_id, [self::LVL_PROGRAM, self::LVL_OLYMPIAD] ) )
         {
-            die( "В качестве аргумента метода getLevelName был передан неизвестный тип - " . $type );
+            die( "Значение параметра entity_id должно быть равным 1 или 2" );
         }
 
-        return Core_Array::getValue( $this->levels[$type], $id, "" );
+        $this->entity_id = intval( $entity_id );
+        return $this;
+    }
+
+
+    public function setLogoId( $logo_id )
+    {
+        $this->logo_id = intval( $logo_id );
+        return $this;
     }
 
 
     /**
-     * Получение списка уровней сложности программ или олимпиад
+     * Геттер для списка сущьностей
      *
-     * @param $type - тип объекта для которого получается значение - одна из констант с префиксом LVL_
+     * @date 10.12.18 13:04
      * @return array
      */
-    public function getLevelsList( $type )
+    public static function getEntities()
+    {
+        return self::$entities;
+    }
+
+
+    /**
+     * Поиск всех уровней для олимпиад/программ
+     *
+     * @date 12.12.18 12:50
+     * @param $type - одна из констант с префиксом "LVL_"
+     * @return array
+     */
+    public static function getLevelsList( $type )
     {
         if( !in_array( $type, [self::LVL_PROGRAM, self::LVL_OLYMPIAD] ) )
         {
-            die( "В качестве аргумента метода getLevelList был передан неизвестный тип - " . $type );
+            die( "Значение параметра entity_id должно быть равным 1 или 2" );
         }
 
-        return Core_Array::getValue( $this->levels, $type, null );
+        return Core::factory( "Level" )
+            ->queryBuilder()
+            ->where( "entity_id", "=", $type )
+            ->findAll();
     }
+
+
+    /**
+     * Получение названия сущьности по id: программы/олимпиады
+     *
+     * @date 10.12.18 12:55
+     * @param $type - одна из констант с префиксом "LVL_"
+     * @return string
+     */
+    public static function getEntityName( $type )
+    {
+        if( !in_array( $type, [self::LVL_PROGRAM, self::LVL_OLYMPIAD] ) )
+        {
+            die( "Значение параметра entity_id должно быть равным 1 или 2" );
+        }
+
+        return Core_Array::getValue( self::$entities, $type, "Неизвестная сущьность " . $type );
+    }
+
+
+    public function save( $obj = null )
+    {
+        Core::notify( array( &$this ), "beforeLevelSave" );
+        parent::save();
+        Core::notify( array( &$this ), "afterLevelSave" );
+    }
+
+
+    public function delete( $obj = null )
+    {
+        Core::notify( array( &$this ), "beforeLevelDelete" );
+        parent::delete();
+        Core::notify( array( &$this ), "afterLevelDelete" );
+    }
+
 
 
 }

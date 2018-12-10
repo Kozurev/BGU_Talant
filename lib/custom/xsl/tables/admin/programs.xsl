@@ -48,7 +48,7 @@
         <xsl:variable name="formid" select="form_id" />
 
         <tr>
-            <td><xsl:value-of select="id" /></td>
+            <td><xsl:value-of select="position()" /></td>
             <td><xsl:value-of select="title" /></td>
             <td><xsl:value-of select="code" /></td>
             <td><xsl:value-of select="//program_type[id = $typeid]/short_name" /></td>

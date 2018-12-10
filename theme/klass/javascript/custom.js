@@ -57,6 +57,24 @@ $(function(){
                 }
             });
         })
+        .on("click", ".edit_level", function(e) {
+            e.preventDefault();
+
+            var id = $(this).data("id");
+
+            $.ajax({
+                type: "GET",
+                url: root + "/blocks/programs/edit.php",
+                data: {
+                    action: "level_edit",
+                    id: id
+                },
+                success: function(responce){
+                    $(".block_programs").find(".levels").css("display", "none");
+                    $(".block_programs").find(".card-text").append(responce);
+                }
+            });
+        })
         //Удалеие программы
         .on("click", ".delete", function(e){
             e.preventDefault();
@@ -65,15 +83,38 @@ $(function(){
             deleteItem(id, model, refreshBlock, "programs");
         })
         //Скрытие формы и возврат исходного содержимого блока
-        .on("click", ".cancel", function(e){
+        .on("click", ".program_cancel", function(e){
             e.preventDefault();
             $(".program_edit").remove();
             $(".block_programs").find(".programs").css("display", "block");
         })
+        .on("click", ".level_cancel", function(e){
+            e.preventDefault();
+            $(".level_edit").remove();
+            $(".block_programs").find(".levels").css("display", "block");
+        })
         //Отправка формы
-        .on("click", ".submit", function(e){
+        .on("click", ".program_submit", function(e){
             e.preventDefault();
             var Form = $(".program_edit");
+            var formData = new FormData(Form.get(0));
+            var root = $("#wwwroot").val();
+
+            $.ajax({
+                type: "POST",
+                url: root + "/blocks/programs/edit.php",
+                contentType: false, // важно - убираем форматирование данных по умолчанию
+                processData: false, // важно - убираем преобразование строк по умолчанию
+                data: formData,
+                success: function(responce){
+                    //var Block = $(".block_programs").find(".card-text");
+                    refreshBlock("programs");
+                }
+            });
+        })
+        .on("click", ".level_submit", function(e){
+            e.preventDefault();
+            var Form = $(".level_edit");
             var formData = new FormData(Form.get(0));
             var root = $("#wwwroot").val();
 

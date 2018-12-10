@@ -546,7 +546,7 @@ h6 {
 .carousel-overlay-content .content-wrap h2 {
 		font-family: arvoregular, Arial, Helvetica, sans-serif;
 		color: #fff;
-		background: rgba(0, 0, 0, 0.5);
+		/*background: rgba(0, 0, 0, 0.5);*/
 		margin: 0;
 		display: inline-block;
 	    margin-bottom: 300px;

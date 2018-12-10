@@ -255,8 +255,8 @@
             <input type="hidden" name="action" value="program_save" />
 
             <div class="row right">
-                <a href="#" class="btn btn-green submit">Сохранить</a>
-                <a href="#" class="btn btn-orange cancel">Отменить</a>
+                <a href="#" class="btn btn-green program_submit">Сохранить</a>
+                <a href="#" class="btn btn-orange program_cancel">Отменить</a>
             </div>
         </form>
     </xsl:template>

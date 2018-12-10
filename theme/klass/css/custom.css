@@ -401,3 +401,8 @@ form .row div {
  * <<Конец
  * Формы
  */
+
+
+.carousel-overlay-content .content-wrap h2 {
+    background: inherit !important;
+}

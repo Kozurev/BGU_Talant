@@ -98,25 +98,14 @@ elseif( $levelId === null )
     $PAGE->set_title( "Программы: уровни" );
     echo $OUTPUT->header();
 
-    $programsLevels = Core::factory( "Level" )->getLevelsList( Level::LVL_PROGRAM );
-    $Result = Core::factory( "Core_Entity" )
+    $ProgramsLevels = Core::factory( "Level" )->getLevelsList( Level::LVL_PROGRAM );
+
+    Core::factory( "Core_Entity" )
+        ->addEntities( $ProgramsLevels )
         ->addSimpleEntity( "href", $CFG->wwwroot . "/blocks/programs" )
-        ->xsl( "levels.xsl" );
-
-    foreach ( $programsLevels as $id => $level )
-    {
-        $Level = new stdClass();
-        $Level->id = $id;
-        $Level->title = $level;
-        $Result->addEntity( $Level, "level" );
-    }
-
-    $ZeroLevel = new stdClass();
-    $ZeroLevel->id = 0;
-    $ZeroLevel->title = "Все";
-    $Result->addEntity( $ZeroLevel, "level" );
-
-    $Result->show();
+        ->addSimpleEntity( "wwwroot", $CFG->wwwroot )
+        ->xsl( "levels.xsl" )
+        ->show();
 }
 
 

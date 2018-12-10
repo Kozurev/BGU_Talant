@@ -37,8 +37,6 @@ class block_programs extends block_base
 
         if( $User->getRoleId() === 1 )
         {
-            $this->content->text = "Список программ";
-
             $Programs = Core::factory( "Program" )->findAll();
             $Types = Core::factory( "Program_Type" )->findAll();
             $Forms = Core::factory( "Program_Form" )->findAll();
@@ -49,6 +47,26 @@ class block_programs extends block_base
                 ->addEntities( $Types )
                 ->addEntities( $Forms )
                 ->xsl( "tables/admin/programs.xsl" )
+                ->show( false );
+
+            $Levels = Core::factory( "Level" )->findAll();
+
+            $aEntities = Level::getEntities();
+            $aoEntities = [];
+
+            foreach ( $aEntities as $id => $title )
+            {
+                $LevelEntity = new stdClass();
+                $LevelEntity->id = $id;
+                $LevelEntity->title = $title;
+                $aoEntities[] = $LevelEntity;
+            }
+
+            $this->content->footer = Core::factory( "Core_Entity" )
+                ->addSimpleEntity( "wwwroot", $CFG->wwwroot )
+                ->addEntities( $Levels )
+                ->addEntities( $aoEntities, "entity" )
+                ->xsl( "tables/admin/levels.xsl" )
                 ->show( false );
         }
         elseif( $User->getRoleId() === 5 )

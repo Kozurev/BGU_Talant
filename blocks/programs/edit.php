@@ -13,6 +13,63 @@ require_once $CFG->libdir . "/custom/autoload.php";
 $action = Core_Array::getRequest( "action", null );
 
 
+
+if( $action === "level_edit" )
+{
+    $id = Core_Array::getRequest( "id", 0 );
+    $Level = Core::factory( "Level", $id );
+
+
+    $aEntities = Level::getEntities();
+    $aoEntities = [];
+
+    foreach ( $aEntities as $id => $title )
+    {
+        $LevelEntity = new stdClass();
+        $LevelEntity->id = $id;
+        $LevelEntity->title = $title;
+        $aoEntities[] = $LevelEntity;
+    }
+
+
+    Core::factory( "Core_Entity" )
+        ->addEntity( $Level )
+        ->addEntities( $aoEntities, "entity" )
+        ->xsl( "forms/admin/level_edit.xsl" )
+        ->show();
+
+    exit;
+}
+
+
+if( $action === "level_save" )
+{
+    $id = Core_Array::Post( "id", 0 );
+    $Level = Core::factory( "Level", $id );
+
+    $Level
+        ->setTitle(
+            Core_Array::Post( "title", "" )
+        )
+        ->setEntityId(
+            Core_Array::Post( "entity_id", 0 )
+        );
+
+    $LogoFile = Core::factory( "File", $Level->getLogoId() )
+        ->setPublic( 1 )
+        ->setFileTypeId( 6 )    //Изображение
+        ->upload( "logo" );
+
+    if( $LogoFile->getId() )
+    {
+        $Level->setLogoId( $LogoFile->getId() );
+    }
+
+    $Level->save();
+    exit;
+}
+
+
 if( $action === "program_edit" )
 {
     $id = Core_Array::getRequest( "id", 0 );
@@ -24,15 +81,16 @@ if( $action === "program_edit" )
     $Forms = Core::factory( "Program_Form" )->findAll();
 
     //Уровни программ
-    $Levels = array();
-    $levels = Core::factory( "Level" )->getLevelsList( Level::LVL_PROGRAM );
-    foreach ( $levels as $id => $title )
-    {
-        $Level = new stdClass();
-        $Level->id = $id;
-        $Level->title = $title;
-        $Levels[] = $Level;
-    }
+    Core::factory( "Level" );
+    $Levels = Level::getLevelsList( Level::LVL_PROGRAM );
+
+//    foreach ( $levels as $id => $title )
+//    {
+//        $Level = new stdClass();
+//        $Level->id = $id;
+//        $Level->title = $title;
+//        $Levels[] = $Level;
+//    }
 
     //Курсы
     $Courses = Core::factory( "Orm" )

@@ -548,6 +548,7 @@ h6 {
 		font-family: arvoregular, Arial, Helvetica, sans-serif;
 		color: #0073A5;
 		/*background: rgba(0, 0, 0, 0.5); */
+		background: inherit !important;
 		margin: 0;
 		display: inline-block;
 	    margin-bottom: 300px;
