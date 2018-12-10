@@ -144,12 +144,15 @@ class course_edit_form extends moodleform {
 
         /**
          * Кастомное поле типа "список" для указания уровня курса (олимпиады)
+         *
+         * @date 10.12.2018
          */
-        require_once "../lib/custom/model/core/array.php";
-        require_once "../lib/custom/model/level.php";
-        $Level = new Level();
-        $options[0] = " ... ";
-        $options = array_merge( $options, $Level->getLevelsList( Level::LVL_OLYMPIAD ) );
+        require_once "../lib/custom/autoload.php";
+        Core::factory( "Level" );
+        $Levels = Level::getLevelsList( Level::LVL_OLYMPIAD ); //array_merge( $options, $Level->getLevelsList( Level::LVL_OLYMPIAD ) );
+        $options = [];
+        foreach ( $Levels as $Level )   $options[$Level->getId()] = $Level->getTitle();
+
         $select = $mform->addElement( 'select', 'level_id', "Уровень", $options );
         $select->setSelected( $course->level_id );
 

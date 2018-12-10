@@ -53,6 +53,7 @@ $(function(){
                 },
                 success: function(responce){
                     $(".block_programs").find(".programs").css("display", "none");
+                    $(".block_programs").find(".levels").css("display", "none");
                     $(".block_programs").find(".card-text").append(responce);
                 }
             });
@@ -70,6 +71,7 @@ $(function(){
                     id: id
                 },
                 success: function(responce){
+                    $(".block_programs").find(".programs").css("display", "none");
                     $(".block_programs").find(".levels").css("display", "none");
                     $(".block_programs").find(".card-text").append(responce);
                 }
@@ -87,10 +89,12 @@ $(function(){
             e.preventDefault();
             $(".program_edit").remove();
             $(".block_programs").find(".programs").css("display", "block");
+            $(".block_programs").find(".levels").css("display", "block");
         })
         .on("click", ".level_cancel", function(e){
             e.preventDefault();
             $(".level_edit").remove();
+            $(".block_programs").find(".programs").css("display", "block");
             $(".block_programs").find(".levels").css("display", "block");
         })
         //Отправка формы

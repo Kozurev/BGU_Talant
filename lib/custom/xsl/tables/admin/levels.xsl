@@ -41,7 +41,7 @@
     <xsl:template match="level">
         <xsl:variable name="entityid" select="entity_id" />
         <tr>
-            <td><xsl:value-of select="id" /></td>
+            <td><xsl:value-of select="position()" /></td>
             <td><xsl:value-of select="title" /></td>
             <td>
                 <xsl:value-of select="//entity[id = $entityid]/title" />

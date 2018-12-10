@@ -232,25 +232,14 @@ elseif( $levelId === null )
     $PAGE->set_title( "Олимпиады: уровни" );
     echo $OUTPUT->header();
 
-    $olympiadLevels = Core::factory( "Level" )->getLevelsList( Level::LVL_OLYMPIAD );
-    $Result = Core::factory( "Core_Entity" )
+    $ProgramsLevels = Core::factory( "Level" )->getLevelsList( Level::LVL_OLYMPIAD );
+
+    Core::factory( "Core_Entity" )
+        ->addEntities( $ProgramsLevels )
         ->addSimpleEntity( "href", $CFG->wwwroot . "/blocks/olympiads" )
-        ->xsl( "levels.xsl" );
-
-    foreach ( $olympiadLevels as $id => $level )
-    {
-        $Level = new stdClass();
-        $Level->id = $id;
-        $Level->title = $level;
-        $Result->addEntity( $Level, "level" );
-    }
-
-    $ZeroLevel = new stdClass();
-    $ZeroLevel->id = 0;
-    $ZeroLevel->title = "Все";
-    $Result->addEntity( $ZeroLevel, "level" );
-
-    $Result->show();
+        ->addSimpleEntity( "wwwroot", $CFG->wwwroot )
+        ->xsl( "levels.xsl" )
+        ->show();
 }
 
 echo $OUTPUT->footer();
