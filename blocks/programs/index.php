@@ -24,6 +24,11 @@ $PAGE->set_context( context_system::instance() );
  */
 if( $programId === null && $levelId !== null )
 {
+    $Level = Core::factory( "Level", $levelId );
+    if( $Level === false )  die( "Уровень №" . $levelId . " не существует" );
+
+    $PAGE->navbar->add( STR_PROGRAMS, $CFG->wwwroot . "/blocks/programs/" );
+    $PAGE->navbar->add( $Level->getTitle() );
     $PAGE->set_title( "Программы" );
     echo $OUTPUT->header();
 
@@ -66,16 +71,30 @@ elseif( $programId !== null )
         $Period->setDateEnd( date( "d.m.Y", strtotime( $Period->getDateEnd() ) ) );
     }
 
+
+    $Level = Core::factory( "Level", $Program->getLevelId() );
+    if( $Level === false )  die( "Уровень №" . $Level->getId() . " не существует" );
+
+    $PAGE->navbar->add( STR_PROGRAMS, $CFG->wwwroot . "/blocks/programs/" );
+    $PAGE->navbar->add( $Level->getTitle(), $CFG->wwwroot . "/blocks/programs?lvlid=" . $Level->getId() );
+    $PAGE->navbar->add( $Program->getTitle() );
     $PAGE->set_title( $Program->getTitle() );
     echo $OUTPUT->header();
 
     $User = Core::factory( "User" )->getCurrent();
 
-    $issetAgreement = Core::factory( "File" )
-        ->queryBuilder()
-        ->where( "user_id", "=", $User->getId() )
-        ->where( "file_type_id", "=", 1 )
-        ->getCount();
+    if( $User === false || $User->getId() == 1 )
+    {
+        $issetAgreement = 0;
+    }
+    else
+    {
+        $issetAgreement = Core::factory( "File" )
+            ->queryBuilder()
+            ->where( "user_id", "=", $User->getId() )
+            ->where( "file_type_id", "=", 1 )
+            ->getCount();
+    }
 
     Core::factory( "Core_Entity" )
         ->addSimpleEntity( "wwwroot", $CFG->wwwroot )
@@ -95,6 +114,7 @@ elseif( $programId !== null )
  */
 elseif( $levelId === null )
 {
+    $PAGE->navbar->add( STR_PROGRAMS );
     $PAGE->set_title( "Программы: уровни" );
     echo $OUTPUT->header();
 

@@ -35,7 +35,7 @@ class File extends Core_Entity
     /**
      * Название файла-шаблона для формирования согласия на обработку персональных данных
      */
-    const TEMPLATE_AGREEMENT = "agreement.php";
+    const TEMPLATE_AGREEMENT = "user_agreement.php";
 
 
     /**

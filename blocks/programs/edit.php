@@ -1,6 +1,7 @@
-<?php
+﻿<?php
 /**
- * Файл редактирования программ
+ * Файл для обработки AJAX-запросов
+ * тут собраны обработчики для формирования форм редактирования и сохранения данных программ/уровней
  *
  * @author Bad Wolf
  * @date 12.09.2018 11:13
@@ -47,17 +48,18 @@ if( $action === "level_save" )
     $id = Core_Array::Post( "id", 0 );
     $Level = Core::factory( "Level", $id );
 
+    /**
+     * Костыль для исправления ошибки кодировки передачи русских символов из формы enctype="multipart/form-data"
+     */
+    $recodeTitle = iconv( "utf-8", "ISO-8859-1", $_POST["title"] );
+
     $Level
-        ->setTitle(
-            Core_Array::Post( "title", "" )
-        )
-        ->setEntityId(
-            Core_Array::Post( "entity_id", 0 )
-        );
+        ->setTitle( $recodeTitle )
+        ->setEntityId( Core_Array::Post( "entity_id", 0 ) );
 
     $LogoFile = Core::factory( "File", $Level->getLogoId() )
         ->setPublic( 1 )
-        ->setFileTypeId( 6 )    //Изображение
+        ->setFileTypeId( 6 )    //type_id = 6 - изображение
         ->upload( "logo" );
 
     if( $LogoFile->getId() )
@@ -67,6 +69,7 @@ if( $action === "level_save" )
 
     $Level->save();
     exit;
+    //header( "Location: " . $CFG->wwwroot . "/my/" );
 }
 
 
@@ -83,14 +86,6 @@ if( $action === "program_edit" )
     //Уровни программ
     Core::factory( "Level" );
     $Levels = Level::getLevelsList( Level::LVL_PROGRAM );
-
-//    foreach ( $levels as $id => $title )
-//    {
-//        $Level = new stdClass();
-//        $Level->id = $id;
-//        $Level->title = $title;
-//        $Levels[] = $Level;
-//    }
 
     //Курсы
     $Courses = Core::factory( "Orm" )
@@ -126,6 +121,7 @@ if( $action === "program_edit" )
         ->show();
 
     exit;
+    //header( "Location: " . $CFG->wwwroot . "/my/" );
 }
 
 
@@ -137,34 +133,24 @@ if( $action === "program_save" )
     $id = Core_Array::Post( "id", null );
     $logo = Core_Array::File( "logo", null );
 
+    /**
+     * Костыль для исправления ошибки кодировки передачи русских символов из формы enctype="multipart/form-data"
+     */
+    $recodeTitle = iconv( "utf-8", "ISO-8859-1", Core_Array::Post( "title", "" ) );
+    $recodeDescription = iconv( "utf-8", "ISO-8859-1", Core_Array::Post( "description", "" ) );
+    $recodeDocumentType = iconv( "utf-8", "ISO-8859-1", Core_Array::Post( "document_type", "" ) );
+    $recodeCode = iconv( "utf-8", "ISO-8859-1", Core_Array::Post( "code", "" ) );
+
     $Program = Core::factory( "Program", $id )
-        ->setTitle(
-            Core_Array::Post( "title", "" )
-        )
-        ->setDescription(
-            Core_Array::Post( "description", "" )
-        )
-        ->setHours(
-            Core_Array::Post( "hours", 0 )
-        )
-        ->setDocumentType(
-            Core_Array::Post( "document_type", "" )
-        )
-        ->setCode(
-            Core_Array::Post( "code", "" )
-        )
-        ->setPrice(
-            Core_Array::Post( "price", 0 )
-        )
-        ->setTypeId(
-            Core_Array::Post( "type_id", 0 )
-        )
-        ->setFormId(
-            Core_Array::Post( "form_id", 0 )
-        )
-        ->setLevelId(
-            Core_Array::Post( "level_id", 0 )
-        );
+        ->setTitle( $recodeTitle )
+        ->setDescription( $recodeDescription )
+        ->setHours( Core_Array::Post( "hours", 0 ) )
+        ->setDocumentType( $recodeDocumentType )
+        ->setCode( $recodeCode )
+        ->setPrice( Core_Array::Post( "price", 0 ) )
+        ->setTypeId( Core_Array::Post( "type_id", 0 ) )
+        ->setFormId( Core_Array::Post( "form_id", 0 ) )
+        ->setLevelId( Core_Array::Post( "level_id", 0 ) );
 
     $Program->save();
 
@@ -229,8 +215,8 @@ if( $action === "program_save" )
      */
     $datesFrom = Core_Array::Post( "date_start", null );
     $datesTo = Core_Array::Post( "date_end", null );
-    $visiblesFrom = Core_Array::Post( "visible_start", null );
-    $visiblesTo = Core_Array::Post( "visible_end", null );
+    $visibleFrom = Core_Array::Post( "visible_start", null );
+    $visibleTo = Core_Array::Post( "visible_end", null );
     $ids = Core_Array::Post( "period_id", null );
 
     if( $datesFrom === null )   $countPeriods = 0;
@@ -249,8 +235,8 @@ if( $action === "program_save" )
         $Period = Core::factory( "Program_Period", $period_id )
             ->setDateStart( Core_Array::getValue( $datesFrom, $i, "" ) )
             ->setDateEnd( Core_Array::getValue( $datesTo, $i, "" ) )
-            ->setVisibleStart( Core_Array::getValue( $visiblesFrom, $i, "" ) )
-            ->setVisibleEnd( Core_Array::getValue( $visiblesTo, $i, "" ) )
+            ->setVisibleStart( Core_Array::getValue( $visibleFrom, $i, "" ) )
+            ->setVisibleEnd( Core_Array::getValue( $visibleTo, $i, "" ) )
             ->setProgramId( $Program->getId() );
 
         $Period->save();

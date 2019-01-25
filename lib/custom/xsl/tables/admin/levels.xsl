@@ -24,7 +24,7 @@
                         <tr>
                             <th>№</th>
                             <th>Название</th>
-                            <th>Сущьность</th>
+                            <th>Сущность</th>
                             <th>Действия</th>
                         </tr>
                         <xsl:apply-templates select="level" />

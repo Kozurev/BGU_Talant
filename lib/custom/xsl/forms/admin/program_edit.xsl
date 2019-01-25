@@ -9,7 +9,7 @@
             }
         </style>
 
-        <form action="." method="POST" class="program_edit" enctype="multipart/form-data">
+        <form action="/blocks/programs/edit.php" method="POST" class="program_edit" accept-charset="utf-8" enctype="multipart/form-data">
             <xsl:choose>
                 <xsl:when test="program/id != ''">
                     <h5>Редактирование программы</h5>
@@ -256,7 +256,8 @@
 
             <div class="row right">
                 <a href="#" class="btn btn-green program_submit">Сохранить</a>
-                <a href="#" class="btn btn-orange program_cancel">Отменить</a>
+                <!--<input class="btn btn-green" type="submit" value="Сохранить" />-->
+                <a href="#" class="btn btn-orange cancel">Отменить</a>
             </div>
         </form>
     </xsl:template>

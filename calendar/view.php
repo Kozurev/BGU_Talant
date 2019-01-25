@@ -88,7 +88,15 @@ if ($courseid != SITEID && !empty($courseid)) {
     $PAGE->set_context(context_system::instance());
 }
 
-require_login($course, false);
+
+/**
+ * Изменено значение аргумента false на true для гостевого доступа
+ *
+ * @author Bad Wolf
+ * @date 12.12.2018 11:07
+ */
+//require_login($course, false);
+require_login( $course, true );
 
 $calendar = calendar_information::create($time, $courseid, $categoryid);
 

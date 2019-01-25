@@ -18,8 +18,10 @@ $roleId = $User->getRoleId();   //id роли текущего авторизо�
 
 $PAGE->set_url( '/blocks/programs/' );
 $PAGE->set_pagelayout( 'standard' );
+//$PAGE->set_pagelayout( 'admin' );
 $PAGE->set_cacheable( false );
 $PAGE->set_context( context_system::instance() );
+$PAGE->navbar->add( "Главная", $CFG->wwwroot . "?redirect=0" );
 
 
 /**
@@ -27,13 +29,19 @@ $PAGE->set_context( context_system::instance() );
  */
 if ( $olympiadId === null && $levelId !== null )
 {
+    $Level = Core::factory( "Level", $levelId );
+    if( $Level === false )  die( "Уровень №" . $levelId . " не существует" );
+
+    $PAGE->navbar->add( STR_OLYMPIADS, $CFG->wwwroot . "/blocks/olympiads/" );
+    $PAGE->navbar->add( $Level->getTitle() );
     $PAGE->set_title( "Олимпиады" );
     echo $OUTPUT->header();
 
     $sql = "SELECT cour.id, shortname, startdate, enddate, logo
             FROM mdl_course as cour
             WHERE cour.category = $CFG->olympiadsCategoryId
-              AND (enddate > ". time() ." OR enddate = 0) ";
+              AND (enddate > ". time() ." OR enddate = 0) 
+              AND cour.visible = 1 ";
 
 
     /**
@@ -150,6 +158,13 @@ elseif( $olympiadId !== null )
         exit;
     }
 
+    $Level = Core::factory( "Level", $Olympiad->level_id );
+    if( $Level === false )  die( "Уровень №" . $levelId . " не существует" );
+
+    $PAGE->navbar->add( STR_OLYMPIADS, $CFG->wwwroot . "/blocks/olympiads/" );
+    $PAGE->navbar->add( $Level->getTitle(), $CFG->wwwroot . "/blocks/olympiads?lvlid=" . $Level->getId() );
+    $PAGE->navbar->add( $Olympiad->shortname );
+
 
     /**
      * Проверка на то, не закончился ли период проведения олимпиады
@@ -209,7 +224,11 @@ elseif( $olympiadId !== null )
             <div class="col-md-8 col-sm-12">
                 <h2><?php echo  $Olympiad->fullname ?></h2>
                 <p>Дата проведения: с <?php echo  $Olympiad->startdate_string ?> по <?php echo  $Olympiad->enddate_string ?></p>
-                <?php echo  $Olympiad->summary ?>
+                <?php
+                    $context = context_course::instance($Olympiad->id);
+                    $Olympiad->summary = file_rewrite_pluginfile_urls( $Olympiad->summary, 'pluginfile.php', $context->id, 'course', 'summary', NULL );
+                    echo format_text($Olympiad->summary, $Olympiad->summaryformat);
+                ?>
             </div>
         </div>
 
@@ -229,6 +248,7 @@ elseif( $olympiadId !== null )
  */
 elseif( $levelId === null )
 {
+    $PAGE->navbar->add( STR_OLYMPIADS );
     $PAGE->set_title( "Олимпиады: уровни" );
     echo $OUTPUT->header();
 

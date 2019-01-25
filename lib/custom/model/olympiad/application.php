@@ -15,7 +15,7 @@ class Olympiad_Application extends Core_Entity
      * @var array
      */
     protected $tableRows = ["id", "surname", "name", "patronymic", "country_id", "region_id", "city_id", "sex", "nationality_id", "educational_institution",
-                            "class", "address", "phone", "additional_phone", "email", "user_id", "olympiad_id"];
+                            "class", "address", "phone", "additional_phone", "email", "user_id", "olympiad_id", "timestamp"];
 
 
     /**
@@ -163,6 +163,13 @@ class Olympiad_Application extends Core_Entity
      */
     protected $olympiad_id = 0;
 
+
+    /**
+     * Время создания заявки
+     *
+     * @var int
+     */
+    protected $timestamp = 0;
 
 
     /**
@@ -338,6 +345,12 @@ class Olympiad_Application extends Core_Entity
     public function getOlympiadId()
     {
         return intval( $this->olympiad_id );
+    }
+
+
+    public function getTimestamp()
+    {
+        return intval( $this->timestamp );
     }
 
 
@@ -574,6 +587,17 @@ class Olympiad_Application extends Core_Entity
         }
 
         return $result;
+    }
+
+
+    public function save( $obj = null )
+    {
+        if( $this->getTimestamp() === 0 )
+        {
+            $this->timestamp = time();
+        }
+
+        parent::save();
     }
 
 

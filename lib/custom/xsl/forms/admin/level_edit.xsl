@@ -9,7 +9,7 @@
             }
         </style>
 
-        <form action="." method="POST" class="level_edit" enctype="multipart/form-data">
+        <form action="/blocks/programs/edit.php" method="POST" class="level_edit" accept-charset="utf-8" enctype="multipart/form-data">
             <xsl:choose>
                 <xsl:when test="level/id != ''">
                     <h5>Редактирование уровня</h5>
@@ -25,7 +25,7 @@
                     <label for="title">Название</label>
                 </div>
                 <div class="col-md-4 col-sm-12 col-md-offset-1 col-sm-offset-0 left">
-                    <input name="title" id="title" class="form-control" value="{level/title}" />
+                    <input type="text" name="title" id="title" class="form-control" required="required" value="{level/title}" />
                 </div>
             </div>
 
@@ -65,6 +65,7 @@
 
             <div class="row right">
                 <a href="#" class="btn btn-green level_submit">Сохранить</a>
+                <!--<input class="btn btn-green" type="submit" value="Сохранить" />-->
                 <a href="#" class="btn btn-orange level_cancel">Отменить</a>
             </div>
         </form>

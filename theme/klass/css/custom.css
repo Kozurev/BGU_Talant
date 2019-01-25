@@ -319,13 +319,20 @@
     font-size: 20px;
 }
 
+.program_document {
+    font-family: open-seans;
+    font-size: 20px;
+}
+
 .program .bottom {
     vertical-align: middle;
 }
 
 .program_type, .program_form {
+    /*font-family: open-seans;*/
+    /*font-size: 16px;*/
     font-family: open-seans;
-    font-size: 16px;
+    font-size: 20px;
 }
 
 .program .bottom .price {
@@ -405,4 +412,11 @@ form .row div {
 
 .carousel-overlay-content .content-wrap h2 {
     background: inherit !important;
+}
+
+
+#header-title {
+    margin-right: 50%;
+    font-size: 35px;
+    color: white;
 }
