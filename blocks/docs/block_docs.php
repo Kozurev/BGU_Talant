@@ -45,7 +45,7 @@ class block_docs extends block_base
                 ->where( "file_type_id", "=", 1 )
                 ->find();
 
-            if( $FileAgreement === false )
+            if( $FileAgreement === null )
             {
                 $this->content->text = "<h5>Для возможности записи на программы необходимо загрузить скан-копию или фотографию согласия на обработку персональных данных</h5>";
                 $this->content->text .= Core::factory( "Core_Entity" )

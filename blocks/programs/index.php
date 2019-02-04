@@ -25,7 +25,7 @@ $PAGE->set_context( context_system::instance() );
 if( $programId === null && $levelId !== null )
 {
     $Level = Core::factory( "Level", $levelId );
-    if( $Level === false )  die( "Уровень №" . $levelId . " не существует" );
+    if( $Level === null )   die( "Уровень №" . $levelId . " не существует" );
 
     $PAGE->navbar->add( STR_PROGRAMS, $CFG->wwwroot . "/blocks/programs/" );
     $PAGE->navbar->add( $Level->getTitle() );
@@ -50,7 +50,7 @@ if( $programId === null && $levelId !== null )
 elseif( $programId !== null )
 {
     $Program = Core::factory( "Program", $programId );
-    if( $Program === false )    die( "Программы с таким идентификатором не существует" );
+    if( $Program === null )    die( "Программы с таким идентификатором не существует" );
 
     $date = date( "Y-m-d" );
 
@@ -73,7 +73,7 @@ elseif( $programId !== null )
 
 
     $Level = Core::factory( "Level", $Program->getLevelId() );
-    if( $Level === false )  die( "Уровень №" . $Level->getId() . " не существует" );
+    if( $Level === null )  die( "Уровень №" . $Level->getId() . " не существует" );
 
     $PAGE->navbar->add( STR_PROGRAMS, $CFG->wwwroot . "/blocks/programs/" );
     $PAGE->navbar->add( $Level->getTitle(), $CFG->wwwroot . "/blocks/programs?lvlid=" . $Level->getId() );

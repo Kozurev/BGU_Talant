@@ -173,6 +173,17 @@ class Olympiad_Application extends Core_Entity
 
 
     /**
+     * Геттер для свойства id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return intval( $this->id );
+    }
+
+
+    /**
      * Геттер для свойства surname (фамилия)
      *
      * @return string
@@ -566,7 +577,7 @@ class Olympiad_Application extends Core_Entity
      * Преобразование названия свойства в название сеттера/геттера для него
      * Пример: PropTo( "educational_institution", Olympiad_Application::SETTER ) === "setEducationalInstitution";
      *
-     * TODO: так как правило наименования свйоств моделей, столбцов в таблице и сеттеров/геттеров одинаково для всей системы то необходимо вынести эту функцию в Core_Entity или какой-то отдельный класс
+     * TODO: так как правило наименования свйоств моделей, столбцов в таблице и сеттеров/геттеров одинаково для все системы то необходимо вынести эту функцию в Core_Entity или какой-то отдельный класс
      *
      * @param $propName - название свойства
      * @param $type     - тип преобразования: в название сеттера (self::SETTER) или геттера (self::GETTER)

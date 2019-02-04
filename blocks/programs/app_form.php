@@ -135,7 +135,15 @@ if( $action === "save_app_data" )
 
     $Application->save();
 
-    header( "Location: ". $CFG->wwwroot ."/my" );
+    if ( $appId === 0 )
+    {
+        header( 'Location: ' . $CFG->wwwroot . '/blocks/programs/intermediate_page.php' );
+    }
+    else
+    {
+        header( "Location: " . $CFG->wwwroot . "/my/" );
+    }
+    //header( "Location: ". $CFG->wwwroot ."/my" );
 }
 
 
@@ -149,7 +157,7 @@ $periodId = Core_Array::Get( "period_id", null );
 if( $periodId === null )   die( "Отсутствует обязательный GET-параметр" );
 
 $Period = Core::factory( "Program_Period", $periodId );
-if( $Period === false )     die( "Период с id $periodId не существует" );
+if( $Period === null )     die( "Период с id $periodId не существует" );
 
 $User = Core::factory( "User" )->getCurrent();
 
@@ -169,7 +177,7 @@ $Application = Core::factory( "Program_Application" )
 
 $output = Core::factory( "Core_Entity" );
 
-if( $Application !== false )    $output->addEntity( $Application, "app" );
+if( $Application !== null )    $output->addEntity( $Application, "app" );
 
 
 try
@@ -185,7 +193,7 @@ try
     $Cities1 = [];
     $Cities2 = [];
 
-    if( $Application !== false && $Application->getId() != 0 )
+    if( $Application !== null && $Application->getId() != 0 )
     {
         $Regions1 = $DB->get_records( "address_region", ["country_id" => $Application->getCountryId( Program_Application::TYPE_CONSUMER )] );
         $Cities1  = $DB->get_records( "address_city", ["region_id" => $Application->getRegionId( Program_Application::TYPE_CONSUMER )] );

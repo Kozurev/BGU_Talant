@@ -70,3 +70,23 @@ function getCurrentAcademicalYear( $delimiter = "-" )
         return strval( $year ) . $delimiter . strval( $year + 1 );
     }
 }
+
+
+/**
+ * Преобразовывает строку из snake_case в camelCase
+ *
+ * @param string $convertingString
+ * @return string
+ */
+function toCamelCase( $convertingString )
+{
+    $return = '';
+    $words = explode( '_', $convertingString );
+
+    foreach ( $words as $word )
+    {
+        $return .= ucfirst( $word );
+    }
+
+    return lcfirst( $return );
+}

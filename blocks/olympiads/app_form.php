@@ -87,7 +87,15 @@ if( $action === "save_app_data" )
         $User->courseSubscribe( $Application->getOlympiadId(), 5 );
     }
 
-    header( "Location: " . $CFG->wwwroot . "/my/" );
+    if ( $applicationId === 0 )
+    {
+        header( 'Location: ' . $CFG->wwwroot . '/blocks/olympiads/intermediate_page.php' );
+    }
+    else
+    {
+        header( "Location: " . $CFG->wwwroot . "/my/" );
+    }
+
     exit;
 }
 
@@ -115,7 +123,7 @@ catch ( dml_exception $e )
 }
 
 
-if( $Course === false )
+if( $Course == false )
 {
     $PAGE->set_title( "Ошибка" );
     echo $OUTPUT->header() . "Олимпиады с id <b>$olympiadId</b> не существует" . $OUTPUT->footer();
@@ -136,20 +144,8 @@ $Application = Core::factory( "Olympiad_Application" )  //Существующа
 $PAGE->set_title( "Заявка на участие" );
 echo $OUTPUT->header();
 
-if( $Application === false )
+if( $Application === null )
 {
-//    $UserExistingApplication = Core::factory( "Olympiad_Application" )
-//        ->queryBuilder()
-//        ->where( "user_id", "=", $User->getId() )
-//        ->find();
-//
-//    if( $UserExistingApplication !== false )
-//    {
-//        $UserExistingApplication->unsetId();
-//        $Application = $UserExistingApplication;
-//    }
-//    else
-//    {
         $Application = Core::factory( "Olympiad_Application" )
             ->setSurname( $User->lastname )
             ->setName( $User->firstname )
@@ -158,7 +154,6 @@ if( $Application === false )
             ->setEmail( $User->email )
             ->setPhone( $User->phone1 )
             ->setAdditionalPhone( $User->phone2 );
-//    }
 }
 
 

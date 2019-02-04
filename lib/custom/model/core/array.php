@@ -1,24 +1,24 @@
 <?php
 /**
- * Класс для работы с массивами, в том числе $_GET, $_POST, $_FILES и $_SESSION
+ * Класс для работы с массивами
  *
- * @author: Bad Wolf
- * @date 07.09.2018 18:14
+ * @author Bad Wolf
+ * @date 20.03.2018 16:03
  */
+
 class Core_Array
 {
-
     /**
-     * Получение значения из массива
+     * Получение значения элемента из массива по ключу
      *
      * @param $arr - исходный массив
-     * @param $key - ключ массива
-     * @param $default - возвращаемое значение, если не существует в массиве элемент с переданным ключем
+     * @param $key - ключь
+     * @param $default - значение по умолчанию
      * @return mixed
      */
-    public static function getValue($arr, $key, $default)
+    public static function getValue( $arr, $key, $default )
     {
-        if(isset($arr[$key]) && $arr[$key] != "")
+        if( isset( $arr[$key] ) && $arr[$key] != "" )
         {
             return $arr[$key];
         }
@@ -27,10 +27,10 @@ class Core_Array
 
 
     /**
-     * Получение значения из массива $_GET
+     * Метод для получения значения из массива $_GET
      *
-     * @param $key - ключ массива
-     * @param $default - возвращаемое значение, если не существует в массиве элемент с переданным ключем
+     * @param $key - ключь
+     * @param $default - значение по умолчанию
      * @return mixed
      */
     public static function Get( $key, $default )
@@ -40,15 +40,26 @@ class Core_Array
 
 
     /**
-     * Получение значения из массива $_POST
+     * Метод для получения значения из массива $_POST
      *
-     * @param $key - ключ массива
-     * @param $default - возвращаемое значение, если не существует в массиве элемент с переданным ключем
+     * @param $key - ключь
+     * @param $default - значение по умолчанию
      * @return mixed
      */
     public static function Post( $key, $default )
     {
         return self::getValue( $_POST, $key, $default );
+    }
+
+
+    /**
+     * @param $key
+     * @param $default
+     * @return mixed
+     */
+    public static function getRequest( $key, $default )
+    {
+        return self::getValue( $_REQUEST, $key, $default );
     }
 
 
@@ -75,34 +86,6 @@ class Core_Array
     public static function Session( $key, $default )
     {
         return self::getValue( $_SESSION, $key, $default );
-    }
-
-
-    /**
-     * Получение значения, передаваемого из формы любым методом, по названию ключа
-     *
-     * @param $key - название ключа
-     * @param $default - значение по умолчанию
-     * @return mixed
-     */
-    public static function getRequest( $key, $default )
-    {
-        if( self::Get( $key, null ) !== null )
-        {
-            return self::Get( $key, $default );
-        }
-        elseif( self::Post( $key, null ) !== null )
-        {
-            return self::Post( $key, $default );
-        }
-        elseif( self::File( $key, null ) !== null )
-        {
-            return self::File( $key, $default );
-        }
-        else
-        {
-            return $default;
-        }
     }
 
 }

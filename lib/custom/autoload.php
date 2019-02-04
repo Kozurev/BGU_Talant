@@ -13,7 +13,7 @@ define( 'TEST_MODE_ORM', false );
 define( "STR_PROGRAMS", "Подготовительные курсы" );
 define( "STR_OLYMPIADS", "Олимпиады" );
 
-require_once "model/core/database.php";
+require_once "model/db.php";
 require_once "model/orm.php";
 require_once "model/core/entity/model.php";
 require_once "model/core/entity.php";
@@ -21,3 +21,5 @@ require_once "model/core/core.php";
 require_once "model/core/array.php";
 require_once "functions.php";
 require_once "observers.php";
+
+Orm::Debug( false );
