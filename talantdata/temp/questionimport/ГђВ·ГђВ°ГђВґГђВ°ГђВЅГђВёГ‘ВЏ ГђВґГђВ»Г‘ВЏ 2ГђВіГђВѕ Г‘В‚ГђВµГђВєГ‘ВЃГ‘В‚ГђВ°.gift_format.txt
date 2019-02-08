@@ -1,0 +1,79 @@
+﻿// Начало вопроса: 06. ВопрМножВыбор
+Wie füllt man die Lücken aus?<br>Markieren Sie die richtige Variante! {
+=zur  
+~am  
+~ins 
+~zum 
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Wie füllt man die Lücken aus?<br>Markieren Sie die richtige Variante! {
+=ein 
+~eines 
+~der 
+~einem 
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Wie füllt man die Lücken aus?<br>Markieren Sie die richtige Variante! {
+~Werken 
+~ Zahlen 
+=Mitteln 
+~Kosten 
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Wie füllt man die Lücken aus?<br>Markieren Sie die richtige Variante! {
+~darauf
+~daneben
+~ damit
+=dazu 
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Wie füllt man die Lücken aus?<br>Markieren Sie die richtige Variante! {
+~Begegnung 
+~Zusammenkunft
+~Besprechung 
+=Treffen 
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Wie füllt man die Lücken aus?<br>Markieren Sie die richtige Variante! {
+~Widerstand
+~Einspruch
+~Paradox 
+=Widerspruch  
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Wie füllt man die Lücken aus?<br>Markieren Sie die richtige Variante! {
+~ihrer  
+~unserer
+=<b>seiner</b> 
+~eurer
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Wie füllt man die Lücken aus?<br>Markieren Sie die richtige Variante! {
+=beschäftigte 
+~interessierte 
+~sprach 
+~befasste 
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Wie füllt man die Lücken aus?<br>Markieren Sie die richtige Variante! {
+~Zusammenballung 
+~Auswahl 
+=Sammlung 
+~Bestand 
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Wie füllt man die Lücken aus?<br>Markieren Sie die richtige Variante! {
+~manchem 
+=allem 
+~einigem 
+~wenigem 
+}

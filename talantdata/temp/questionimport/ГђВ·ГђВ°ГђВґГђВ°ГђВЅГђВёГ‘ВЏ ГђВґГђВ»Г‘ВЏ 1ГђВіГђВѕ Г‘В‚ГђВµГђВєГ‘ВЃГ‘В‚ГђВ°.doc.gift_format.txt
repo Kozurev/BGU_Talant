@@ -1,0 +1,96 @@
+﻿// Начало вопроса: 06. ВопрМножВыбор
+Was war Carl Bosch: {
+=ein bekannter deutscher Chemiker 
+~ein amerikanischer Chemiker 
+~ ein Vorstandsvorsitzender des Wirtschaftskonzerns.
+~Techniker des Chemiekonzerns
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Wo erreichte Carl Bosch den Abschluss der Schule: {
+=in Köln 
+~in München
+~in Bonn
+~in Schlesien 
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Was bedeutet das Wort Hüttenwerk: {
+~Chemiekonzern 
+~Möbelfabrik
+~in Köln 
+=Eisenwerk 
+~Anlage zur Erzeugung von Petersilie 
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Wann wurde er zum ordentlichen Mitglied der Akademie der Wissenschaften gewählt: {
+~1931
+~1939 
+~1936
+= 1935
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Womit begann der schnelle berufliche Aufstieg von Carl Bosch: {
+~mit dem Eintitt in das Hüttenwerk 
+~mit der Forschungsarbeit 
+~mit dem Abschluss der Schule 
+=mit dem Eintritt in das Unternehmen BASF 
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Auf wessen Vorschlag trat er in das Unternehmen BASF ein: {
+~seines Vaters
+~seines Kollegen
+~eines ordentlichen Mitglieds der Heidelberger Akademie der Wissenschaften 
+=seines Doktorvaters 
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Wie war der Auftrag von BASF: {
+~Ammoniak zu produzieren 
+~Dünger und Sprengstoffe zu produzieren 
+=die Ammoniaksynthese auf das Niveau einer Industriefertigung zu bringen 
+~Nylon und Perlon zu entwickeln 
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Was ist Ausgangsstoff für die großtechnische Synthese von Nitraten:  {
+=Ammoniak 
+~Dünger 
+~Sprengstoffe 
+~Nylon und Perlon 
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Welche Akademie der Wissenschaften ernannte Bosch zum Ehrenmitglied : {
+~Frankfurter 
+~Kölner
+=Preußische 
+~Deutsche
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Wo studierte Carl Bosch Chemie: {
+~in der Oberrealschule in Köln 
+=an der Universität Leipzig 
+~in der Heidelberger Akademie der Wissenschaften 
+~in der Stadt Frankfurt 
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Wann ist Carl Bosch verstorben? {
+~am 26. April 1941
+~am 26. August 1940
+=am 26. April 1940
+~am 27. April 1940
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+In welchem Jahr hat  Carl Bosch den Goethepreis der Stadt Frankfurt erhalten? {
+~1937 
+~1935
+~1936
+=1939
+}

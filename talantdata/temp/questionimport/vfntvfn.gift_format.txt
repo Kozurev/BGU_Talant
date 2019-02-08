@@ -1,0 +1,63 @@
+﻿// Начало вопроса: 06. ВопрМножВыбор
+Яхта прошла по течению реки 9 км и такой же путь против течения. Путь по течению занял на 2 часа меньше, чем путь против течения. Найдите скорость яхты в стоячей воде, если скорость течения реки равна 3 км/час. {
+=6
+~5
+~7
+~4
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Ручка дороже тетради на 20% и дешевле книги на 34%. На сколько процентов тетрадь дешевле книги? {
+=45
+~40
+~35
+~50
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Найдите сумму всех трехзначных чисел, которые при делении на 5 дают остаток равный 2. {
+~98900
+~98000
+=98910
+~98100
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Из пунктов А и В навстречу друг другу вышли два пешехода с постоянными, но разными скоростями. После встречи они продолжили движение каждый в своем направлении. Первый пришел в пункт В через 4 часа после встречи, второй пришел в пункт А через 9 часов после встречи. Сколько часов они шли до встречи? {
+~8
+~5
+~4
+=6
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Биссектрисы треугольника MNK пересекаются в точке Р. Площадь треугольника PMN равна 5. Найдите площадь треугольника MNK, если 3MN\=KM+KN. {
+~25
+~22
+~24
+=20
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Объем первого цилиндра равен 12 куб.м. У второго цилиндра высота в три раза больше, а радиус основания - в два раза меньше, чем у первого. Найдите объем второго цилиндра. {
+~12
+~10 
+=9
+~6
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Сколько действительных корней имеет уравнение <img src\="data:image/png;base64,R0lGODlhSQAVAHcAMSH+GlNvZnR3YXJlOiBNaWNyb3NvZnQgT2ZmaWNlACH5BAEAAAAALAEAAwBIAA4AhQAAAAAAAB0AAAAAHR0AHQAAMx0AMgAcSB0dSAAzWh1GbDMAADIAMjQ0HTNdXTVbbjNbgEgcAFozAEhbSEhIW0hZf1l/WUhuW11/f0huf2xGHW5GM25GRn9/XX9uSGaIiIBbM4iIZgECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwa/QABgISwaj8ikcjlkOouLAORJrR4XU6tSoO16vx5B9ksub4uBdKCQDAzQB2+a3Rw+IoGE0i0EBeJCYnUAgEkaAIdIaotLHEMBDlFvAJOGiEhcAARFBkyZX5+BokKbS6FCYVMRRYVKY14CeQCpAJ+nSK+jAHNODUkSi2p6SH6jgrVMDcNGggxUCgAIABtlErOCtkvQ0tRCko9q0EYasgB4oGl6UWpvsZVC5MPnSRRFHmb4ZRqt+f1eeGnE+RuYJAgAOw\=\=" /> ? {
+=3
+~1
+~2
+~5
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+К графику функции <img src\="data:image/png;base64,R0lGODlhTwASAHcAMSH+GlNvZnR3YXJlOiBNaWNyb3NvZnQgT2ZmaWNlACH5BAEAAAAALAAABABJAA4AhQAAAAAAAAAAOgAAZgA6ZgA6kABmtjoAADoAOjo6kDpmZjqQkDqQtmYAAGYAOmY6AGY6OmZmZmZmkGZmtmaQ22a2/5A6AJA6ZpBmAJBmZpBmkJCQkJC2/5Db25Db/7ZmALZmOrZmZrZmkLaQZrbbkLb//9uQOtuQZtuQkNu2Ztu2kNvbkNvbttv/ttv///+2Zv/bkP/btv//tv//2wECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwbcQIBwSCwaj8gZKBAglJDQqHRKJb4CDEygUu16v8iRxAWGHQQesDqq2pC/M0sAHV1yZQ16+VBwyR4GQigRJBAcXyZMemZ9fwYpFR99AC+BQ3hMmUyTQzMaLA4dF0+UmlxdVwt5aZ6goqSUA08maWtxBLVSiZqylxAJLQ1zDEK3uQAwCB4yE2tDJpbOQrua0dBFcRUnxwCYmptvRDAQnNKXq0Pj5UIfChTSMRIrCB0isNJ4evHz9bAm618+OIkj4JQ5AB/ACSxB0OCMDPcOSvQyIwS3iRilWMCVsSOVIAA7" />  проведена касательная , параллельная прямой <img src\="data:image/png;base64,R0lGODlhMQASAHcAMSH+GlNvZnR3YXJlOiBNaWNyb3NvZnQgT2ZmaWNlACH5BAEAAAAALAAABgAvAAwAhQAAAAAAAAAAOgAAZgA6ZgA6kABmtjoAADoAOjpmZmYAAGYAOmY6AGY6OmZmkGZmtmaQ22a2/5A6AJA6ZpBmZpBmkJDb25Db/7ZmALZmOrZmZrZmkLb//9uQOtuQZtu2ZtvbkNvbttv///+2Zv/bkP/btv//tv//2wECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwaeQIBwSCwajyVGICCIHJ/QqNGkEFw6gQFHKswEnFQrN0o6aAHlgsjEMBA/EYwaMHIPT5Klfik+jgJqJxUhCxYTW0YjZx0XY1BUZ0J4BI1HJAgXJg+OT3h9Qx12R3gRHpV3eXt8p5ISn0IkDXNPGAkQnEdYTh1iJQ4gCBYbHH+RAB2zuENle1YYBByeTsWIJxSIytlGJxqs2t8SlN/jQ0EAOw\=\=" /> Найдите площадь треугольника, образованного этой касательной и осями координат. (20,25) {
+~20,75
+~20,5
+=20,25
+~20,05
+}

@@ -1,0 +1,44 @@
+[Ср 19 дек 2018 13:25:57] [info] instantiating backup controller cc940c2edbc03bea95b1253cadd9bfa6
+[Ср 19 дек 2018 13:25:57] [debug] setting controller status to 100
+[Ср 19 дек 2018 13:25:57] [debug] loading controller plan
+[Ср 19 дек 2018 13:25:57] [debug] setting controller status to 300
+[Ср 19 дек 2018 13:25:57] [debug] applying plan defaults
+[Ср 19 дек 2018 13:25:57] [debug] setting controller status to 400
+[Ср 19 дек 2018 13:25:57] [debug] setting file inclusion to 0
+[Ср 19 дек 2018 13:25:57] [info] checking plan security
+[Ср 19 дек 2018 13:25:57] [debug] setting controller status to 500
+[Ср 19 дек 2018 13:25:57] [info] checking plan security
+[Ср 19 дек 2018 13:25:57] [info] checking plan security
+[Ср 19 дек 2018 13:25:57] [info] checking plan security
+[Ср 19 дек 2018 13:25:57] [debug] saving controller to db
+[Ср 19 дек 2018 13:25:57] [debug] calculating controller checksum f37a987391160aab91e52920db3dbbd5
+[Ср 19 дек 2018 13:26:04] [debug] loading controller from db
+[Ср 19 дек 2018 13:26:04] [info] checking plan security
+[Ср 19 дек 2018 13:26:04] [info] checking plan security
+[Ср 19 дек 2018 13:26:04] [info] checking plan security
+[Ср 19 дек 2018 13:26:04] [debug] saving controller to db
+[Ср 19 дек 2018 13:26:04] [debug] calculating controller checksum f37a987391160aab91e52920db3dbbd5
+[Ср 19 дек 2018 13:26:26] [debug] loading controller from db
+[Ср 19 дек 2018 13:26:26] [info] checking plan security
+[Ср 19 дек 2018 13:26:26] [info] checking plan security
+[Ср 19 дек 2018 13:26:26] [info] checking plan security
+[Ср 19 дек 2018 13:26:26] [debug] saving controller to db
+[Ср 19 дек 2018 13:26:26] [debug] calculating controller checksum 61323712db8b78e66a95865d53770248
+[Ср 19 дек 2018 13:26:35] [debug] loading controller from db
+[Ср 19 дек 2018 13:26:35] [info] checking plan security
+[Ср 19 дек 2018 13:26:35] [info] checking plan security
+[Ср 19 дек 2018 13:26:35] [debug] setting controller status to 700
+[Ср 19 дек 2018 13:26:35] [debug] saving controller to db
+[Ср 19 дек 2018 13:26:35] [debug] calculating controller checksum ac7a897368300e21c3ce8df45787ee3b
+[Ср 19 дек 2018 13:26:35] [debug] loading controller from db
+[Ср 19 дек 2018 13:26:35] [debug] setting controller status to 800
+[Ср 19 дек 2018 13:26:35] [debug] section skipped by _included setting
+[Ср 19 дек 2018 13:26:35] [debug] activity skipped by _included setting Объявления
+[Ср 19 дек 2018 13:26:35] [debug] section skipped by _included setting 7-8кл
+[Ср 19 дек 2018 13:26:35] [debug] activity skipped by _included setting Тест
+[Ср 19 дек 2018 13:26:36] [debug] section skipped by _included setting 10кл
+[Ср 19 дек 2018 13:26:36] [debug] activity skipped by _included setting Тест
+[Ср 19 дек 2018 13:26:36] [debug] section skipped by _included setting 11кл
+[Ср 19 дек 2018 13:26:36] [debug] activity skipped by _included setting Тест
+[Ср 19 дек 2018 13:26:37] [debug] setting controller status to 1000
+[Ср 19 дек 2018 13:26:37] [debug] saving controller to db

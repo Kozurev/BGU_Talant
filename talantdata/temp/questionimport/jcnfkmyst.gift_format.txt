@@ -1,0 +1,596 @@
+﻿// Начало вопроса: 06. ВопрМножВыбор
+Wählen Sie deutsche Chemieunternehmen  {
+~%50% Borealis
+~%-50% DSM
+~%50% BASF
+~%-50% Bayer AG
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Wählen Sie deutsche Chemiker  {
+~%50% Friedrich Schiller 
+~%-50% Carl Bosch 
+~%50% Heinrich Heine 
+~%-50% Hans Fischer 
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Wählen Sie Gewerbe der chemischen Industrie Deutschlands   {
+~%50% Nahrungsmittel  
+~%-50% Pharmazeutik 
+~%50% Kohlindustrie 
+~%-50% Organische Grundstoffe  
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Wählen Sie deutsche Chemieunternehmen  {
+~%50% Henkel 
+~%-50% Bernd Kraft 
+~%50% Niveau  
+~%-50% Loreal  
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Wählen Sie, was produziert Chemieindustrie {
+~%50% Kunsstoffe
+~%-50% Bonbons 
+~%50% Pflanzenschutzmittel
+~%-50% Lebensmittel
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Wählen Sie, was produziert Chemieindustrie {
+~%50% Lkws 
+~%-50% Chemikalien
+~%50% Arzneimittel 
+~%-50% Bier
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Wählen Sie deutsche Flüsse {
+~%50% Weser
+~%-50% Themse 
+~%50% Isar
+~%-50% Dnepr
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Wählen Sie deutsche Nachbarstaaten {
+~%50% Ungarn
+~%-50% Polen 
+~%50% Finland
+~%-50% Dänemark 
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Wählen Sie deutsche Gebirge  {
+~%50% Eifel 
+~%-50% Thüringer Wald 
+~%50% Kaukasus 
+~%-50% Bayern  
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Wählen Sie deutsche Inseln {
+~%50% Helgoland 
+~%-50% Holland
+~%50% Sylt
+~%-50% Mallorca
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Wählen Sie deutsche Gebirge  {
+~%50% Harz 
+~%-50% Schwarzwald 
+~%50% Ararat
+~%-50% Zugspitze   
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Wählen Sie deutsche Schriftsteller   {
+~%50% B. Brecht  
+~%-50% E.M. Remark  
+~%50% H. Heine 
+~%-50% J. Guttenberg    
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Wählen Sie deutsche Dichter    {
+~%50% H. Heine 
+~%-50% H. Hesse  
+~%50% R. M. Rilke 
+~%-50% B. Brecht 
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Wählen Sie deutsche Nachbarstaaten {
+~%50% Russland
+~%-50% Frankreich  
+~%50% Finland
+~%-50% Schweiz 
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Wählen Sie deutsche Automarken   {
+~%50% Ford  
+~%-50% Volkswagen 
+~%50% Audi  
+~%-50% Peugeot 
+}
+
+// Начало вопроса: 06. ВопрМножВыбор
+Wählen Sie deutsche Unternehmen  {
+~%50% Lufthansa
+~%-50% Ariston
+~%50% Hanse 
+~%-50% Atlant
+}
+
+// Начало вопроса: 03. ВопрНаСопоставление
+Markieren Sie, was zusammengehört. {
+=Der größte Chemiekonzern Deutschlands ist -> 
+BASF.
+=Adolf Dassler hat  -> 
+Schuhmarkke "Adidas" gegründet.
+=Ich will gut studieren. -> 
+Я хочу хорошо учиться.
+=Ich soll gut studieren. -> 
+Мне следует хорошо учиться.
+}
+
+// Начало вопроса: 03. ВопрНаСопоставление
+Markieren Sie, was zusammengehört. {
+=Was sind Sie von  Beruf? -> 
+Кто Вы по профессии?
+=Woher kommen Sie? -> 
+Откуда Вы?
+=Wie geht es Ihnen? -> 
+Как у Вас дела?
+=Wie heissen Sie? -> 
+Как Вас зовут?
+}
+
+// Начало вопроса: 03. ВопрНаСопоставление
+Markieren Sie, was zusammengehört. {
+=Wie alt sind Sie? -> 
+Сколько Вам лет?
+=Wie spät ist es? -> 
+Который час?
+=Wie oft besuchen Sie das Schwimmbad? -> 
+Как часто Вы посещаете бассейн?
+=Wie viel Kinder haben Sie? -> 
+Сколько у Вас детей? Markieren Sie, was zusammengehört.
+=72 -> 
+zweiundsiebzig 
+=27 -> 
+siebenundzwanzig
+=65 -> 
+fünfundsechzig
+=56 -> 
+sechsundfünfzig 
+}
+
+// Начало вопроса: 03. ВопрНаСопоставление
+Markieren Sie, was zusammengehört. {
+=neunzehnhundertvierundachtzig -> 
+1948
+=zweitausendelf -> 
+2011
+=eintausendsiebenhundertzwölf -> 
+1712
+=dreihundertneunzehn -> 
+319
+}
+
+// Начало вопроса: 03. ВопрНаСопоставление
+Markieren Sie, was zusammengehört. {
+=halb vierzehn  -> 
+13.30
+=drei viertel vor acht -> 
+7.45
+=kurz nach zehn  -> 
+10.03
+=punkt sechs  -> 
+6.00
+}
+
+// Начало вопроса: 03. ВопрНаСопоставление
+Markieren Sie, was zusammengehört. {
+=Ich muss gut studieren. -> 
+Я должен хорошо учиться.
+=Ich kann gut studieren.  -> 
+Я могу хорошо учиться.
+=Ich will gut studieren.  -> 
+Я хочу хорошо учиться.
+=Ich soll gut studieren.  -> 
+Мне следует хорошо учиться.
+}
+
+// Начало вопроса: 03. ВопрНаСопоставление
+Markieren Sie, was zusammengehört. {
+=Ich muss gut studieren. -> 
+Я должен хорошо учиться.
+=Ich kann gut studieren.  -> 
+Я могу хорошо учиться.
+=Ich will gut studieren.  -> 
+Я хочу хорошо учиться.
+=Ich soll gut studieren.  -> 
+Мне следует хорошо учиться.
+}
+
+// Начало вопроса: 03. ВопрНаСопоставление
+Finden Sie passende Ergänzung: {
+=Ich ruhe mich etwas -> 
+aus.
+=Um sieben stehe ich immer -> 
+auf.
+=Am Abend schlafe ich schnell -> 
+ein.
+=Ich bereite das Essen gern -> 
+zu.
+}
+
+// Начало вопроса: 03. ВопрНаСопоставление
+Markieren, was zusasammengehört.  {
+=der Reibekuchen -> 
+картофельные оладьи 
+=Apfelstrudel mit Vanillesauce -> 
+яблочный рулет (шрудель)
+=Zuger Kirschtorte -> 
+цугский вишневый торт
+=der Gründonnerstag -> 
+страстной четверг
+}
+
+// Начало вопроса: 03. ВопрНаСопоставление
+Markieren Sie, was zusammengehört. {
+=in der Nähe -> 
+по близости 
+=an der Kreuzung -> 
+на перекрестке
+=in der Berliner Straße -> 
+на берлинской улице
+=auf der rechten Seite -> 
+с правой стороны
+}
+
+// Начало вопроса: 03. ВопрНаСопоставление
+Markieren Sie, was zusammengehört. {
+=Stadtrund- -> 
+gang
+=Alt- -> 
+stadt
+=Grün- -> 
+anlage
+=Stadt- -> 
+besichtigung
+}
+
+// Начало вопроса: 03. ВопрНаСопоставление
+Markieren Sie, was zusammengehört. {
+=Unter- -> 
+führung
+=Fuß- -> 
+gänger
+=Bahn- -> 
+hof
+=Verkehrs- -> 
+mittel
+}
+
+// Начало вопроса: 03. ВопрНаСопоставление
+Markieren Sie, was zusammengehört. {
+=auf -> 
+dem Bahnhof
+=in -> 
+der Reinigung
+=am -> 
+Flughafen
+=be -> 
+der Tankstelle
+}
+
+// Начало вопроса: 03. ВопрНаСопоставление
+Markieren Sie, was zusammengehört. {
+=Entschuldigung, wie komme ich zur/zum ...? -> 
+Извините, как пройти к ...?
+=Gibt es hier in der Nähe einen/eine/ein... ? -> 
+Есть здесь поблизости ...?
+=In welche Richtung muss ich gehen? -> 
+В какую сторону нужно мне идти?
+=Wie viel Zeit braucht man, um nach ... zu fahren? -> 
+Сколько времени требуется, чтобы доехать до ... ?
+}
+
+// Начало вопроса: 03. ВопрНаСопоставление
+Markieren Sie, was zusammengehört. {
+=Sie müssen an der Straße... aussteigen. -> 
+Вы должны выйти на улице ... .
+=Jetzt müssen Sie nach rechts/links gehen -> 
+Сейчас вам надо идти направо/налево
+=Fahren Sie besser mit dem Bus. -> 
+Поезжайте лучше на автобусе.
+=An der Kirche dann links in die Hauptstraße. -> 
+Потом у церкви налево по главной улице.
+}
+
+// Начало вопроса: 03. ВопрНаСопоставление
+Markieren Sie, was zusammengehört. {
+=an der Ecke -> 
+на углу
+=am Anfang der Straße -> 
+в начале улицы
+=an der Straßenmündung -> 
+в конце улицы
+=am Straßenknick -> 
+на повороте улицы
+}
+
+// Начало вопроса: 03. ВопрНаСопоставление
+Markieren Sie, was zusammengehört. {
+=Man freut sich auf die schöne Sommerzeit. -> 
+Радуются прекрасной летней поре.
+=Mit jedem Tag blüht die Natur immer mehr auf. -> 
+С каждым днём природа расцветает все больше.
+=Eben schien die Sonne, plötzlich verdunkelt sich der Himmel und schon beginnt das Gewitter. -> 
+Только что светило солнце, вдруг небо потемнело и уже начинается гроза.
+=Das Wetter ist schon ab Mitte August unbeständig. -> 
+С середины августа погода становится непостоянной.
+}
+
+// Начало вопроса: 03. ВопрНаСопоставление
+Markieren Sie, was zusammengehört. {
+=es regnet -> 
+идет дождь
+=es blitzt -> 
+сверкает молния
+=es donnert -> 
+гремит гром
+=es taut -> 
+тает
+}
+
+// Начало вопроса: 03. ВопрНаСопоставление
+  Markieren Sie, was zusammengehört. {
+=regnerisch -> 
+дождливый
+=schwül -> 
+душный; знойный
+=heiß -> 
+жарко
+=schattig -> 
+тенистый
+}
+
+// Начало вопроса: 03. ВопрНаСопоставление
+Markieren Sie, was zusammengehört. {
+=die Sonne scheint -> 
+светит солнце
+=die Sonne geht auf -> 
+солнце восходит
+=die Sonne geht unter -> 
+солнце заходит
+=die Sonne steht hoch am Himmel -> 
+высоко в небе
+}
+
+// Начало вопроса: 03. ВопрНаСопоставление
+Markieren Sie, was zusammengehört. {
+=Schnee- -> 
+geströber
+=Matsch- -> 
+wetter
+=Altweiber- -> 
+sommer
+=Mai- -> 
+glöckchen
+}
+
+// Начало вопроса: 03. ВопрНаСопоставление
+Markieren Sie, was zusammengehört. {
+=regnerisch -> 
+sönnig
+=windig -> 
+still
+=frostig -> 
+schwül
+=feucht -> 
+trocken
+}
+
+// Начало вопроса: 03. ВопрНаСопоставление
+Markieren Sie, was zusammengehört. {
+=Sonnenaufgang -> 
+Sonnenuntergang
+=das Tief -> 
+das Hoch
+=die Blätter entfalten -> 
+die Blätter fallen
+=wölkig -> 
+}
+
+// Начало вопроса: 03. ВопрНаСопоставление
+Markieren Sie, was zusammengehört. {
+=Der Sommer dauert -> 
+drei Monate.
+=Der Schnee wird grau und -> 
+taut von Tag zu Tag weg.
+=Durch die Stra(en laufen -> 
+lustige Wasserstr(me.
+=Ende Mai kehren gew(hnlich auch die letzten Zugv(gel -> 
+von ihrer Winterreise heim.
+}
+
+// Начало вопроса: 03. ВопрНаСопоставление
+Markieren Sie, was zusammengehört. {
+=Der zweite Monat im Herbst ist der -> 
+Oktober 
+=Der erste Monat im Frühling ist der  -> 
+März
+=Der letzte Monat im Winter ist der  -> 
+Februar
+=Der erste Monat im Sommer ist der -> 
+Juni
+}
+
+// Начало вопроса: 03. ВопрНаСопоставление
+Markieren Sie, was zusammengehört. {
+=bekommen -> 
+haben
+=fallen -> 
+sein
+=gefallen -> 
+haben
+=kommen -> 
+sein
+}
+
+// Начало вопроса: 03. ВопрНаСопоставление
+Markieren Sie, was zusammengehört. {
+=sitzen -> 
+hat gesessen
+=essen -> 
+hat gegessen
+=bitten -> 
+hat gebeten
+=bieten -> 
+hat geboten
+}
+
+// Начало вопроса: 03. ВопрНаСопоставление
+Markieren Sie, was zusammengehört. {
+=dick -> 
+dünn
+=nervös -> 
+ruhig
+=lustig -> 
+traurig
+=laut -> 
+leise
+}
+
+// Начало вопроса: 03. ВопрНаСопоставление
+Markieren Sie, was zusammengehört. {
+=sauber -> 
+schmutzig
+=hell -> 
+dunkell
+=teuer -> 
+billig
+=nah -> 
+weit
+}
+
+// Начало вопроса: 03. ВопрНаСопоставление
+Markieren Sie, was zusammengehört. {
+=antworten -> 
+auf A.
+=fragen -> 
+nach D.
+=teilnehmen -> 
+an D.
+=sich gewöhnen -> 
+an A.
+}
+
+// Начало вопроса: 03. ВопрНаСопоставление
+Markieren Sie, was zusammengehört. {
+=arbeiten -> 
+an D. 
+=beginnen -> 
+mit D. 
+=denken -> 
+an A. 
+=bitten -> 
+um A. 
+}
+
+// Начало вопроса: 08. ВопрПропущСлово
+Carl Bosch war ein deutscher {=Chemiker}, Techniker, Industrieller und Vorstandsvorsitzender des Chemiekonzerns I.G. Farben.
+
+// Начало вопроса: 08. ВопрПропущСлово
+1896 wechselte Carl Bosch sein Fach und studierte an der Universität {=Leipzig Chemie}.
+
+// Начало вопроса: 08. ВопрПропущСлово
+Carl Bosch erhielt {=1931} zusammen mit Friedrich Bergius den Nobelpreis für Chemie für seine "Verdienste um die Entdeckung und Entwicklung der chemischen Hochdruckverfahren".
+
+// Начало вопроса: 08. ВопрПропущСлово
+1894 begann Carl Bosch ein Studium im Hütten-Fach (Gießereiwesen) {=an der Technischen Hochschule Charlottenburg}, wechselte jedoch 1896 sein Fach und studierte an der Universität Leipzig Chemie.
+
+// Начало вопроса: 08. ВопрПропущСлово
+Carl Boschs Eintritt in das Unternehmen {=BASF} im Jahr 1899 (auf Empfehlung seines Doktorvaters) war der Anfang einer steilen Karriere.
+
+// Начало вопроса: 08. ВопрПропущСлово
+1902 {=heiratete} Carl Bosch Else Schilbach.
+
+// Начало вопроса: 08. ВопрПропущСлово
+{=1910} produzierte der erste Versuchsreaktor Ammoniak.
+
+// Начало вопроса: 08. ВопрПропущСлово
+Die Arbeit Boschs bildete somit die Grundlage für ein äußerst gewinnträchtiges Monopol der BASF bei  der Herstellung von {=Ammoniak} zur Produktion von Dünger und Sprengstoffen.
+
+// Начало вопроса: 08. ВопрПропущСлово
+1935 wurde Carl Bosch zum ordentlichen Mitglied {=1der Heidelberger Akademie der Wissenschaften} gewählt.
+
+// Начало вопроса: 08. ВопрПропущСлово
+{=1936} wurde Carl Bosch zum Ehrenmitglied der Preußischen Akademie der Wissenschaften ernannt.
+
+// Начало вопроса: 08. ВопрПропущСлово
+1939 erhielt Carl Bosch {=den Goethepreis} der Stadt Frankfurt.
+
+// Начало вопроса: 08. ВопрПропущСлово
+Carl Bosch {=verstarb} am 26. April 1940, in Heidelberg.
+
+// Начало вопроса: 08. ВопрПропущСлово
+Man steht morgens auf und schon denkt an das erste Essen des Tages, an das {=Frühstück}.
+
+// Начало вопроса: 08. ВопрПропущСлово
+Zum Essen braucht man ein Besteck. Das sind der Löffel, das Messer und die {=Gabel}. 
+
+// Начало вопроса: 08. ВопрПропущСлово
+Beim Essen wünscht man einander guten {=Appetit}.
+
+// Начало вопроса: 08. ВопрПропущСлово
+Wenn meine Mutter neue Kleidungsstücke braucht, geht sie meistens ins Waren{=haus}.
+
+// Начало вопроса: 08. ВопрПропущСлово
+Bevor meine Mutti ins Warenhaus eintritt, bewundert sie immer das schöne Angebot in den Schau{=fenstern}.
+
+// Начало вопроса: 08. ВопрПропущСлово
+Was einem gefällt, kann man in der Probe{=kabine} anprobieren.
+
+// Начало вопроса: 08. ВопрПропущСлово
+Welche {=Spezialität} hat dieses Restaurant?
+
+// Начало вопроса: 08. ВопрПропущСлово
+Als {=Vorspeise} möchte ich Salat, Fischsülze.
+
+// Начало вопроса: 08. ВопрПропущСлово
+Als {=Hauptgericht} bringen Sie bitte Rind.
+
+// Начало вопроса: 08. ВопрПропущСлово
+Ich möchte {=zum} Braten Bier bestellen.
+
+// Начало вопроса: 08. ВопрПропущСлово
+Als  {=Nachspeise} möchte ich ein Stück Kuchen und eine Tasse Kaffee bestellen.
+
+// Начало вопроса: 08. ВопрПропущСлово
+Es gibt eine Diskussion, {=ob} man in Frankreich oder Italien besser ißt.
+
+// Начало вопроса: 08. ВопрПропущСлово
+Die Deutschen halten nicht viel {=von} Auslandsreisen.
+
+// Начало вопроса: 08. ВопрПропущСлово
+Die {=Qualität} der deutschen Küche hängt mit den politischen und wirtschaftlichen Verhältnissen zusammen.
+
+// Начало вопроса: 08. ВопрПропущСлово
+Es gibt nur wenige Länder in Europa, die eine hohe {=Esskultur} haben.
+
+// Начало вопроса: 08. ВопрПропущСлово
+ Verfeinertes Essen war nie die {=Hauptsorge} der Deutschen.
+
+// Начало вопроса: 08. ВопрПропущСлово
+Ohne Flei&beta; kein {=Preis}.
+
+// Начало вопроса: 08. ВопрПропущСлово
+Wann kommt der Zug in Stuttgart {=an}?

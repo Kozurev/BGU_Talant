@@ -1,0 +1,22 @@
+[Вт 18 дек 2018 12:07:27] [info] instantiating restore controller 6c84b8d6306daa0faf86894ceabef223
+[Вт 18 дек 2018 12:07:27] [debug] setting controller status to 100
+[Вт 18 дек 2018 12:07:27] [debug] loading backup info
+[Вт 18 дек 2018 12:07:27] [debug] loading controller plan
+[Вт 18 дек 2018 12:07:27] [debug] setting controller status to 300
+[Вт 18 дек 2018 12:07:27] [debug] applying restore defaults
+[Вт 18 дек 2018 12:07:27] [debug] Unknown setting: questionbank
+[Вт 18 дек 2018 12:07:27] [debug] setting controller status to 400
+[Вт 18 дек 2018 12:07:27] [info] checking plan security
+[Вт 18 дек 2018 12:07:27] [debug] setting controller status to 500
+[Вт 18 дек 2018 12:07:27] [debug] setting controller status to 600
+[Вт 18 дек 2018 12:07:27] [debug] saving controller to db
+[Вт 18 дек 2018 12:07:27] [debug] calculating controller checksum 127c480c523afb90b8f2fc1ac20077cf
+[Вт 18 дек 2018 12:07:27] [debug] loading controller from db
+[Вт 18 дек 2018 12:07:29] [debug] setting controller status to 700
+[Вт 18 дек 2018 12:07:29] [debug] saving controller to db
+[Вт 18 дек 2018 12:07:29] [debug] calculating controller checksum ffe28b00f263ca6c6725b6fe81b4465f
+[Вт 18 дек 2018 12:07:29] [debug] loading controller from db
+[Вт 18 дек 2018 12:07:29] [debug] setting controller status to 800
+[Вт 18 дек 2018 12:07:40] [debug] processing file aliases queue
+[Вт 18 дек 2018 12:07:40] [debug] setting controller status to 1000
+[Вт 18 дек 2018 12:07:40] [debug] saving controller to db
