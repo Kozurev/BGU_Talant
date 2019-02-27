@@ -52,6 +52,7 @@ if( $action === "level_save" )
      * Костыль для исправления ошибки кодировки передачи русских символов из формы enctype="multipart/form-data"
      */
     $recodeTitle = iconv( "utf-8", "ISO-8859-1", $_POST["title"] );
+    //$recodeTitle = Core_Array::Post( 'title', '' );
 
     $Level
         ->setTitle( $recodeTitle )
@@ -140,6 +141,11 @@ if( $action === "program_save" )
     $recodeDescription = iconv( "utf-8", "ISO-8859-1", Core_Array::Post( "description", "" ) );
     $recodeDocumentType = iconv( "utf-8", "ISO-8859-1", Core_Array::Post( "document_type", "" ) );
     $recodeCode = iconv( "utf-8", "ISO-8859-1", Core_Array::Post( "code", "" ) );
+
+//    $recodeTitle = Core_Array::Post( "title", "" );
+//    $recodeDescription = Core_Array::Post( "description", "" );
+//    $recodeDocumentType = Core_Array::Post( "document_type", "" );
+//    $recodeCode = Core_Array::Post( "code", "" );
 
     $Program = Core::factory( "Program", $id )
         ->setTitle( $recodeTitle )

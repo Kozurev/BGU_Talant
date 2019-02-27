@@ -63,7 +63,8 @@ class Core_Entity extends Core_Entity_Model
         else
         {
             //return get_class( $this );
-            return "mdl_" . mb_strtolower( get_class( $this ) );
+            global $CFG;
+            return $CFG->prefix . mb_strtolower( get_class( $this ) );
         }
     }
 

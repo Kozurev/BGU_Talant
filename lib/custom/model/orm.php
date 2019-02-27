@@ -430,6 +430,27 @@ class Orm
 
 
         /**
+         * Задание условий группировки
+         */
+        if ( count( $this->groupBy ) > 0 )
+        {
+            $this->queryString .= ' GROUP BY ';
+
+            for ( $i = 0; $i < count( $this->groupBy ); $i++ )
+            {
+                $this->queryString .= $this->groupBy[$i];
+
+                if ( $i + 1 < count( $this->groupBy ) )
+                {
+                    $this->queryString .= ',';
+                }
+
+                $this->queryString .= ' ';
+            }
+        }
+
+
+        /**
          * Формирование условий сортировки
          */
         if ( count( $this->order ) > 0 )
@@ -462,27 +483,6 @@ class Orm
         if ( $this->offset != '' )
         {
             $this->queryString .= ' OFFSET ' . $this->offset;
-        }
-
-
-        /**
-         * Задание условий группировки
-         */
-        if ( count( $this->groupBy ) > 0 )
-        {
-            $this->queryString .= ' GROUP BY ';
-
-            for ( $i = 0; $i < count( $this->groupBy ); $i++ )
-            {
-                $this->queryString .= $this->groupBy[$i];
-
-                if ( $i + 1 < count( $this->groupBy ) )
-                {
-                    $this->queryString .= ',';
-                }
-
-                $this->queryString .= ' ';
-            }
         }
 
 

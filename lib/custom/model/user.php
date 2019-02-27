@@ -68,6 +68,30 @@ class User extends Core_Entity
     }
 
 
+    public static function current()
+    {
+        global $USER;
+
+        $User = new User();
+
+        if ( $USER )
+        {
+            $properties = get_object_vars( $USER );
+
+            foreach ( $properties as $prop => $val )
+            {
+                if( is_int( $val ) || is_string( $val ) )   $User->$prop = $val;
+            }
+        }
+        else
+        {
+            return null;
+        }
+
+        return $User;
+    }
+
+
     /**
      * Получение идентификатора роли пользователя из таблицы ассоциаций
      * Возвращает 0 если пользователь не принадлежит ни одной роли
