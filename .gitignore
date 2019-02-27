@@ -1,4 +1,5 @@
 /.idea/
 /config.php
+/talantdata/*
 blocks/programs/xml.xml
 *.xml
