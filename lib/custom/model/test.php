@@ -46,37 +46,35 @@ class Test extends Core_Entity
             return $table;
         }
 
-//        SELECT
-//               test.itemname, CONCAT(usr.lastname, ' ', usr.firstname, ' ', usr.patronymic) AS fio, usr.email,
-//               app.educational_institution, region.name, city.name, res.finalgrade
-//        FROM mdl_grade_grades AS res
-//          INNER JOIN mdl_grade_items AS test ON res.itemid = test.id
-//          INNER JOIN mdl_user AS usr ON usr.id = res.userid
-//          INNER JOIN mdl_olympiad_application AS app ON app.user_id = usr.id AND app.olympiad_id = test.courseid
-//          LEFT JOIN mdl_address_region AS region ON region.id = app.region_id
-//          LEFT JOIN mdl_address_city AS city ON region.id = app.region_id
-//
-//        WHERE res.itemid = @testid
-//        GROUP BY usr.id
-//        ORDER BY finalgrade DESC
-Orm::Debug( true );
         $QueryBuilder = new Orm();
         $Results = $QueryBuilder
-            ->select( ['test.itemname', 'CONCAT(usr.lastname, \' \', usr.firstname, \' \', usr.patronymic) AS fio',
-                        'usr.email', 'app.educational_institution', 'region.name', 'city.name', 'res.finalgrade'] )
+            ->select( ['test.itemname', 'CONCAT(usr.lastname, \' \', usr.firstname, \' \', usr.patronymic) AS fio', 'app.class',
+                        'usr.email', 'app.educational_institution', 'region.name AS region', 'city.name AS city', 'res.finalgrade'] )
             ->from( $CFG->prefix . 'grade_grades', 'res' )
             ->join( $CFG->prefix . 'grade_items AS test', 'res.itemid = test.id' )
             ->join( $CFG->prefix . 'user AS usr', 'usr.id = res.userid' )
             ->join( $CFG->prefix . 'olympiad_application AS app', 'app.user_id = usr.id AND app.olympiad_id = test.courseid' )
             ->leftJoin( $CFG->prefix . 'address_region AS region', 'region.id = app.region_id' )
-            ->leftJoin( $CFG->prefix . 'address_city AS city', 'region.id = app.region_id' )
+            ->leftJoin( $CFG->prefix . 'address_city AS city', 'city.id = app.city_id' )
             ->whereIn( 'res.itemid', $testIds )
             ->groupBy( 'usr.id' )
             ->orderBy( 'res.itemid', 'ASC' )
             ->orderBy( 'finalgrade', 'DESC' )
             ->findAll();
 
-        debug( $Results );
+        foreach ( $Results as $key => $res )
+        {
+            $table->data[] = [
+                $res->fio,
+                $res->email,
+                $res->class,
+                $res->educational_institution,
+                $res->itemname,
+                $res->region,
+                $res->city,
+                $res->finalgrade
+            ];
+        }
 
         return $table;
     }

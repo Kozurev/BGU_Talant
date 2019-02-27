@@ -7,7 +7,7 @@
  */
 
 require_once '../../config.php';
-global $CFG, $PAGE, $OUTPUT, $USER, $DB;
+global $CFG, $PAGE, $OUTPUT, $USER, $DB, $SESSION;
 require_once $CFG->libdir . '/custom/autoload.php';
 require_once $CFG->libdir . '/tablelib.php';
 require_once 'block_export.php';
@@ -71,6 +71,8 @@ if ( !is_null( $olympiadId ) && is_null( $report_type ) )
 {
     $Olympiad = Core::factory( 'Olympiad', $olympiadId );
 
+    $SESSION->olympiad = $Olympiad->id;
+
     $PAGE->set_title( block_export::BLOCK_TITLE_SHORT . ': ' . $Olympiad->shortname );
     $PAGE->navbar->add( block_export::BLOCK_TITLE_SHORT . ': Олимпиады', $CFG->wwwroot . '/blocks/export/olympiad_tests.php' );
     $PAGE->navbar->add( $Olympiad->shortname );
@@ -91,6 +93,23 @@ if ( !is_null( $olympiadId ) && is_null( $report_type ) )
 //Формирование отчета
 if ( is_null( $olympiadId ) && !is_null( $report_type ) )
 {
+    Core::factory( 'Test' );
+    $Olympiad = Core::factory( 'Olympiad', $SESSION->olympiad );
+
+    if ( $report_type == REPORT_TYPE_HTML )
+    {
+        $PAGE->set_title( block_export::BLOCK_TITLE_SHORT . ': ' . $Olympiad->shortname );
+        $PAGE->navbar->add( block_export::BLOCK_TITLE_SHORT . ': Олимпиады', $CFG->wwwroot . '/blocks/export/olympiad_tests.php' );
+        $PAGE->navbar->add( $Olympiad->shortname, $CFG->wwwroot . '/blocks/export/olympiad_tests.php?olid=' . $Olympiad->id );
+        $PAGE->navbar->add( $Olympiad->shortname . ': Отчет' );
+        echo $OUTPUT->header();
+    }
+    elseif ( $report_type == REPORT_TYPE_EXCEL )
+    {
+        header( 'Content-type: application/vnd.ms-excel' );
+        header( 'Content-Disposition: attachment; filename='.$Olympiad->shortname.': Отчет.xls' );
+    }
+
     $testIds = $_GET['testid'];
     Core::factory( 'Test' );
 
@@ -99,6 +118,19 @@ if ( is_null( $olympiadId ) && !is_null( $report_type ) )
         $id = intval( $id );
     }
 
-    //Core::factory( 'Olympiad_Application' );
-    debug( Test::getReport( $testIds ) );
+    $TestsResults = Test::getReport( $testIds );
+    echo html_writer::table( $TestsResults );
+
+    if ( $report_type == REPORT_TYPE_HTML )
+    {
+        $testIdsStr = '';
+
+        foreach ( $testIds as $id )
+        {
+            $testIdsStr .= '&testid[]=' . $id;
+        }
+
+        echo '<a class="btn btn-primary" href="olympiad_tests.php?report_type='. REPORT_TYPE_EXCEL . $testIdsStr .'">ЭКСПОРТ В EXCEL</a>';
+        echo $OUTPUT->footer();
+    }
 }
