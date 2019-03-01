@@ -57,7 +57,7 @@ class Test extends Core_Entity
             ->leftJoin( $CFG->prefix . 'address_region AS region', 'region.id = app.region_id' )
             ->leftJoin( $CFG->prefix . 'address_city AS city', 'city.id = app.city_id' )
             ->whereIn( 'res.itemid', $testIds )
-            ->groupBy( 'usr.id' )
+            //->groupBy( 'usr.id' )
             ->orderBy( 'res.itemid', 'ASC' )
             ->orderBy( 'finalgrade', 'DESC' )
             ->findAll();

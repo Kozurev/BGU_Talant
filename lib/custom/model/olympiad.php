@@ -118,6 +118,7 @@ class Olympiad extends Core_Entity
         return $QueryBuilder
             ->select( ['id', 'itemname', 'categoryid', 'courseid'] )
             ->from( $CFG->prefix . 'grade_items' )
+            ->where( 'hidden', '=', 1 )
             ->where( 'itemtype', '=', 'mod' )
             ->where( 'courseid', '=', $this->id )
             ->findAll();
