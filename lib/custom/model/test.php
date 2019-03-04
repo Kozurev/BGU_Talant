@@ -38,8 +38,6 @@ class Test extends Core_Entity
         require_once $CFG->libdir . '/tablelib.php';
 
         $table = new html_table();
-        $table->head = ['ФИО', 'email', 'Класс', 'Школа', 'Предмет', 'Область', 'Город', 'Балы'];
-        $table->data = [];
 
         if ( count( $testIds ) == 0 )
         {
@@ -48,7 +46,7 @@ class Test extends Core_Entity
 
         $QueryBuilder = new Orm();
         $Results = $QueryBuilder
-            ->select( ['test.itemname', 'CONCAT(usr.lastname, \' \', usr.firstname, \' \', usr.patronymic) AS fio', 'app.class',
+            ->select( ['usr.id AS userid', 'test.itemname', 'CONCAT(usr.lastname, \' \', usr.firstname, \' \', usr.patronymic) AS fio', 'app.class',
                         'usr.email', 'app.educational_institution', 'region.name AS region', 'city.name AS city', 'res.finalgrade'] )
             ->from( $CFG->prefix . 'grade_grades', 'res' )
             ->join( $CFG->prefix . 'grade_items AS test', 'res.itemid = test.id' )
@@ -57,23 +55,55 @@ class Test extends Core_Entity
             ->leftJoin( $CFG->prefix . 'address_region AS region', 'region.id = app.region_id' )
             ->leftJoin( $CFG->prefix . 'address_city AS city', 'city.id = app.city_id' )
             ->whereIn( 'res.itemid', $testIds )
-            //->groupBy( 'usr.id' )
-            ->orderBy( 'res.itemid', 'ASC' )
-            ->orderBy( 'finalgrade', 'DESC' )
             ->findAll();
 
-        foreach ( $Results as $key => $res )
+        $tests = []; //Список названий выбранных тестов
+        $groupedByUser = []; //Кастомно группированный результат SQL-запроса ($Results) по пользователю
+        $usedUserIds = []; //Список идентификаторов пользователей. Используется для группировки массива $Results по userid
+
+        foreach ( $Results as $index => $res )
         {
-            $table->data[] = [
-                $res->fio,
-                $res->email,
-                $res->class,
-                $res->educational_institution,
-                $res->itemname,
-                $res->region,
-                $res->city,
-                $res->finalgrade
-            ];
+            $isNew = !in_array( $res->userid, $usedUserIds ); //Указатель на то впервые ли встретилась строка с этим пользователем или нет
+
+            if ( $isNew )
+            {
+                $usedUserIds[] = $res->userid;
+                $groupedByUser[$res->userid] = $res;
+                $groupedByUser[$res->userid]->total = 0;
+                $groupedByUser[$res->userid]->results = [];
+            }
+
+            if ( !in_array( $res->itemname, $tests ) )
+            {
+                $tests[] = $res->itemname;
+            }
+
+            //Специально для выгрузки в эксэль числа с плавающей точкой в качестве разделителя должны иметь запятую
+            $res->finalgrade = round( $res->finalgrade, 1 );
+            $groupedByUser[$res->userid]->results[] = dotToComaDelimiter( $res->finalgrade );
+            $groupedByUser[$res->userid]->total += $res->finalgrade;
+
+            unset( $groupedByUser[$res->userid]->itemname );
+            unset( $groupedByUser[$res->userid]->finalgrade );
+        }
+
+        $table->head = array_merge( ['ФИО', 'email', 'Класс', 'Школа', 'Область', 'Город'], $tests, ['Всего'] );
+        $table->data = [];
+
+        foreach ( $groupedByUser as $key => $res )
+        {
+            $table->data[] = array_merge(
+                [
+                    $res->fio,
+                    $res->email,
+                    $res->class,
+                    $res->educational_institution,
+                    $res->region,
+                    $res->city
+                ],
+                $res->results,
+                [dotToComaDelimiter( $res->total )]
+            );
         }
 
         return $table;
