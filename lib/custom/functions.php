@@ -4,6 +4,7 @@
  *
  * @author Bad Wolf
  * @date 22.08.2018 14:44
+ * @version 20190304
  */
 
 
@@ -21,6 +22,21 @@ function debug( $var, $type = 0 )
         ?   print_r( $var )
         :   var_dump( $var );
     echo "</pre>";
+}
+
+
+/**
+ * Преобразование float в string с заменой точки на запятую в качестве разделителя целой и дробной части
+ * Используется для выгрузки значений в excel так как там дробные числа указываются с запятой, я не с точкой,как в PHP
+ *
+ * @date 04.03.2019 15:17
+ * @param $floatVal
+ * @return string
+ */
+function dotToComaDelimiter( $floatVal )
+{
+    $parts = explode( '.', strval( $floatVal ) );
+    return implode( ',', $parts );
 }
 
 
